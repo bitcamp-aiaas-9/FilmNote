@@ -1,8 +1,6 @@
 // FilmNote/src/main/java/review/bean/ReviewDTO.java
 package review.bean;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
