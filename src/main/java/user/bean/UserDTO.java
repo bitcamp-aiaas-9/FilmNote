@@ -1,30 +1,23 @@
-// FilmNote/src/main/java/user.bean.UserDTO.java
+// FilmNote/src/main/java/user/bean/UserDTO.java
 package user.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-<<<<<<< HEAD
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-=======
-
-@Data
-@AllArgsConstructor
->>>>>>> a03eb21ada4778e282f267dfdd422bd607988236
 public class UserDTO {
-	private String id;        // 회원 아이디
-    private String pwd;       // 회원 비밀번호
-    private String name;      // 회원 이름
-    private String gender;    // 성별
-    private String birth1;    // 생년 (YYYY)
-    private String birth2;    // 생월 (MM)
-    private String birth3;    // 생일 (DD)
-    private String email1;    // 이메일 아이디
-    private String email2;    // 이메일 도메인
-    private String tel1;      // 휴대폰 앞자리
-    private String tel2;      // 휴대폰 가운데 자리
-    private String tel3;      // 휴대폰 끝자리
+    private String uid;      // 아이디
+    private String upwd;     // 비밀번호
+    private String uname;    // 이름
+    private String gender;   // 성별: F/M
+    private String birth1;   // 생년월일(년): YYYY
+    private String birth2;   // 생년월일(월): MM
+    private String birth3;   // 생년월일(일): DD
+    private String email1;   // 이메일1
+    private String email2;   // 이메일2
+    private String tel1;     // 휴대폰1
+    private String tel2;     // 휴대폰2
+    private String tel3;     // 휴대폰3
 }
+
