@@ -11,7 +11,7 @@
 	justify-content: space-between;
 	align-items: center;
 	margin: 20px 0 10px 0;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #5A5A5A;
 	padding: 20px 0;
 }
 
@@ -29,7 +29,8 @@
     justify-content: flex-end;
     border-bottom: 2px solid #00589
 }
-.user, .logOutBtn {
+
+button.user {
 	display: flex;
     align-items: center;
     justify-content: center;
@@ -37,19 +38,19 @@
     width: 130px;
     height: 30px;
     background: #FFFFFF;
-    border: 1px solid #005898;
-    border-radius: 10px;
+    border: 1px solid #3d3d3d;
+    border-radius: 5px;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 50px;
-    color: #005898;
+    color: #3d3d3d;
     transition: background-color 0.3s ease; 
 }
 
-.user:hover, .logOutBtn:hover {
-	background-color: #005898;
+button.user:hover {
+	background-color: #3d3d3d;
 	color: #FFFFFF;
 	cursor: pointer;
 }
@@ -58,10 +59,13 @@
 <body>
 <div id="header">
 	<div id="title">
-		<img src="./image/film_favicon.png" width="70" alt="logo" />
+		<a href="${pageContext.request.contextPath}/index.do">
+			<img src="./image/filmnote_logo.png" width="300" alt="logo" />
+		</a>
 		
 	</div>
 	<div id="member">
+<<<<<<< HEAD
 <<<<<<< HEAD
 		<div class="user" onclick="location.href='${ pageContext.request.contextPath }/user/userSignIn.jsp'">로그인</div>
 		<div class="user" onclick="location.href='${ pageContext.request.contextPath }/user/userSignUp.jsp'">회원가입</div>
@@ -69,9 +73,13 @@
 		<div class="user">로그인</div>
 		<div class="user">회원가입</div>
 >>>>>>> a03eb21ada4778e282f267dfdd422bd607988236
+=======
+		<button id="signInBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignIn.do';">로그인</button>
+		<button id="signUpBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignUp.do';">회원가입</button>
+>>>>>>> 7fe491a7a5eaf53d57fb7d4186dc5226917a504a
 		<c:if test="${memId != null }">
-			<div class="user"><span id="user-name"></span> 님</div>
-			<button class="logOutBtn">Log Out</button>
+			<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userEdit.do';"><span id="user-name"></span> 님</button>
+			<button id="logOutBtn" class="user">Log Out</button>
 		</c:if>
 	</div>
 
