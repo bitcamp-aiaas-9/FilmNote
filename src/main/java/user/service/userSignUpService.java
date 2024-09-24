@@ -19,7 +19,7 @@ public class userSignUpService implements CommandProcess {
 
 		try {
 			UserDAO userDAO = UserDAO.getInstance();
-
+			
 			// 입력 받은 값을 DTO에 설정
 			UserDTO user = new UserDTO();
 			user.setId(request.getParameter("id"));
