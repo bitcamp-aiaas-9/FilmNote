@@ -60,7 +60,7 @@ button.user:hover {
 <div id="header">
 	<div id="title">
 		<a href="${pageContext.request.contextPath}/index.do">
-			<img src="./image/filmnote_logo.png" width="300" alt="logo" />
+			<img src="${pageContext.request.contextPath}/image/filmnote_logo.png" width="300" alt="logo" />
 		</a>
 		
 	</div>
