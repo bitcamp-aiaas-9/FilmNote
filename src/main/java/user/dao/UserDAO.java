@@ -13,14 +13,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import movie.dao.MovieDAO;
-
 public class UserDAO {
 	// 싱글톤 인스턴스 생성
-	private static MovieDAO instance = new MovieDAO();
+	private static UserDAO instance = new UserDAO();
 	private SqlSessionFactory sqlSessionFactory;
     
-	public static MovieDAO getInstance() {
+	public static UserDAO getInstance() {
 		return instance;
 	}
 	
@@ -32,11 +30,30 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-
-
-
-
-
-
-
+	
+	public SqlSessionFactory getSqlSessionFactory() {
+		return sqlSessionFactory;
+	}
+	
+	public UserDTO loginUser(String userid, String password) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			Map<String, String> params = new HashMap<>();
+			params.put("userid", userid);
+			params.put("password", password);
+			return sqlSession.selectOne("userSQL.loginUser", params);
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	public void insertUser(UserDTO user) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.insert("userSQL.insertUser", user);
+			sqlSession.commit();
+		} finally {
+			sqlSession.close();
+		}
+	}
 }
