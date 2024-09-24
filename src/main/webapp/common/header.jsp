@@ -62,21 +62,13 @@ button.user:hover {
 		<a href="${pageContext.request.contextPath}/index.do">
 			<img src="${pageContext.request.contextPath}/image/filmnote_logo.png" width="300" alt="logo" />
 		</a>
-		
 	</div>
+	
+	
 	<div id="member">
-<<<<<<< HEAD
-<<<<<<< HEAD
-		<div class="user" onclick="location.href='${ pageContext.request.contextPath }/user/userSignIn.jsp'">로그인</div>
-		<div class="user" onclick="location.href='${ pageContext.request.contextPath }/user/userSignUp.jsp'">회원가입</div>
-=======
-		<div class="user">로그인</div>
-		<div class="user">회원가입</div>
->>>>>>> a03eb21ada4778e282f267dfdd422bd607988236
-=======
-		<button id="signInBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignIn.do';">로그인</button>
-		<button id="signUpBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignUp.do';">회원가입</button>
->>>>>>> 7fe491a7a5eaf53d57fb7d4186dc5226917a504a
+		<button id="signInBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignIn.jsp';">로그인</button>
+		<button id="signUpBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignUp.jsp';">회원가입</button>
+
 		<c:if test="${memId != null }">
 			<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userEdit.do';"><span id="user-name"></span> 님</button>
 			<button id="logOutBtn" class="user">Log Out</button>
@@ -84,9 +76,6 @@ button.user:hover {
 	</div>
 
 </div><!-- <div id="header"> -->
-
-
-
 
 
 
