@@ -3,11 +3,17 @@ package user.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+<<<<<<< HEAD
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+=======
+
+@Data
+@AllArgsConstructor
+>>>>>>> a03eb21ada4778e282f267dfdd422bd607988236
 public class UserDTO {
 	private String id;        // 회원 아이디
     private String pwd;       // 회원 비밀번호

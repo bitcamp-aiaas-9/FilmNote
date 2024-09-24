@@ -62,8 +62,13 @@
 		
 	</div>
 	<div id="member">
+<<<<<<< HEAD
 		<div class="user" onclick="location.href='${ pageContext.request.contextPath }/user/userSignIn.jsp'">로그인</div>
 		<div class="user" onclick="location.href='${ pageContext.request.contextPath }/user/userSignUp.jsp'">회원가입</div>
+=======
+		<div class="user">로그인</div>
+		<div class="user">회원가입</div>
+>>>>>>> a03eb21ada4778e282f267dfdd422bd607988236
 		<c:if test="${memId != null }">
 			<div class="user"><span id="user-name"></span> 님</div>
 			<button class="logOutBtn">Log Out</button>
