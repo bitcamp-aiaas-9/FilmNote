@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <link rel="icon" href="../image/film_favicon.png" type="image/png">
 <link rel="stylesheet" href="../css/userWithdraw.css">
-<title>회원가입</title>
+<title>회원탈퇴</title>
 </head>
 <body>
 

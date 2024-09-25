@@ -56,4 +56,12 @@ public class UserDAO {
 			sqlSession.close();
 		}
 	}
+	
+	public void userEdit(UserDTO user) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("userSQL.userEdit", user);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
 }
