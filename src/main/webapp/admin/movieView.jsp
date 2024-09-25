@@ -19,7 +19,7 @@
 	<input type="hidden" name="pg" id="pg" value="${requestScope.pg }" />
 
 
-
+	<!-- 영화 코드, 영화 제목, 영화 감독, 영화 장르, 영화 개봉일, 영화 등급, 영화 평점, 영화 줄거리, 영화 포스터 이미지 -->
 
 
 </div>
