@@ -13,56 +13,78 @@
 <body>
 <jsp:include page="../common/header.jsp" />	
 	<div id="write-jsp" class="signup-container">
-        
         <h2>회원가입</h2>
-        <form id="signUpForm" action="#" method="post">
+        <form id="signUpForm" action="${pageContext.request.contextPath}/user/userSignUp.do" method="post">
             <table>
+                <!-- 이름 입력 필드 -->
                 <tr>
-                    <th class="label"><label for="name"><i class="fa-solid fa-user"></i> 이름</label></th>
-                    <td class="input"><input type="text" id="name" name="name" placeholder="이름 입력"></td>
+                    <th class="label"><label for="uname"><i class="fa-solid fa-user"></i> 이름</label></th>
+                    <td class="input">
+                        <input type="text" id="uname" name="uname" placeholder="이름 입력">
+                        <div id="unameDiv"></div> <!-- 유효성 검사 메시지 표시 -->
+                    </td>
                 </tr>
+                <!-- 아이디 입력 필드 -->
                 <tr>
-                    <th class="label"><label for="id"><i class="fa-solid fa-id-badge"></i> 아이디</label></th>
-                    <td class="input"><input type="text" id="id" name="id" placeholder="아이디 입력"></td>
+                    <th class="label"><label for="uid"><i class="fa-solid fa-id-badge"></i> 아이디</label></th>
+                    <td class="input">
+                        <input type="text" id="uid" name="uid" placeholder="아이디 입력">
+                        <div id="uidDiv"></div> <!-- 아이디 유효성 검사 메시지 표시 -->
+                    </td>
                 </tr>
+                <!-- 비밀번호 입력 필드 -->
                 <tr>
-                    <th class="label"><label for="pwd"><i class="fa-solid fa-lock"></i> 비밀번호</label></th>
-                    <td class="input"><input type="password" id="pwd" name="pwd" placeholder="비밀번호 입력"></td>
+                    <th class="label"><label for="upwd"><i class="fa-solid fa-lock"></i> 비밀번호</label></th>
+                    <td class="input">
+                        <input type="password" id="upwd" name="upwd" placeholder="비밀번호 입력">
+                        <div id="upwdDiv"></div> <!-- 비밀번호 유효성 검사 메시지 표시 -->
+                    </td>
                 </tr>
+                <!-- 비밀번호 확인 필드 -->
                 <tr>
                     <th class="label"><label for="repwd"><i class="fa-solid fa-lock"></i> 재확인</label></th>
-                    <td class="input"><input type="password" id="repwd" name="repwd" placeholder="비밀번호 입력"></td>
+                    <td class="input">
+                        <input type="password" id="repwd" name="repwd" placeholder="비밀번호 재입력">
+                        <div id="repwdDiv"></div> <!-- 비밀번호 확인 유효성 검사 메시지 표시 -->
+                    </td>
                 </tr>
+                <!-- 성별 선택 필드 -->
                 <tr>
                     <th class="label"><label for="gender"><i class="fa-solid fa-venus-mars"></i> 성별</label></th>
                     <td class="input">
-                        <label><input type="radio" id="male" name="gender" value="male"> 남자</label>
-                        <label><input type="radio" id="female" name="gender" value="female"> 여자</label>
+                        <label><input type="radio" id="male" name="gender" value="M"> 남자</label>
+                        <label><input type="radio" id="female" name="gender" value="F"> 여자</label>
+                        <div id="genderDiv"></div> <!-- 성별 유효성 검사 메시지 표시 -->
                     </td>
                 </tr>
+                <!-- 생년월일 입력 필드 -->
                 <tr>
-                    <th class="label"><label for="birth"><i class="fa-solid fa-calendar"></i> 생년월일</label></th>
+                    <th class="label"><label for="birth1"><i class="fa-solid fa-calendar"></i> 생년월일</label></th>
                     <td class="input">
-                        <input type="text" id="birth" name="birth" placeholder="YYYY" class="input-tel"> 
-                        <input type="text" id="birthMonth" name="birthMonth" placeholder="MM" class="input-tel"> 
-                        <input type="text" id="birthDay" name="birthDay" placeholder="DD" class="input-tel">
+                        <input type="text" id="birth1" name="birth1" placeholder="YYYY" class="input-tel"> 
+                        <input type="text" id="birth2" name="birth2" placeholder="MM" class="input-tel"> 
+                        <input type="text" id="birth3" name="birth3" placeholder="DD" class="input-tel">
+                        <div id="birthDiv"></div> <!-- 생년월일 유효성 검사 메시지 표시 -->
                     </td>
                 </tr>
+                <!-- 이메일 입력 필드 -->
                 <tr>
-                    <th class="label"><label for="email"><i class="fa-solid fa-envelope"></i> 이메일</label></th>
+                    <th class="label"><label for="email1"><i class="fa-solid fa-envelope"></i> 이메일</label></th>
                     <td class="input">
-                        <input type="text" id="email" name="email" placeholder="이메일 입력" class="input-email"> @ 
-                        <input type="text" id="emailDomain" name="emailDomain" placeholder="직접입력" class="input-email">
+                        <input type="text" id="email1" name="email1" placeholder="이메일 입력" class="input-email"> @ 
+                        <input type="text" id="email2" name="email2" placeholder="직접입력" class="input-email">
                         <select id="emailSelect" name="emailSelect" class="input-email">
                             <option value="">직접입력</option>
                             <option value="naver.com">naver.com</option>
                             <option value="gmail.com">gmail.com</option>
                             <option value="daum.net">daum.net</option>
                         </select>
+                        <div id="emailDiv"></div> <!-- 이메일 유효성 검사 메시지 표시 -->
                     </td>
                 </tr>
+                <!-- 휴대전화 입력 필드 -->
                 <tr>
-                    <th class="label"><label for="tel"><i class="fa-solid fa-phone"></i> 휴대전화</label></th>
+                    <th class="label"><label for="tel1"><i class="fa-solid fa-phone"></i> 휴대전화</label></th>
                     <td class="input">
                         <select id="tel1" name="tel1" class="input-tel">
                             <option value="010">010</option>
@@ -71,11 +93,13 @@
                         </select> - 
                         <input type="text" id="tel2" name="tel2" placeholder="입력" class="input-tel"> - 
                         <input type="text" id="tel3" name="tel3" placeholder="입력" class="input-tel">
+                        <div id="telDiv"></div> <!-- 휴대전화 유효성 검사 메시지 표시 -->
                     </td>
                 </tr>
+                <!-- 제출 및 초기화 버튼 -->
                 <tr align="center">
                     <td colspan="2" height="20">
-                        <button type="submit" id="signUpBtn">회원가입</button>
+                        <button type="submit" id="signUp">회원가입</button>
                         <button type="reset" id="resetBtn">초기화</button>
                     </td>
                 </tr>
