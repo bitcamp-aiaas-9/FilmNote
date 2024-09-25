@@ -94,8 +94,13 @@ td {
 
 <div id="poster">
 	<table>
-		<c:if test="${movieboardList.size() != 0}">
-			<c:forEach var="row" begin="0" end="${movieboardList.size()}" step="${movieInRowCount}">
+<%-- 		<c:if test="${movieboardList.size() != 0}">
+		<tr>
+			<td>${movieboardList.size()}</td>
+			<td>${movieInRowCount}</td>
+			<td>${rowCount}</td> --%>
+		</tr>
+			<%-- <c:forEach var="row" begin="0" end="${movieboardList.size()}" step="${movieInRowCount}">
 				<tr>
 					<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
 						<c:if test="${i < movieboardList.size()}">
@@ -121,8 +126,8 @@ td {
 						</c:if>
 					</c:forEach>
 				</tr>
-			</c:forEach>
-		</c:if>
+			</c:forEach> --%>
+		<%-- </c:if> --%>
 	</table>
 </div>
 

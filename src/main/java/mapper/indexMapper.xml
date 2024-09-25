@@ -9,11 +9,8 @@
 		select * from movie_tb
 	</select>
 
-	<select id="getMovieBoardView" resultType="BoardDTO">
+	<select id="getMovieBoardView" resultType="movie">
 		select * from movie_tb where mcode=#{mcode}
 	</select>
-
-
-
-
+	
 </mapper>

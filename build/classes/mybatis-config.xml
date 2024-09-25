@@ -9,7 +9,7 @@
     
     <typeAliases>
         <typeAlias type="user.bean.UserDTO" alias="user" />
-        <typeAlias type="movie.bean.BoardDTO" alias="movie" />
+        <typeAlias type="movie.bean.MovieDTO" alias="movie" />
         <typeAlias type="review.bean.ReviewDTO" alias="review" />
     </typeAliases>
     

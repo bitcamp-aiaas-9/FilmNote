@@ -15,6 +15,7 @@ public class IndexService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		System.out.println("1");
 		List<MovieDTO> movieboardDTOList = IndexDAO.getInstance().getMovieBoardList();
 		int movieInRowCount = 4; // 1행에 출력되는 영화 개수
 		int rowCount = movieboardDTOList.size()/movieInRowCount; // 행의 개수	
