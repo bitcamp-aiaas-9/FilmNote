@@ -39,12 +39,12 @@
 <input type="hidden" id="pg" value="${requestScope.pg }" /> 
 <table>
 	<tr>
-		<th width="15%">
+		<th width="20%">
 			<input type="checkbox" id="all_check" class="check-size" /> 영화 코드
 		</th>
-		<th width="40%">영화 제목</th>
+		<th width="30%">영화 제목</th>
 		<th width="30%">영화 감독</th>
-		<th width="15%">영화 등급</th>
+		<th width="20%">영화 등급</th>
 	</tr>
 	
 	<c:if test="${requestScope.list != null }">

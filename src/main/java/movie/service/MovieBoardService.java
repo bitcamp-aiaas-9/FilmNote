@@ -21,11 +21,11 @@ public class MovieBoardService implements CommandProcess {
         if (request.getParameter("pg") != null) {
             pg = Integer.parseInt(request.getParameter("pg"));
         }
-        System.out.println("pg: " + pg); // [콘솔결과] pg: 1 (잘 가져옴)
+        // System.out.println("pg: " + pg); // [콘솔결과] pg: 1 (잘 가져옴)
 		
-        // MySQL - 한 페이지당 5개씩
-        int endNum = 5; // 개수
-        int startNum = pg * 5 - 5; // 시작위치, 0부터 시작 - 0, 5, 10, 15, ... // pg * endNum - endNum
+        // MySQL - 한 페이지당 10개씩
+        int endNum = 10; // 개수
+        int startNum = pg * 10 - 10; // 시작위치, 0부터 시작 - 0, 5, 10, 15, ... // pg * endNum - endNum
 
         // 2. DB
         MovieDAO movieDAO = MovieDAO.getInstance();
@@ -35,8 +35,8 @@ public class MovieBoardService implements CommandProcess {
         // 페이징 처리
         MoviePaging moviePaging = new MoviePaging();
         moviePaging.setCurrentPage(pg);
-        moviePaging.setPageBlock(3);
-        moviePaging.setPageSize(5);
+        moviePaging.setPageBlock(5);
+        moviePaging.setPageSize(10);
         moviePaging.setTotalA(totalA);
         moviePaging.makePagingHTML();		
         
