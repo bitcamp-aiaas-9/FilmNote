@@ -8,6 +8,12 @@ $(document).ready(function() {
         }
     });
 
+    // Admin 버튼 클릭 이벤트
+    $('#adminBtn').click(function(e) {
+        e.preventDefault();
+        window.location.href = $(this).attr('onclick').replace('location.href=', '').replace(/'/g, '');
+    });
+
     // focusout 이벤트 추가
     $('#loginId, #loginPwd').on('focusout', function() {
         validateField($(this));

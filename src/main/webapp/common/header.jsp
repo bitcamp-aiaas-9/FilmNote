@@ -66,13 +66,20 @@ button.user:hover {
 	
 	
 	<div id="member">
-		<button id="signInBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignIn.jsp';">로그인</button>
-		<button id="signUpBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignUp.jsp';">회원가입</button>
-
-		<c:if test="${memId != null }">
-			<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userEdit.do';"><span id="user-name"></span> 님</button>
-			<button id="logOutBtn" class="user">Log Out</button>
-		</c:if>
+		<c:choose>
+			<c:when test="${not empty sessionScope.userDTO}">
+				<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userEdit.do';">${sessionScope.userDTO.uname} 님</button>
+				<button id="logOutBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userLogOut.do';">Log Out</button>
+			</c:when>
+			<c:when test="${not empty sessionScope.adminDTO}">
+				<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/admin/adminEdit.do';">${sessionScope.adminDTO.name} 님</button>
+				<button id="logOutBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/admin/adminLogOut.do';">Log Out</button>
+			</c:when>
+			<c:otherwise>
+				<button id="signInBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignIn.jsp';">로그인</button>
+				<button id="signUpBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignUpDB.do';">회원가입</button>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
 </div><!-- <div id="header"> -->
