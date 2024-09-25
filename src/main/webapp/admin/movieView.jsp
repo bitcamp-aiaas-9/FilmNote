@@ -10,6 +10,20 @@
 <title>영화 상세 조회</title>
 </head>
 <body>
+<jsp:include page="../common/header.jsp" />
+<jsp:include page="../common/adminMenu.jsp" />
+
+<div id="movie-detail">
+	<input type="hidden" id="memId" value="${sessionScope.memId }" />
+	<input type="hidden" name="seq" id="seq" value="${movieDTO.mcode }" />
+	<input type="hidden" name="pg" id="pg" value="${requestScope.pg }" />
+
+
+
+
+
+</div>
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/movieView.js"></script>

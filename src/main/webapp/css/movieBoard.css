@@ -69,29 +69,24 @@ div.card {
 #deleteBtn {
     background: #77B3D9;
 	color: white;
-	border: 1px solid white;	
+	border: 1px solid #77B3D9;	
 	margin-right: 10px;
 }
 
 #searchBtn {
     background: #457ABF;
 	color: white;
-	border: 1px solid white;	
+	border: 1px solid #457ABF;	
 }
 
-#deleteBtn:hover {
+#deleteBtn:hover, #searchBtn:hover {
     transition: background-color 0.3s ease; 
 	background-color: #3d3d3d;
 	color: #FFFFFF;
+	border: 1px solid #3d3d3d;	
 	cursor: pointer;
 }
 
-#searchBtn:hover {
-    transition: background-color 0.3s ease; 
-	background-color: #3d3d3d;
-	color: #FFFFFF;
-	cursor: pointer;
-}
 
 
 /** 테이블 */

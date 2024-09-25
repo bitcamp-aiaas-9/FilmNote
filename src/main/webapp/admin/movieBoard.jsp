@@ -46,11 +46,8 @@
 		<th width="30%">영화 감독</th>
 		<th width="15%">영화 등급</th>
 	</tr>
-			
-
 	
-	
-	
+	<c:if test="${requestScope.list != null }">
 		<c:forEach var="movieDTO" items="${list }">
 			<tr>
 				<td align="center">
@@ -68,13 +65,7 @@
 				</td>
 			</tr> 	    
  	    </c:forEach>
-	    
-	<%--
-	<c:if test="${requestScope.list != null }">
-		<c:forEach var="imageboardDTO" items="${list }">
-
-	</c:if>   
- 	--%>
+	</c:if> 
 </table>		       
 <div id="page-block">${moviePaging.pagingHTML }</div>
 
