@@ -1,4 +1,4 @@
-<%-- FilmNote/src/main/webapp/user/reviewView.jsp --%>
+<%-- FilmNote/src/main/webapp/review/reviewView.jsp --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

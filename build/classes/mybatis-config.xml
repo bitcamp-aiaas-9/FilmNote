@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- projectMyBatis/src/main/java/mybatis-config.xml -->
+<!-- FilmNote/src/main/java/mybatis-config.xml -->
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
@@ -8,9 +8,9 @@
     <properties resource="db.properties" />
     
     <typeAliases>
-        <typeAlias type="user.bean.MemberDTO" alias="user" />
+        <typeAlias type="user.bean.UserDTO" alias="user" />
         <typeAlias type="movie.bean.BoardDTO" alias="movie" />
-        <typeAlias type="review.bean.BoardDTO" alias="review" />
+        <typeAlias type="review.bean.ReviewDTO" alias="review" />
     </typeAliases>
     
     <environments default="development">
