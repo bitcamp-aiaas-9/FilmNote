@@ -9,8 +9,8 @@ $(document).ready(function() {
     });
 
     // focusout 이벤트 추가
-    $('#loginId, #loginPwd').focusout(function() {
-        validateForm();
+    $('#loginId, #loginPwd').on('focusout', function() {
+        validateField($(this));
     });
 
     function validateForm() {
@@ -36,5 +36,19 @@ $(document).ready(function() {
         }
 
         return isValid;
+    }
+
+    function validateField(field) {
+        if (field.attr('id') == 'loginId' && field.val() == '') {
+            $('#loginIdDiv').html('아이디를 입력하세요').css('color', 'red');
+        } else if (field.attr('id') == 'loginId') {
+            $('#loginIdDiv').html('');
+        }
+
+        if (field.attr('id') == 'loginPwd' && field.val() == '') {
+            $('#loginPwdDiv').html('비밀번호를 입력하세요').css('color', 'red');
+        } else if (field.attr('id') == 'loginPwd') {
+            $('#loginPwdDiv').html('');
+        }
     }
 });
