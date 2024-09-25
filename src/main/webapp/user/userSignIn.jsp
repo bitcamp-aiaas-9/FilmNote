@@ -15,18 +15,18 @@
 	<div id="login-jsp" class="signin-container">
         
         <h2>로그인</h2>
-        <form id="loginForm" action="#" method="post">
+        <form id="loginForm" action="${pageContext.request.contextPath}/user/userSignIn.do" method="post">
             <table>
                 <tr>
                     <td class="label"><label for="loginId"><i class="fa-solid fa-user"></i> ID</label></td>
-                    <td class="input"><input type="text" id="loginId" name="loginId" required></td>
+                    <td class="input"><input type="text" id="loginId" name="uid" required></td>
                 </tr>
                 <tr>
                     <td colspan="2"><div id="loginIdDiv"></div></td>
                 </tr>
                 <tr>
                     <td class="label"><label for="loginPwd"><i class="fa-solid fa-lock"></i> Pwd</label></td>
-                    <td class="input"><input type="password" id="loginPwd" name="loginPwd" required></td>
+                    <td class="input"><input type="password" id="loginPwd" name="upwd" required></td>
                 </tr>
                 <tr>
                     <td colspan="2"><div id="loginPwdDiv"></div></td>
@@ -34,7 +34,7 @@
                 <tr>
                     <td colspan="2">
                         <button type="submit" id="loginBtn">로그인</button>
-                        <button type="button" onclick="location.href='userSignUp.jsp'">회원가입</button>
+                        <button type="button" onclick="location.href='${pageContext.request.contextPath}/user/userSignUpDB.do'">회원가입</button>
                     </td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                 </tr>
             </table>
         </form>
-        <button type="button" id="adminBtn" onclick="location.href='#'">Admin</button> <!-- 관리자 로그인 버튼 추가 -->
+        <button type="button" id="adminBtn" onclick="location.href='${pageContext.request.contextPath}/admin/adminSignIn.do'">Admin</button> <!-- 관리자 로그인 버튼 추가 -->
     </div>
 	
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

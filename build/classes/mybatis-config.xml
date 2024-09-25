@@ -9,6 +9,7 @@
     
     <typeAliases>
         <typeAlias type="user.bean.UserDTO" alias="user" />
+        <typeAlias type="admin.bean.AdminDTO" alias="admin" />
         <typeAlias type="movie.bean.MovieDTO" alias="movie" />
         <typeAlias type="review.bean.ReviewDTO" alias="review" />
     </typeAliases>
@@ -27,6 +28,7 @@
     
     <mappers>
         <mapper resource="mapper/userMapper.xml"/>
+        <mapper resource="mapper/adminMapper.xml"/>
         <mapper resource="mapper/movieMapper.xml"/>
         <mapper resource="mapper/reviewMapper.xml"/>
         <mapper resource="mapper/indexMapper.xml"/>

@@ -1,4 +1,16 @@
+/admin/
+/com/
+/db.properties
+/main/
+/mapper/
+/movie/
+/mybatis-config.xml
 /review/
 /user/
+<<<<<<< HEAD
 /mapper/
 /main/
+=======
+/movie/
+/mapper/
+>>>>>>> 2175590b7e84d6bcbbc5035ded0d736076278735
