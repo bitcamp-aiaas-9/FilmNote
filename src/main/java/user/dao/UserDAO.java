@@ -5,7 +5,6 @@ import user.bean.UserDTO;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
@@ -31,21 +30,17 @@ public class UserDAO {
 		}
 	}
 	
-	public SqlSessionFactory getSqlSessionFactory() {
-		return sqlSessionFactory;
-	}
-	
-	public UserDTO loginUser(String userid, String password) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		try {
-			Map<String, String> params = new HashMap<>();
-			params.put("userid", userid);
-			params.put("password", password);
-			return sqlSession.selectOne("userSQL.loginUser", params);
-		} finally {
-			sqlSession.close();
+		public UserDTO loginUser(String uid, String upwd) {
+		    SqlSession sqlSession = sqlSessionFactory.openSession();
+		    try {
+		        Map<String, String> params = new HashMap<>();
+		        params.put("uid", uid);
+		        params.put("upwd", upwd);
+		        return sqlSession.selectOne("userSQL.loginUser", params);
+		    } finally {
+		        sqlSession.close();
+		    }
 		}
-	}
 	
 	public void insertUser(UserDTO user) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
