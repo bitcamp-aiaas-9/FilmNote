@@ -11,22 +11,22 @@
 <title>로그인</title>
 </head>
 <body>
-	
-	<div class="signin-container">
+<jsp:include page="../common/header.jsp" />	
+	<div id="login-jsp" class="signin-container">
         
         <h2>로그인</h2>
-        <form id="loginForm" action="userSignInServlet" method="post">
+        <form id="loginForm" action="#" method="post">
             <table>
                 <tr>
-                    <td><label for="loginId"><i class="fa-solid fa-globe"></i>아이디</label></td>
-                    <td><input type="text" id="loginId" name="loginId" required></td>
+                    <td class="label"><label for="loginId"><i class="fa-solid fa-user"></i> ID</label></td>
+                    <td class="input"><input type="text" id="loginId" name="loginId" required></td>
                 </tr>
                 <tr>
                     <td colspan="2"><div id="loginIdDiv"></div></td>
                 </tr>
                 <tr>
-                    <td><label for="loginPwd">비밀번호</label></td>
-                    <td><input type="password" id="loginPwd" name="loginPwd" required></td>
+                    <td class="label"><label for="loginPwd"><i class="fa-solid fa-lock"></i> Pwd</label></td>
+                    <td class="input"><input type="password" id="loginPwd" name="loginPwd" required></td>
                 </tr>
                 <tr>
                     <td colspan="2"><div id="loginPwdDiv"></div></td>
@@ -42,6 +42,7 @@
                 </tr>
             </table>
         </form>
+        <button type="button" id="adminBtn" onclick="location.href='#'">Admin</button> <!-- 관리자 로그인 버튼 추가 -->
     </div>
 	
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

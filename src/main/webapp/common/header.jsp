@@ -4,13 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<style type="text/css">
 @import url("init.css");
 #header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 20px 0 10px 0;
+	margin: 20px 0 0 0;
 	border-bottom: 1px solid #5A5A5A;
 	padding: 20px 0;
 }
@@ -39,20 +42,17 @@ button.user {
     height: 30px;
     background: #FFFFFF;
     border: 1px solid #3d3d3d;
-    border-radius: 5px;
-    font-family: 'Noto Sans CJK KR';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+    border-radius: 3px;
+    font: normal 400 20px "Nanum Brush Script", sans-serif; /* style weight size font-family */
     line-height: 50px;
     color: #3d3d3d;
-    transition: background-color 0.3s ease; 
 }
 
 button.user:hover {
 	background-color: #3d3d3d;
 	color: #FFFFFF;
 	cursor: pointer;
+    transition: background-color 0.3s ease; 
 }
 
 </style>

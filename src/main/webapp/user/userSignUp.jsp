@@ -7,78 +7,79 @@
 <meta charset="UTF-8">
 <link rel="icon" href="../image/film_favicon.png" type="image/png">
 <link rel="stylesheet" href="../css/userSignUp.css">
-<title>회원가입</title><%-- FilmNote/src/main/webapp/user/userSignUp.jsp --%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<title>회원가입</title>
 </head>
 <body>
-	
-	<div class="signup-container">
+<jsp:include page="../common/header.jsp" />	
+	<div id="write-jsp" class="signup-container">
         
         <h2>회원가입</h2>
-        <form id="writeForm" action="userSignUpServlet" method="post">
-            <div class="form-group">
-                <label for="name">이름</label>
-                <input type="text" id="name" name="name" required>
-                <div id="nameDiv"></div>
-            </div>
-            <div class="form-group">
-                <label for="id">아이디</label>
-                <input type="text" id="id" name="id" required>
-                <div id="idDiv"></div>
-            </div>
-            <div class="form-group">
-                <label for="pwd">비밀번호</label>
-                <input type="password" id="pwd" name="pwd" required>
-                <div id="pwdDiv"></div>
-            </div>
-            <div class="form-group">
-                <label for="repwd">재확인</label>
-                <input type="password" id="repwd" name="repwd" required>
-                <div id="repwdDiv"></div>
-            </div>
-            <div class="form-group">
-                <label>성별</label>
-                <div class="gender-group">
-                    <input type="radio" name="gender" value="M" checked> 남자
-                    <input type="radio" name="gender" value="F"> 여자
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="birth">생년월일</label>
-                <div class="birth-group">
-                    <input type="text" id="birth1" placeholder="YYYY" name="birth1" maxlength="4" required>
-                    <input type="text" id="birth2" placeholder="MM" name="birth2" maxlength="2" required>
-                    <input type="text" id="birth3" placeholder="DD" name="birth3" maxlength="2" required>
-                </div>
-                <div id="birthDiv"></div>
-            </div>
-            <div class="form-group">
-                <label for="email">이메일</label>
-                <div class="email-group">
-                    <input type="text" id="email1" name="email1" required> @
-                    <input type="text" id="email2" name="email2" required>
-                    <select id="email3" name="email3" onchange="change();">
-                        <option value="직접입력">직접입력</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="naver.com">naver.com</option>
-                    </select>
-                </div>
-                <div id="emailDiv"></div>
-            </div>
-            <div class="form-group">
-                <label for="phone">휴대전화</label>
-                <div class="phone-group">
-                    <select name="tel1">
-                        <option value="010">010</option>
-                    </select>
-                    <input type="text" id="tel2" name="tel2" maxlength="4" required>
-                    <input type="text" id="tel3" name="tel3" maxlength="4" required>
-                </div>
-                <div id="telDiv"></div>
-            </div>
-            <div class="form-group">
-                <button type="submit" id="signUpBtn">회원가입</button>
-                <button type="button" onclick="location.href='userSignIn.jsp'">로그인</button>
-            </div>
+        <form id="signUpForm" action="#" method="post">
+            <table>
+                <tr>
+                    <th class="label"><label for="name"><i class="fa-solid fa-user"></i> 이름</label></th>
+                    <td class="input"><input type="text" id="name" name="name" placeholder="이름 입력"></td>
+                </tr>
+                <tr>
+                    <th class="label"><label for="id"><i class="fa-solid fa-id-badge"></i> 아이디</label></th>
+                    <td class="input"><input type="text" id="id" name="id" placeholder="아이디 입력"></td>
+                </tr>
+                <tr>
+                    <th class="label"><label for="pwd"><i class="fa-solid fa-lock"></i> 비밀번호</label></th>
+                    <td class="input"><input type="password" id="pwd" name="pwd" placeholder="비밀번호 입력"></td>
+                </tr>
+                <tr>
+                    <th class="label"><label for="repwd"><i class="fa-solid fa-lock"></i> 재확인</label></th>
+                    <td class="input"><input type="password" id="repwd" name="repwd" placeholder="비밀번호 입력"></td>
+                </tr>
+                <tr>
+                    <th class="label"><label for="gender"><i class="fa-solid fa-venus-mars"></i> 성별</label></th>
+                    <td class="input">
+                        <label><input type="radio" id="male" name="gender" value="male"> 남자</label>
+                        <label><input type="radio" id="female" name="gender" value="female"> 여자</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="label"><label for="birth"><i class="fa-solid fa-calendar"></i> 생년월일</label></th>
+                    <td class="input">
+                        <input type="text" id="birth" name="birth" placeholder="YYYY" class="input-tel"> 
+                        <input type="text" id="birthMonth" name="birthMonth" placeholder="MM" class="input-tel"> 
+                        <input type="text" id="birthDay" name="birthDay" placeholder="DD" class="input-tel">
+                    </td>
+                </tr>
+                <tr>
+                    <th class="label"><label for="email"><i class="fa-solid fa-envelope"></i> 이메일</label></th>
+                    <td class="input">
+                        <input type="text" id="email" name="email" placeholder="이메일 입력" class="input-email"> @ 
+                        <input type="text" id="emailDomain" name="emailDomain" placeholder="직접입력" class="input-email">
+                        <select id="emailSelect" name="emailSelect" class="input-email">
+                            <option value="">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="label"><label for="tel"><i class="fa-solid fa-phone"></i> 휴대전화</label></th>
+                    <td class="input">
+                        <select id="tel1" name="tel1" class="input-tel">
+                            <option value="010">010</option>
+                            <option value="011">011</option>
+                            <option value="016">016</option>
+                        </select> - 
+                        <input type="text" id="tel2" name="tel2" placeholder="입력" class="input-tel"> - 
+                        <input type="text" id="tel3" name="tel3" placeholder="입력" class="input-tel">
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2" height="20">
+                        <button type="submit" id="signUpBtn">회원가입</button>
+                        <button type="reset" id="resetBtn">초기화</button>
+                    </td>
+                </tr>
+            </table>
         </form>
     </div>
 	
