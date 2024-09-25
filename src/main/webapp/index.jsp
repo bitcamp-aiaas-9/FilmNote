@@ -89,45 +89,40 @@ td {
 }
 </style>
 </head>
+
 <body>
 <jsp:include page="./common/header.jsp" />
-
 <div id="poster">
 	<table>
-<%-- 		<c:if test="${movieboardList.size() != 0}">
-		<tr>
-			<td>${movieboardList.size()}</td>
-			<td>${movieInRowCount}</td>
-			<td>${rowCount}</td> --%>
-		</tr>
-			<%-- <c:forEach var="row" begin="0" end="${movieboardList.size()}" step="${movieInRowCount}">
-				<tr>
-					<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
-						<c:if test="${i < movieboardList.size()}">
-							<td>
-								<a href="${pageContext.request.contextPath}/user/reviewView.do?mcode=${movieboardDTO.getMcode()}">
-									<div class="hover-info">
-										<img src="${movieboardList[i].getPoster() }" alt="" class="thumb" />
-											
-										<!--<div class="type video"><span class="ico"></span></div>-->
-										<!-- 오버시 나오는 정보 -->
-										<div class="over">
-											<span class="title">${movieboardList[i].getTitle() }</span>
-													<span class="open_date">개봉 : ${movieboardList[i].getRelease_date()}</span>
-													
-													<span class="director">감독 : ${movieboardList[i].getDirector()}</span>
-													<span class="score">평점 : ${movieboardList[i].getScore()}</span>
-											<span class="btn_detail">자세히 보기</span>
-										<!-- //오버시 나오는 정보 -->
-										</div>
-									</div>
-								</a>
-							</td>
-						</c:if>
-					</c:forEach>
-				</tr>
-			</c:forEach> --%>
-		<%-- </c:if> --%>
+ 		<c:if test="${movieboardDTOList.size() != 0}">
+			<c:forEach var="row" begin="8" end="${movieboardDTOList.size()}" step="${movieInRowCount}">
+	    		<tr>
+	        	<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
+	            	<c:if test="${i < movieboardDTOList.size()}">
+		                <td>
+		                    <a href="${pageContext.request.contextPath}/user/reviewView.do?mcode=${movieboardDTOList[i].getMcode()}">
+                           <div class="hover-info">
+                              <img src="${movieboardDTOList[i].getPoster() }" alt="" class="thumb" />
+                                 
+                              <!--<div class="type video"><span class="ico"></span></div>-->
+                              <!-- 오버시 나오는 정보 -->
+                              <div class="over">
+                                 <span class="title">${movieboardDTOList[i].getTitle() }</span>
+                                       <span class="open_date">개봉 : ${movieboardDTOList[i].getRelease_date()}</span>
+                                       
+                                       <span class="director">감독 : ${movieboardDTOList[i].getDirector()}</span>
+                                       <span class="score">평점 : ${movieboardDTOList[i].getScore()}</span>
+                                 <span class="btn_detail">자세히 보기</span>
+                              <!-- //오버시 나오는 정보 -->
+                              </div>
+                           </div>
+                        </a>
+		                </td>
+		            </c:if>
+	        </c:forEach>
+    </tr>
+</c:forEach>
+		</c:if>
 	</table>
 </div>
 
