@@ -52,21 +52,23 @@ public class UserDAO {
 		}
 	}
 	
-	public void userEdit(String id) {
+	public void userEdit(UserDTO user) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.update("userSQL.userEdit", id);
+		sqlSession.update("userSQL.userEdit", user);
 		sqlSession.commit();
 		sqlSession.close();
 	}
 	
-	public void withdraw(String id) {
+	public void withdraw(UserDTO user) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.delete("userSQL.withdraw", id);
+		sqlSession.delete("userSQL.withdraw", user);
 		sqlSession.close();
 	}
 
-	public static UserDTO getMember(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDTO getMember(String id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		UserDTO userDTO = sqlSession.selectOne("userSQL.getMember", id);
+		sqlSession.close();		 	
+		return userDTO;
 	}
 }

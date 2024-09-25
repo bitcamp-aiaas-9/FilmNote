@@ -10,19 +10,36 @@ import user.bean.UserDTO;
 import user.dao.UserDAO;
 
 public class UserEditDBService implements CommandProcess {
-	
+
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("userId");
+		UserDTO userDTO = new UserDTO();
+		
+		userDTO.setUname(request.getParameter("uname"));
+		userDTO.setUid(request.getParameter("uid")); 
+		userDTO.setUpwd(request.getParameter("upwd"));
+		userDTO.setGender(request.getParameter("gender"));
+		userDTO.setBirth1(request.getParameter("birth1"));
+		userDTO.setBirth2(request.getParameter("birth2"));
+		userDTO.setBirth3(request.getParameter("birth3"));
+		userDTO.setEmail1(request.getParameter("email1"));
+		userDTO.setEmail2(request.getParameter("email2"));
+		userDTO.setTel1(request.getParameter("tel1"));
+		userDTO.setTel2(request.getParameter("tel2"));
+		userDTO.setTel3(request.getParameter("tel3"));
+		
+		if(userDTO.getUid() == null || userDTO.getUid().isEmpty()) {
+			return "FilmNote.error.jsp"; //리다이렉트
+		}
 		
 		UserDAO userDAO = UserDAO.getInstance();
-		UserDTO userDTO = UserDAO.getMember(id);
+		userDAO.userEdit(userDTO);
 		
-		request.setAttribute("userDTO", userDTO);
-				
-		return "/user/userEdit.jsp";
-	}
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return "/FilmNote/user/userEdit.jsp";
 
+	}
 }

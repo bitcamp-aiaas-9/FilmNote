@@ -17,9 +17,9 @@
 		<form name="userEditForm" method="post" action="#">
 			<table>
 				<tr>
-					<th class="label"><label for="name"><i class="fa-solid fa-user"></i> 이름</label></th>
-					<td class="input"><input type="text" name="name" id="name" value="${userDTO.name }" >
-						<div id="nameDiv"></div></td>
+					<th class="label"><label for="uname"><i class="fa-solid fa-user"></i> 이름</label></th>
+					<td class="input"><input type="text" name="uname" id="uname" value="${userDTO.uname }" >
+						<div id="unameDiv"></div></td>
 				</tr>
 				
 				<tr>

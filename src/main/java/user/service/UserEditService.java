@@ -13,29 +13,16 @@ public class UserEditService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
-		UserDTO userDTO = new UserDTO();
-		
-		userDTO.setUname(request.getParameter("uname"));
-		userDTO.setUid(request.getParameter("uid")); 
-		userDTO.setUpwd(request.getParameter("upwd"));
-		userDTO.setGender(request.getParameter("gender"));
-		userDTO.setBirth1(request.getParameter("birth1"));
-		userDTO.setBirth2(request.getParameter("birth2"));
-		userDTO.setBirth3(request.getParameter("birth3"));
-		userDTO.setEmail1(request.getParameter("email1"));
-		userDTO.setEmail2(request.getParameter("email2"));
-		userDTO.setTel1(request.getParameter("tel1"));
-		userDTO.setTel2(request.getParameter("tel2"));
-		userDTO.setTel3(request.getParameter("tel3"));
-		
-		UserDAO userDAO = UserDAO.getInstance();
-		userDAO.userEdit("uid");
-		
+
 		HttpSession session = request.getSession();
-		session.invalidate();
-		
-		return "none";
+		String id = (String) session.getAttribute("userId");
+
+		UserDAO userDAO = UserDAO.getInstance();
+		UserDTO userDTO = userDAO.getMember("id");
+
+		request.setAttribute("userDTO", userDTO);
+
+		return "/user/userEdit.jsp";
 	}
 
 }
