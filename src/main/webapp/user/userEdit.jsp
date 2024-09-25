@@ -18,23 +18,24 @@
 			<table>
 				<tr>
 					<th class="label"><label for="name"><i class="fa-solid fa-user"></i> 이름</label></th>
-					<td class="input"><input type="text" name="name" id="name" value="${userDTO.name }" readonly>
+					<td class="input"><input type="text" name="name" id="name" value="${userDTO.name }" >
 						<div id="nameDiv"></div></td>
 				</tr>
 				
 				<tr>
-					<th class="label"><label for="id"><i class="fa-solid fa-badge"></i> 아이디</label></th>
-					<td class="input"><input type="text" name="uid" id="uid" value="${userDTO.uid }" readonly></td>
+					<th class="label"><label for="uid"><i class="fa-solid fa-badge"></i> 아이디</label></th>
+					<td class="input"><input type="text" name="uid" id="uid" value="${userDTO.uid }" >
+						<div id="uidDiv"></div></td>
 				</tr>
 
 				<tr>
-					<th class="label"><label for="name"><i class="fa-solid fa-lock"></i> 비밀번호</label></th>
+					<th class="label"><label for="upwd"><i class="fa-solid fa-lock"></i> 비밀번호</label></th>
 					<td class="input"><input type="password" name="upwd" id="upwd" value="${userDTO.upwd }">
 						<div id="upwdDiv"></div></td>
 				</tr>
 
 				<tr>
-					<th class="label"><label for="name"><i class="fa-solid fa-lock"></i> 비밀번호 확인</label></th>
+					<th class="label"><label for="reupwd"><i class="fa-solid fa-lock"></i> 비밀번호 확인</label></th>
 					<td class="input"><input type="password" name="reupwd" id="reupwd" value="${userDTO.upwd }">
 						<div id="reupwdDiv"></div></td>
 				</tr>
