@@ -94,100 +94,35 @@ td {
 
 <div id="poster">
 	<table>
-		<tr>
-			<td>
-				<a href="/movie/info/?movie_id=61713">
-					<div class="hover-info">
-						<img src="https://image.cine21.com/resize/cine21/poster/2024/0823/16_06_59__66c835131d0b6[X224,320].jpg" alt="" class="thumb" />
-							
-						<!--<div class="type video"><span class="ico"></span></div>-->
-						<!-- 오버시 나오는 정보 -->
-						<div class="over">
-							<span class="tit">테인티드 러브</span>
-									<span class="open_date">개봉 : 2024-09-19</span>
-		
-	
-									<span class="director">감독 : 마영심</span>
-											<span class="actor">배우 : 주동우,장우</span>
-		
-		
-							<span class="btn_detail">자세히 보기</span>
-						<!-- //오버시 나오는 정보 -->
-						</div>
-					</div>
-				</a>
-			</td>
-			<td>
-				<a href="/movie/info/?movie_id=61713">
-					<div class="hover-info">
-						<img src="https://image.cine21.com/resize/cine21/poster/2024/0823/16_06_59__66c835131d0b6[X224,320].jpg" alt="" class="thumb" />
-								
-						<!--<div class="type video"><span class="ico"></span></div>-->
-						<!-- 오버시 나오는 정보 -->
-						<div class="over">
-							<span class="tit">테인티드 러브</span>
-									<span class="open_date">개봉 : 2024-09-19</span>
-		
-	
-									<span class="director">감독 : 마영심</span>
-											<span class="actor">배우 : 주동우,장우</span>
-		
-		
-							<span class="btn_detail">자세히 보기</span>
-						<!-- //오버시 나오는 정보 -->
-						</div>
-					</div>
-				</a>
-			</td>
-			<td>
-				<a href="/movie/info/?movie_id=61713">
-					<div class="hover-info">
-						<img src="https://image.cine21.com/resize/cine21/poster/2024/0823/16_06_59__66c835131d0b6[X224,320].jpg" alt="" class="thumb" />
-								
-						<!--<div class="type video"><span class="ico"></span></div>-->
-						<!-- 오버시 나오는 정보 -->
-						<div class="over">
-							<span class="tit">테인티드 러브</span>
-									<span class="open_date">개봉 : 2024-09-19</span>
-		
-	
-									<span class="director">감독 : 마영심</span>
-											<span class="actor">배우 : 주동우,장우</span>
-		
-		
-							<span class="btn_detail">자세히 보기</span>
-						<!-- //오버시 나오는 정보 -->
-						</div>
-					</div>
-				</a>
-			</td>
-			<td>
-				<a href="/movie/info/?movie_id=61713">
-					<div class="hover-info">
-						<img src="https://image.cine21.com/resize/cine21/poster/2024/0823/16_06_59__66c835131d0b6[X224,320].jpg" alt="" class="thumb" />
-								
-						<!--<div class="type video"><span class="ico"></span></div>-->
-						<!-- 오버시 나오는 정보 -->
-						<div class="over">
-							<span class="tit">테인티드 러브</span>
-									<span class="open_date">개봉 : 2024-09-19</span>
-		
-	
-									<span class="director">감독 : 마영심</span>
-											<span class="actor">배우 : 주동우,장우</span>
-		
-		
-							<span class="btn_detail">자세히 보기</span>
-						<!-- //오버시 나오는 정보 -->
-						</div>
-					</div>
-				</a>
-			</td>
-			
-		</tr>
-		
-		
-	
+		<c:if test="${movieboardList.size() != 0}">
+			<c:forEach var="row" begin="0" end="${movieboardList.size()}" step="${movieInRowCount}">
+				<tr>
+					<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
+						<c:if test="${i < movieboardList.size()}">
+							<td>
+								<a href="${pageContext.request.contextPath}/user/reviewView.do?mcode=${movieboardDTO.getMcode()}">
+									<div class="hover-info">
+										<img src="${movieboardList[i].getPoster() }" alt="" class="thumb" />
+											
+										<!--<div class="type video"><span class="ico"></span></div>-->
+										<!-- 오버시 나오는 정보 -->
+										<div class="over">
+											<span class="title">${movieboardList[i].getTitle() }</span>
+													<span class="open_date">개봉 : ${movieboardList[i].getRelease_date()}</span>
+													
+													<span class="director">감독 : ${movieboardList[i].getDirector()}</span>
+													<span class="score">평점 : ${movieboardList[i].getScore()}</span>
+											<span class="btn_detail">자세히 보기</span>
+										<!-- //오버시 나오는 정보 -->
+										</div>
+									</div>
+								</a>
+							</td>
+						</c:if>
+					</c:forEach>
+				</tr>
+			</c:forEach>
+		</c:if>
 	</table>
 </div>
 
