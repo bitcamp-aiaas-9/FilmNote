@@ -10,104 +10,89 @@
 <title>회원정보수정</title>
 </head>
 <body>
-	<form name="userEditForm" method="post" action="userEdit.jsp">
-		<h1>
-			<img src="../image/iu1.jpg" width="96" height="144" alt="home"
-				onclick="location.href='../index.jsp'" style="cursor: pointer">회원정보수정
-		</h1>
+	<jsp:include page="../common/header.jsp" />
+	<div id="userEdit-jsp" class="userEdit-container">
+	
+		<h2>회원정보수정</h2>
+		<form name="userEditForm" method="post" action="#">
+			<table>
+				<tr>
+					<th class="label"><label for="name"><i class="fa-solid fa-user"></i> 이름</label></th>
+					<td class="input"><input type="text" name="name" id="name" value="${userDTO.name }" readonly>
+						<div id="nameDiv"></div></td>
+				</tr>
+				
+				<tr>
+					<th class="label"><label for="id"><i class="fa-solid fa-badge"></i> 아이디</label></th>
+					<td class="input"><input type="text" name="uid" id="uid" value="${userDTO.uid }" readonly></td>
+				</tr>
 
-		<table border="1">
-			<tr>
-				<th width="100">아이디</th>
-				<td><input type="text" name="uid" id="uid"
-					value="${userDTO.uid }" readonly>
-					<div id="uidDiv"></div></td>
-			</tr>
+				<tr>
+					<th class="label"><label for="name"><i class="fa-solid fa-lock"></i> 비밀번호</label></th>
+					<td class="input"><input type="password" name="upwd" id="upwd" value="${userDTO.upwd }">
+						<div id="upwdDiv"></div></td>
+				</tr>
 
-			<tr>
-				<th width="100">비밀번호</th>
-				<td><input type="text" name="upwd" id="upwd"
-					value="${userDTO.upwd }">
-					<div id="upwdDiv"></div></td>
-			</tr>
+				<tr>
+					<th class="label"><label for="name"><i class="fa-solid fa-lock"></i> 비밀번호 확인</label></th>
+					<td class="input"><input type="password" name="reupwd" id="reupwd" value="${userDTO.upwd }">
+						<div id="reupwdDiv"></div></td>
+				</tr>
 
-			<tr>
-				<th width="100">비밀번호 확인</th>
-				<td><input type="text" name="reupwd" id="reupwd"
-					value="${userDTO.reupwd }">
-					<div id="reupwdDiv"></div></td>
-			</tr>
-			<tr>
-				<th width="100">이름</th>
-				<td><input type="text" name="name" id="name"
-					value="${userDTO.name }" readonly>
-					<div id="nameDiv"></div></td>
-			</tr>
+		         <tr>
+                    <th class="label"><label for="gender"><i class="fa-solid fa-venus-mars"></i> 성별</label></th>
+                    <td class="input">
+                        <label><input type="radio" id="male" name="gender" value="male"> 남자 </label>
+                        <label><input type="radio" id="female" name="gender" value="female"> 여자</label>
+                    </td>
+                </tr>
+                
+                            <tr>
+                    <th class="label"><label for="birth"><i class="fa-solid fa-calendar"></i> 생년월일</label></th>
+                    <td class="input">
+                        <input type="text" id="birth1" name="birth1" value="${userDTO.birth1 }" class="input-tel"> 
+                        <input type="text" id="birth2" name="birth2" value="${userDTO.birth2 }"class="input-tel"> 
+                        <input type="text" id="birth3" name="birth3" value="${userDTO.birth3 }"class="input-tel">
+                    </td>
+                </tr>
+                
+				<tr>
+					<th class="label"><label for="email"><i class="fa-solid fa-envelope"></i> 이메일</label></th>
+					<td class="input">
+					<input type="text" name="email1" id="email1" class="input-email" value="${userDTO.email1 }"> @
+					<input type="text" name="email2" id="email2" class="input-email" value="${userDTO.email2 }">
+						<select id="emailSelect" name="emailSelect" class="input-email">
+                            <option value="">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                        </select>
+                    </td>
+				</tr>
 
-			<tr>
-				<th>성별</th>
-				<td><input type="radio" name="gender" value="0" id="gender_m" />남자
-					<input type="radio" name="gender" value="1" id="gender_f" />여자</td>
-			</tr>
-
-			<tr>
-				<th width="100">생년월일(년)</th>
-				<td><input type="text" name="birth1" id="birth1"
-					value="${userDTO.birth1 }">
-					<div id="birth1Div"></div></td>
-			</tr>
-
-			<tr>
-				<th width="100">생년월일(월)</th>
-				<td><input type="text" name="birth2" id="birth2"
-					value="${userDTO.birth2 }">
-					<div id="birth2Div"></div></td>
-			</tr>
-
-			<tr>
-				<th width="100">생년월일(일)</th>
-				<td><input type="text" name="birth3" id="birth3"
-					value="${userDTO.birth3 }">
-					<div id="birth3Div"></div></td>
-			</tr>
-
-			<tr>
-				<th>이메일</th>
-				<td>
-					<input type="text" name="email1" id="email1" value="${userDTO.email1 }"> @ 
-					<input type="text" name="email2" id="email2" value="${userDTO.email2 }">
-					<input type="text" name="email3" id="email3" list="email3_list"	oninput="change()">
-					<datalist id="email3_list">
-						<option value="직접입력"></option>
-						<option value="naver.com" />
-						<option value="gmail.com" />
-						<option value="daum.net" />
-					</datalist>
-				</td>
-			</tr>
-
-			<tr>
-				<th>핸드폰</th>
-				<td>
-				<select name="tel1">
-						<optgroup label="hp">
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="019">019</option>
-						</optgroup>
-				</select> - 
-				<input type="text" name="tel2" size="4" maxlength="4" value="${userDTO.tel2 }"> - 
-				<input type="text" name="tel3" size="4" maxlength="4" value="${userDTO.tel3 }">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-				<input type="button" value="회원정보수정" id="userEditBtn" />
-				<input type="reset" value="다시작성" onclick="location.reload()" />
-				</td>
-			</tr>
-		</table>
-	</form>
+				<tr>
+					<th class="label"><label for="tel"><i class="fa-solid fa-phone"></i> 휴대전화</label></th>
+                    <td class="input"><select id ="tel1" name="tel1" class="input-tel" value="${userDTO.tel1 }">
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="019">019</option>
+					</select> - 
+					<input type="text" name="tel2" size="4" maxlength="4" value="${userDTO.tel2 }" class="input-tel"> - 
+					<input type="text" name="tel3" size="4" maxlength="4" value="${userDTO.tel3 }" class="input-tel">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center">
+					<button type="button" id="userEditBtn">회원정보 수정</button>
+					<button type="reset" id="resetBtn">수정 취소</button>
+					<button type="button" id="WithdrawBtn"  style="font-size: 10px !important;
+					width: 50px !important; height: 20px !important; background: gray !important;
+					color: rightgray !important; float: right;">탈퇴</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

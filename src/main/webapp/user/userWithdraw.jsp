@@ -1,6 +1,6 @@
 <%-- FilmNote/src/main/webapp/user/userWithdraw.jsp --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +10,12 @@
 <title>회원탈퇴</title>
 </head>
 <body>
+	<%-- <jsp:include page="../common/header.jsp"> --%>
+	<div id="userWithdraw-jsp" class="userWithdraw-jsp">
+	</div>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="../js/userWithdraw.js"></script>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="../js/userWithdraw.js"></script>
 </body>
 </html>

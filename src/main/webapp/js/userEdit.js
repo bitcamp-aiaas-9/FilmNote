@@ -1,9 +1,9 @@
 // FilmNote/src/main/webapp/js/userEdit.js
 
 //이메일
-function change(){
-	document.getElementById("email2").value = document.getElementById("email3").value;
-}
+$('#emailSelect').change(function() {
+    $('#email2').val($('#emailSelect').val());
+});
 
 
 //회원정보수정
@@ -28,4 +28,10 @@ $('#userEditBtn').click(function(){
 			console.log(e);
 		}
 	});
+});
+
+//회원탈퇴
+
+$('#WithdrawBtn').click(function(){
+	location.href='FilmNote/userWithdraw.do';
 });

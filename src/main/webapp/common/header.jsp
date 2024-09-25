@@ -54,8 +54,8 @@ button.user:hover {
 	cursor: pointer;
     transition: background-color 0.3s ease; 
 }
-
 </style>
+
 <body>
 <div id="header">
 	<div id="title">

@@ -6,9 +6,25 @@
 <mapper namespace="userSQL">
 
 
-
-
-
-
-
+	<!-- 회원정보 수정 -->
+	<update id="update" parameterType="String">
+		UPDATE user SET name = #{name}
+						,uid =#{uid}
+			            , upwd = #{upwd}
+			            , gender = #{gender}
+			            , birth1 = #{birth1}
+			            , birth2 = #{birth2}			            
+			            , birth3 = #{birth3}
+			            , email1 = #{email1}
+			            , email2 = #{email2}
+			            , tel1 = #{tel1}
+			            , tel2 = #{tel2}
+			            , tel3 = #{tel3}
+			         <!--    , logtime = sysdate where id = #{id} -->
+			         ,logtime = now() where id = #{id}
+	</update>
+	<!--  회원탈퇴 -->
+	<delete id="withdraw" parameterType="String">
+	DELETE FROM user WHERE uid = #{uid}
+</delete>
 </mapper>
