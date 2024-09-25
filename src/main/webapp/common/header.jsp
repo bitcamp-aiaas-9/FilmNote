@@ -40,7 +40,7 @@ button.user {
     text-align: center;
     width: 130px;
     height: 30px;
-    background: #FFFFFF;
+    background: transparent;;
     border: 1px solid #3d3d3d;
     border-radius: 3px;
     font: normal 400 20px "Nanum Brush Script", sans-serif; /* style weight size font-family */
