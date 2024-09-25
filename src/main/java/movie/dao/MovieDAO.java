@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+
 public class MovieDAO {
 
 	// 싱글톤 인스턴스 생성
@@ -41,13 +42,27 @@ public class MovieDAO {
 	
 	/** movieBoard.jsp */
 	// 영화 목록
+	public List<MovieDTO> movieList(int startNum, int endNum) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<MovieDTO> list = sqlSession.selectList("movieSQL.movieList", map);
+		sqlSession.close();
+
+		return list;
+		
+	}	
+	
 	
 	// 영화 개수
 	public int getTotalA() {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		int totalA = 0;      
-		totalA = sqlSession.selectOne("boardSQL.getTotalA");        
-		sqlSession.close();       
+		totalA = sqlSession.selectOne("movieSQL.getTotalA");        
+		sqlSession.close();    
+		
 		return totalA;
 	}
 	
@@ -61,6 +76,8 @@ public class MovieDAO {
 		sqlSession.close();
 		return boardDTO;
 	}
+
+
 	
 	
 	
