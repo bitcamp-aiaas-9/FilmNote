@@ -10,6 +10,12 @@
 <title>영화 추가</title>
 </head>
 <body>
+<jsp:include page="../common/header.jsp" />
+<jsp:include page="../common/adminMenu.jsp" />
+
+
+
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/movieWrite.js"></script>
