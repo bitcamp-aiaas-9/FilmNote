@@ -4,6 +4,8 @@ package user.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.control.CommandProcess;
 import user.bean.UserDTO;
 import user.dao.UserDAO;
@@ -12,7 +14,7 @@ public class UserSignUpService implements CommandProcess {
         
     @Override
     public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-    	 // 폼 데이터 받아오기
+        // 폼 데이터 받아오기
         String uname = request.getParameter("uname");
         String uid = request.getParameter("uid");
         String upwd = request.getParameter("upwd");
@@ -27,7 +29,6 @@ public class UserSignUpService implements CommandProcess {
         String tel3 = request.getParameter("tel3");
         
         // UserDTO 생성
-        // UserDTO userDTO = new UserDTO("", "", "", "", "", "", "", "", "", "", "", "");
         UserDTO userDTO = new UserDTO();
         userDTO.setUid(uid);
         userDTO.setUpwd(upwd);
@@ -44,7 +45,16 @@ public class UserSignUpService implements CommandProcess {
         
         UserDAO userDAO = UserDAO.getInstance();
         userDAO.insertUser(userDTO);
+        
+        // JSON 응답 생성
+        JSONObject jsonResponse = new JSONObject();
+        jsonResponse.put("status", "success");
+        jsonResponse.put("message", "회원가입 축하드립니다");
 
-        return "/user/userSignIn.jsp";
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(jsonResponse.toString());
+
+        return "none"; // AJAX 요청이므로 뷰 페이지로 이동하지 않음
     }
 }

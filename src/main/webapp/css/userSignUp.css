@@ -107,3 +107,53 @@ button:hover {
     color: red;
     font-size: 10pt;
 }
+
+#uidDiv {
+    padding: 5px 0 0 3px;
+    font-size: 10pt;
+}
+
+/* jQuery UI 모달 커스터마이징 */
+.ui-dialog {
+    border: 1px solid #007BFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ui-dialog-titlebar {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.ui-dialog-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.ui-dialog-content {
+    padding: 20px;
+    font-size: 1em;
+    color: #333;
+}
+
+.ui-dialog-buttonpane {
+    background: #f1f1f1;
+    border-top: 1px solid #ddd;
+}
+
+.ui-dialog-buttonset button {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.ui-dialog-buttonset button:hover {
+    background: #0056b3;
+}

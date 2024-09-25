@@ -51,4 +51,14 @@ public class UserDAO {
 			sqlSession.close();
 		}
 	}
+
+	public boolean checkIdExists(String uid) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			int count = sqlSession.selectOne("userSQL.checkIdExists", uid);
+			return count > 0;
+		} finally {
+			sqlSession.close();
+		}
+	}
 }

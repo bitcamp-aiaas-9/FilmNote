@@ -16,7 +16,11 @@
     <insert id="insertUser" parameterType="user">
     INSERT INTO user_tb (uid, upwd, uname, gender, birth1, birth2, birth3, email1, email2, tel1, tel2, tel3)
     VALUES (#{uid}, #{upwd}, #{uname}, #{gender}, #{birth1}, #{birth2}, #{birth3}, #{email1}, #{email2}, #{tel1}, #{tel2}, #{tel3})
-	</insert>
+    </insert>
 
+    <!-- ID 중복 체크 -->
+    <select id="checkIdExists" parameterType="string" resultType="int">
+        SELECT COUNT(*) FROM user_tb WHERE uid = #{uid}
+    </select>
 
 </mapper>

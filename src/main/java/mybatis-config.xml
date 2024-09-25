@@ -9,10 +9,7 @@
     
     <typeAliases>
         <typeAlias type="user.bean.UserDTO" alias="user" />
-<<<<<<< HEAD
         <typeAlias type="admin.bean.AdminDTO" alias="admin" />
-=======
->>>>>>> b08925d328f8df5d8d83ff1c1f1a9ed23251844a
         <typeAlias type="movie.bean.MovieDTO" alias="movie" />
         <typeAlias type="review.bean.ReviewDTO" alias="review" />
     </typeAliases>
