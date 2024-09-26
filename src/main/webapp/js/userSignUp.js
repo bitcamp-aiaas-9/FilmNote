@@ -10,7 +10,7 @@ $(document).ready(function() {
                 success: function(response) {
                     if (response.status === "success") {
                         showModal(response.message, function() {
-                            window.location.href = contextPath + '/user/userSignIn.do';
+                            window.location.href = contextPath + '/user/userSignInDB.do';
                         });
                     } else {
                         showModal('회원가입 중 오류가 발생했습니다');
