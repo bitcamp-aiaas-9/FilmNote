@@ -84,3 +84,8 @@ $('#userEditBtn').click(function() {
 		});
 	}
 });
+
+//회원탈퇴 
+$('#withdrawBtn').click(function() {
+    window.location.href = '/FilmNote/user/userWithdraw.do';
+});

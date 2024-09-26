@@ -12,8 +12,12 @@
 <body>
 	<%-- <jsp:include page="../common/header.jsp"> --%>
 	<div id="userWithdraw-jsp" class="userWithdraw-jsp">
-	</div>
-
+	<h2>회원탈퇴 페이지</h2>
+<form id="userWithdrawForm" name="userwithdrawForm" method="post" action="/FilmNote/userWithdrawDB.do">
+	<button type="button" id="withdrawBtn"
+		style="font-size: 10px !important; width: 30px !important; height: 20px !important; background: gray !important; color: rightgray !important; float: right;">확인</button>
+		</form>
+		</div>
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script type="text/javascript" src="../js/userWithdraw.js"></script>

@@ -104,4 +104,12 @@ public class UserDAO {
 			sqlSession.close();
 		}
 	}
+
+	public int userWithdraw(String uid) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		int result = sqlSession.delete("userSQL.userWithdraw", uid);
+		sqlSession.commit();
+		sqlSession.close();		
+		return result;
+	}
 }

@@ -131,7 +131,6 @@ public class ControlServlet extends HttpServlet {
 		// Map 을 이용하여 Key 에 해당하는 값을 꺼내온다
 		// member.service.WriteFormService
 		CommandProcess com = (CommandProcess)map.get(category); // 자식 = (자식)부모
-		System.out.println("com = " + com);
 		String view = null;
 		try {
 			view = com.requestPro(request, response);
