@@ -15,6 +15,10 @@
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/adminMenu.jsp" />
 
+<c:if test="${sessionScope.adminDTO.aid == 'admin'}">
+<input type="hidden" id="adminId" value="${sessionScope.adminDTO.aid }" />  
+<input type="hidden" id="pg" value="${requestScope.pg }" /> 
+
 <div class="card">
 	<div id="card-title">글 삭제 & 검색</div>
 	<div id="card-content">
@@ -34,9 +38,6 @@
 	</div>
 </div>
 
-
-<input type="hidden" id="memId" value="${sessionScope.memId }" />  
-<input type="hidden" id="pg" value="${requestScope.pg }" /> 
 <table>
 	<tr>
 		<th width="20%">
@@ -68,6 +69,14 @@
 	</c:if> 
 </table>		       
 <div id="page-block">${moviePaging.pagingHTML }</div>
+</c:if>
+
+<c:if test="${sessionScope.adminDTO.aid != 'admin'}">
+    <script>
+        alert("관리자로 로그인하세요");
+        location.href = "${pageContext.request.contextPath}/admin/adminSignIn.do";
+    </script>
+</c:if>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/movieList.js"></script>
