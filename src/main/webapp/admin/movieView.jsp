@@ -77,7 +77,7 @@
 <c:if test="${sessionScope.adminDTO.aid != 'admin'}">
     <script>
         alert("관리자로 로그인하세요");
-        location.href = "${pageContext.request.contextPath}/admin/adminLogIn.do";
+        location.href = "${pageContext.request.contextPath}/admin/adminSignIn.do";
     </script>
 </c:if>
 
