@@ -4,6 +4,7 @@ package movie.dao;
 import movie.bean.MovieDTO;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class MovieDAO {
 	
     /** movieWrite.jsp */
 	// 영화 추가
-	
+	// 이미지 Object Storage 에 올리기
 	
 	
 	
@@ -76,7 +77,7 @@ public class MovieDAO {
 		sqlSession.close();
 		return movieDTO;
 	}
-	
+
 	// 영화 평점 업데이트
 	public void updateMovieScore(int mcode, double score) {
 		System.out.println("updateMovieScore() 호출");
@@ -89,5 +90,21 @@ public class MovieDAO {
 		sqlSession.commit();
 		sqlSession.close();
 	}
+
+	// 영화 삭제 - 1개 이상 삭제 (1개도 가능)
+    public void deleteMovies(String[] mcodes) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            Map<String, Object> mcodeMap = new HashMap<>();
+            mcodeMap.put("mcodes", mcodes);
+            sqlSession.delete("movieSQL.deleteMovies", mcodeMap);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback(); // 오류 발생 시 롤백
+        } finally {
+            sqlSession.close();
+        }
+    }
 	
 }

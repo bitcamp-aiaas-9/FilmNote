@@ -29,7 +29,15 @@
 	
 	
 	<!-- 영화 삭제 -->
-	
+	<delete id="deleteMovies">
+	    DELETE FROM movie_tb WHERE mcode IN
+	    <foreach item="mcode" collection="mcodes" open="(" separator="," close=")">
+	        #{mcode}
+	    </foreach>
+	</delete>
+
+
+
 	
 
 </mapper>

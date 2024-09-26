@@ -12,6 +12,7 @@
 body {
     background-color: #f4f4f4;
     color: #333;
+    margin-top: 10px;
 }
 
 #write-jsp {
@@ -116,71 +117,93 @@ button:hover {
 /* jQuery UI 모달 커스터마이징 */
 .ui-dialog {
     border: none;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #1c1c1c, #2c2c2c);
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(43, 43, 43, 0.9), rgba(31, 31, 31, 0.8)); /* 투명도를 가진 그라데이션 배경 */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    animation: fadeIn 0.6s ease, scaleUp 0.6s ease;
+    width: 60%; /* 화면 크기의 60%로 설정하여 자동 크기 조정 */
+    max-width: 800px; /* 최대 너비를 800px로 제한 */
+    min-width: 300px; /* 최소 너비를 300px로 제한 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.85); }
+    to { transform: scale(1); }
 }
 
 .ui-dialog-titlebar {
-    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
     color: #fff;
     border: none;
-    padding: 15px 20px;
-    font-family: 'Montserrat', sans-serif;
+    padding: 10px 15px;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 2px;
+    font-size: 1.4em; /* 이 부분은 미세조절 가능 */
+    text-transform: uppercase;
 }
 
 .ui-dialog-title {
-    font-size: 1.4em;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    font-size: 1.5em; /* 이 부분은 미세조절 가능 */
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .ui-dialog-titlebar-close {
     background: transparent;
     border: none;
     color: #fff;
-    font-size: 1.2em;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
+    font-size: 1.3em; /* 이 부분은 미세조절 가능 */
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .ui-dialog-titlebar-close:hover {
     opacity: 1;
+    transform: rotate(90deg);
 }
 
 .ui-dialog-content {
-    padding: 25px;
-    font-size: 1.1em;
-    color: #e0e0e0;
-    line-height: 1.6;
-    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+    font-size: 1em; /* 이 부분은 미세조절 가능 */
+    color: #e8e8e8;
+    line-height: 1.6; /* 이 부분은 미세조절 가능 */
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, rgba(43, 43, 43, 0.8), rgba(31, 31, 31, 0.7)); /* 옅은 투명도를 가진 그라데이션 배경 */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    border-radius: 0 0 15px 15px;
 }
 
 .ui-dialog-buttonpane {
-    background: #2c2c2c;
-    border-top: 1px solid #3a3a3a;
-    padding: 15px;
+    background: #1f1f1f;
+    border-top: 2px solid #3a3a3a;
+    padding: 10px;
+    text-align: center;
 }
 
 .ui-dialog-buttonset button {
-    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
     color: #fff;
     border: none;
-    border-radius: 25px;
-    padding: 10px 20px;
-    font-size: 1em;
-    font-weight: 600;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 1em; /* 이 부분은 미세조절 가능 */
+    font-family: "Brush Script MT", cursive; /* 모달창 완료 부분 폰트, Lucida Handwriting 도 괜찮을듯 */
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+    box-shadow: 0 4px 10px rgba(255, 126, 95, 0.4); /* 이 부분은 미세조절 가능 */
 }
 
 .ui-dialog-buttonset button:hover {
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    background: linear-gradient(90deg, #feb47b, #ff7e5f);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 75, 43, 0.4);
+    box-shadow: 0 6px 15px rgba(255, 126, 95, 0.5); /* 이 부분은 미세조절 가능 */
 }
