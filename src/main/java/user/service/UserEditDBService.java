@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import com.control.CommandProcess;
 
 import user.bean.UserDTO;
@@ -29,19 +31,19 @@ public class UserEditDBService implements CommandProcess {
 		userDTO.setTel2(request.getParameter("tel2"));
 		userDTO.setTel3(request.getParameter("tel3"));
 
-		String nowupwd = request.getParameter("nowupwd");
+	
 		
 		if (userDTO.getUid() == null || userDTO.getUid().isEmpty()) {
 			return "FilmNote.error.jsp"; // 리다이렉트
 		}
 
 		UserDAO userDAO = UserDAO.getInstance();
-		userDAO.userEdit(userDTO, nowupwd);
-
+		userDAO.userEdit(userDTO);
+				
 		HttpSession session = request.getSession();
 		session.setAttribute("userDTO", userDTO);
 
-		return "/FilmNote/user/index.do";
+		return "/index.do";
 
 	}
 }

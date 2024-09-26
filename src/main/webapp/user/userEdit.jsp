@@ -18,7 +18,7 @@
 			<table>
 				<tr>
 					<th class="label"><label for="uname"><i class="fa-solid fa-user"></i> 이름</label></th>
-					<td class="input"><input type="text" name="uname" id="uname" value="${userDTO.uname }" >
+					<td class="input"><input type="text" name="uname" id="uname" maxlength="8" value="${userDTO.uname }" >
 						<div id="unameDiv"></div></td>
 				</tr>
 				
@@ -91,7 +91,7 @@
 					<td colspan="3" align="center">
 					<button type="button" id="userEditBtn">회원정보 수정</button>
 					<button type="reset" id="resetBtn">수정 취소</button>
-					<button type="button" id="WithdrawBtn"  style="font-size: 10px !important;
+					<button type="button" id="withdrawBtn"  style="font-size: 10px !important;
 					width: 50px !important; height: 20px !important; background: gray !important;
 					color: rightgray !important; float: right;">탈퇴</button>
 					</td>
