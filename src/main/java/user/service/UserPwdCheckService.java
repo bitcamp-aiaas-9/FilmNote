@@ -19,7 +19,6 @@ public class UserPwdCheckService implements CommandProcess {
 		UserDAO userDAO = UserDAO.getInstance();
 
 		String pwdCheck = userDAO.pwdCheck(uid);
-		userDAO.pwdCheck(uid);
 		JSONObject jsonResoponse = new JSONObject();
 
 		
