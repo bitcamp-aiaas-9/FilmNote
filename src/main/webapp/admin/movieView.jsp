@@ -1,6 +1,8 @@
 <%-- FilmNote/src/main/webapp/admin/movieBoardView.jsp --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +31,7 @@
 	    	</tr>
 	        <tr>
 	            <td align="center" rowspan="9" class="poster-cell">
-	                <img src="${movieDTO.poster }" alt="영화 포스터">
+	                <img width="90%" src="${movieDTO.poster }" alt="영화 포스터">
 	            </td>
 	            <th>영화 제목</th>
 	            <td class="info-cell">${movieDTO.title }</td>
@@ -47,8 +49,11 @@
 	            <td class="info-cell">${movieDTO.release_date }</td>
 	        </tr>
 	        <tr>
-	        	<th>영화 등급</th>
-	            <td class="info-cell">${movieDTO.rating }</td>
+	        	<th>영화 관람가</th>
+	            <td class="info-cell">	
+	        		<c:if test="${movieDTO.rating == 0}">전체</c:if>
+					<c:if test="${movieDTO.rating != 0}">${movieDTO.rating }세</c:if>
+	            </td>
 	        </tr>
 	        <tr>
 	        	<th>영화 평점</th>
