@@ -28,7 +28,10 @@
 	
 	
 	<!-- 영화 삭제 -->
-	
+	<delete id="deleteMovie" parameterType="int">
+	    DELETE FROM movie_tb WHERE mcode = #{mcode}
+	</delete>
+
 	
 
 </mapper>
