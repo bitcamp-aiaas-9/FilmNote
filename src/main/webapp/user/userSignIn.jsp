@@ -15,7 +15,7 @@
 	<div id="login-jsp" class="signin-container">
         
         <h2>로그인</h2>
-        <form id="loginForm" action="${pageContext.request.contextPath}/user/userSignIn.do" method="post">
+        <form id="loginForm" action="${pageContext.request.contextPath}/user/userSignInDB.do" method="post">
             <table>
                 <tr>
                     <td class="label"><label for="loginId"><i class="fa-solid fa-user"></i> ID</label></td>
@@ -34,7 +34,7 @@
                 <tr>
                     <td colspan="2">
                         <button type="submit" id="loginBtn">로그인</button>
-                        <button type="button" onclick="location.href='${pageContext.request.contextPath}/user/userSignUpDB.do'">회원가입</button>
+                        <button type="button" onclick="location.href='${pageContext.request.contextPath}/user/userSignUp.do'">회원가입</button>
                     </td>
                 </tr>
                 <tr>
@@ -47,5 +47,11 @@
 	
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/userSignIn.js"></script>
+
+<script>
+    <% if (session.getAttribute("userDTO") != null) { %>
+        window.location.href = '${pageContext.request.contextPath}/index.do';
+    <% } %>
+</script>
 </body>
 </html>
