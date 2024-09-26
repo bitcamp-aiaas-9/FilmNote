@@ -53,6 +53,7 @@ $(function() {
 		// ${pageContext.request.contextPath }
 	});
 	
+	// 영화 삭제
 	$('#deleteBtn').click(function() {
 	    let selectedMovies = [];
 	    $('input[name="mcodes"]:checked').each(function() {
@@ -81,6 +82,37 @@ $(function() {
 	    });
 	});
 
+	// 영화 검색
+	$('#searchBtn').click(function() {
+	    const searchOpt = $('.search-opt').val();
+	    const searchValue = $('#title-box').val();
+	    
+	    $.ajax({
+	        url: context + '/admin/searchMovie.do',
+	        type: 'GET',
+	        data: {
+	            searchOpt: searchOpt,
+	            searchValue: searchValue
+	        },
+	        success: function(data) {
+	            // 검색 결과를 테이블에 동적으로 업데이트
+	            $('#movieTableBody').empty(); // 기존 테이블 데이터 제거
+	            data.forEach(function(movie) {
+	                $('#movieTableBody').append(`
+	                    <tr>
+	                        <td align="center"><input type="checkbox" name="mcodes" class="board-list-check" value="${movieDTO.mcode}" /></td>
+	                        <td align="left"><a href="#" class="subject-a">${movieDTO.title}</a></td>
+	                        <td align="center">${movieDTO.genre}</td>
+	                        <td align="center">${movieDTO.release_date}</td>
+	                    </tr>
+	                `);
+	            });
+	        },
+	        error: function() {
+	            alert('영화 검색에 실패했습니다.');
+	        }
+	    });
+	});
 	
 	
 });

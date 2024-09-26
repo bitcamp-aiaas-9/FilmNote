@@ -11,7 +11,6 @@ form#movie-view-form {
     border: 1px solid #ddd;
     border-radius: 20px;
     box-shadow: 4px 0 6px rgba(0, 0, 0, 0.2);	
-	
 }
 
 table {
@@ -36,14 +35,13 @@ th, td {
 
 div.button-container {
 	margin: 20px 50px;
-	/* margin-left: auto; */
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 	gap: 10px;
 }
 
-.view-btn {
+.crud-btn {
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -59,7 +57,7 @@ div.button-container {
     cursor: pointer;
 }
 
-.view-btn:hover {
+.crud-btn:hover {
     background: #DEC5D2;
     color: #5A5A5A;
     cursor: pointer;

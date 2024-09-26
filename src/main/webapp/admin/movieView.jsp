@@ -71,9 +71,9 @@
 	    </table>
 	</form>
 	<div class="button-container">
-		<button type="button" class="view-btn" id="movie-edit-btn">수정</button> <!-- mcode, pg 가져가야함 -->
-		<button type="button" class="view-btn" id="movie-delete-btn">삭제</button> <!-- mcode 가져가야함 -->
-   		<button class="view-btn" id="list-btn" onclick="window.location.href='${pageContext.request.contextPath }/admin/movieList.do?pg=${pg }';">목록</button>
+		<button type="button" class="crud-btn" id="movie-edit-btn">수정</button> <!-- mcode, pg 가져가야함 -->
+		<button type="button" class="crud-btn" id="movie-delete-btn">삭제</button> <!-- mcode 가져가야함 -->
+   		<button class="crud-btn" id="list-btn" onclick="window.location.href='${pageContext.request.contextPath }/admin/movieList.do?pg=${pg }';">목록</button>
    	</div>
 </div>
 </c:if>
