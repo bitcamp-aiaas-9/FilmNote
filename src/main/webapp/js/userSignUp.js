@@ -2,6 +2,7 @@ $(document).ready(function() {
     // 회원가입 버튼 클릭 이벤트
     $('#signUp').click(function(e) {
         e.preventDefault(); // 폼 제출 막기
+        clearMessages(); // 경고 메시지 숨기기
         if (validateForm()) {
             $.ajax({
                 url: $('#signUpForm').attr('action'),
@@ -13,11 +14,11 @@ $(document).ready(function() {
                             window.location.href = contextPath + '/user/userSignInDB.do';
                         });
                     } else {
-                        showModal('회원가입 중 오류가 발생했습니다');
+                        showWarningMessage('회원가입 중 오류가 발생했습니다');
                     }
                 },
                 error: function() {
-                    showModal('회원가입 중 오류가 발생했습니다');
+                    showWarningMessage('회원가입 중 오류가 발생했습니다');
                 }
             });
         }
@@ -32,7 +33,7 @@ $(document).ready(function() {
     $('#uid').on('focusout', function() {
         let uid = $(this).val().trim();
         if (uid === '') {
-            $('#uidDiv').html('아이디를 입력하세요.').css('color', 'red');
+            showWarningMessage('아이디를 입력하세요.');
         } else {
             checkIdDuplicate(uid);
         }
@@ -49,24 +50,19 @@ $(document).ready(function() {
     });
 
     function checkIdDuplicate(uid) {
-        console.log("Checking ID: " + uid); // 디버깅을 위한 콘솔 로그 추가
         $.ajax({
             url: contextPath + '/user/checkId.do',
             type: 'POST',
             data: { uid: uid },
             success: function(response) {
-                console.log("Response: ", response); // 디버깅을 위한 콘솔 로그 추가
                 if (response.exists) {
-                    console.log("ID exists: true"); // 디버깅을 위한 콘솔 로그 추가
-                    $('#uidDiv').html('존재하는 아이디 입니다').css('color', 'purple');
+                    showWarningMessage('존재하는 아이디 입니다');
                 } else {
-                    console.log("ID exists: false"); // 디버깅을 위한 콘솔 로그 추가
-                    $('#uidDiv').html('사용 가능한 아이디 입니다').css('color', 'green');
+                    showWarningMessage('사용 가능한 아이디 입니다', true);
                 }
             },
             error: function(xhr, status, error) {
-                console.log("Error: ", error); // 디버깅을 위한 콘솔 로그 추가
-                $('#uidDiv').html('ID 체크 중 오류가 발생했습니다').css('color', 'red');
+                showWarningMessage('ID 체크 중 오류가 발생했습니다');
             }
         });
     }
@@ -76,42 +72,57 @@ $(document).ready(function() {
         let id = field.attr('id');
         let value = field.val().trim();
         let messages = {
-            'uid': '아이디를 입력하세요.',  // uid 필드에 대한 경고 메시지 추가
+            'uid': '아이디를 입력하세요.',
             'upwd': '비밀번호를 입력하세요.',
             'repwd': '비밀번호를 재확인하세요.'
         };
 
         if (value === '') {
-            $('#' + id + 'Div').html(messages[id]).css('color', 'red').css('display', 'block');
+            showWarningMessage(messages[id]);
             return false;
         } else {
-            // 비밀번호 필드 유효성 검사 추가
+            // 비밀번호 필드 유효성 검사
             if (id === 'upwd') {
                 if (!validatePassword(value)) {
-                    $('#' + id + 'Div').html('비밀번호는 영어 대소문자, 숫자, 특수문자 1가지씩은 포함되어야 합니다.').css('color', 'red').css('display', 'block');
+                    showWarningMessage('비밀번호는 영어 대소문자, 숫자, 특수문자 1가지씩은 포함되어야 합니다.');
                     return false;
                 } else {
-                    $('#' + id + 'Div').html('올바른 비밀번호 형식입니다.').css('color', 'green').css('display', 'block');
+                    showWarningMessage('올바른 비밀번호 형식입니다', true);
                     return true;
                 }
             } else if (id === 'repwd') {
                 if (value !== $('#upwd').val()) {
-                    $('#' + id + 'Div').html('비밀번호가 일치하지 않습니다.').css('color', 'red').css('display', 'block');
+                    showWarningMessage('비밀번호가 일치하지 않습니다.');
                     return false;
                 } else {
-                    $('#' + id + 'Div').html('비밀번호가 일치합니다.').css('color', 'green').css('display', 'block');
+                    showWarningMessage('비밀번호가 일치합니다', true);
                     return true;
                 }
             } else {
-                $('#' + id + 'Div').html('').css('display', 'none');
                 return true;
             }
         }
     }
 
+    // 경고 메시지 표시 함수
+    function showWarningMessage(message, success = false) {
+        const messageDiv = $('#warningMessage'); // 폼 하단 경고 메시지 영역
+        messageDiv.html(message);
+        if (success) {
+            messageDiv.css('color', '#2ecc71'); // 성공 메시지: 녹색
+        } else {
+            messageDiv.css('color', '#e74c3c'); // 경고 메시지: 빨간색
+        }
+        messageDiv.show();
+    }
+
+    // 경고 메시지 숨기기 함수
+    function clearMessages() {
+        $('#warningMessage').hide(); // 폼 하단 경고 메시지 숨기기
+    }
+
     // 비밀번호 검증 함수
     function validatePassword(password) {
-        // 영어 대소문자 중 1개, 숫자 1개, 특수문자 1개 포함
         const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{1,}$/;
         return regex.test(password);
     }
@@ -131,9 +142,8 @@ $(document).ready(function() {
         });
 
         if (!isValid && firstInvalidField) {
-            showModal('필수 입력값을 입력하세요.', function() {
-                firstInvalidField.focus();
-            });
+            showWarningMessage('필수 입력값을 입력하세요.');
+            firstInvalidField.focus(); // 잘못된 첫 번째 필드로 포커스 이동
         }
 
         return isValid;
@@ -145,7 +155,7 @@ $(document).ready(function() {
         $('#dialog').dialog({
             modal: true,
             buttons: {
-                "Login": function() {
+                "확인": function() {
                     $(this).dialog("close");
                     if (typeof callback === 'function') {
                         callback();

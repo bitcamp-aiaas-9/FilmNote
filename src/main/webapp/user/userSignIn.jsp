@@ -41,6 +41,10 @@
                     <td colspan="2"><div id="loginErrorDiv"></div></td> <!-- 로그인 에러 메시지 div 추가 -->
                 </tr>
             </table>
+            		<!-- 경고 메시지 div를 여기에 추가 -->
+			    <div id="loginWarningMessage" style="display: none; text-align: center; color: #e74c3c; margin-top: 10px;">
+			        <!-- 이곳에 경고 메시지가 표시됩니다 -->
+			    </div>
         </form>
         <button type="button" id="adminBtn" onclick="location.href='${pageContext.request.contextPath}/admin/adminSignIn.do'">Admin</button> <!-- 관리자 로그인 버튼 추가 -->
     </div>
