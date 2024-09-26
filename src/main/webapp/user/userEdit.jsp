@@ -24,7 +24,7 @@
 				
 				<tr>
 					<th class="label"><label for="uid"><i class="fa-solid fa-badge"></i> 아이디</label></th>
-					<td class="input"><input type="text" name="uid" id="uid" value="${userDTO.uid }" >
+					<td class="input"><input type="text" name="uid" id="uid" value="${userDTO.uid }" readonly >
 						<div id="uidDiv"></div></td>
 				</tr>
 				<!-- 현재 비밀번호 확인하는거 만들기 -->
