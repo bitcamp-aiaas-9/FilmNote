@@ -1,4 +1,3 @@
-<%-- FilmNote/src/main/webapp/common/header.jsp --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -40,7 +39,7 @@ button.user {
     text-align: center;
     width: 130px;
     height: 30px;
-    background: transparent;;
+    background: transparent;
     border: 1px solid #3d3d3d;
     border-radius: 3px;
     font: normal 400 20px "Nanum Brush Script", sans-serif; /* style weight size font-family */
@@ -54,8 +53,8 @@ button.user:hover {
 	cursor: pointer;
     transition: background-color 0.3s ease; 
 }
-</style>
 
+</style>
 <body>
 <div id="header">
 	<div id="title">
@@ -72,18 +71,16 @@ button.user:hover {
 				<button id="logOutBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userLogOut.do';">Log Out</button>
 			</c:when>
 			<c:when test="${not empty sessionScope.adminDTO}">
-				<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/admin/adminEdit.do';">${sessionScope.adminDTO.name} 님</button>
+				<!-- 관리자 버튼 클릭 시 movieList.jsp로 이동 -->
+				<button id="profileBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/admin/movieList.do';">${sessionScope.adminDTO.name} 님</button>
 				<button id="logOutBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/admin/adminLogOut.do';">Log Out</button>
 			</c:when>
 			<c:otherwise>
-				<button id="signInBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignIn.jsp';">로그인</button>
-				<button id="signUpBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignUpDB.do';">회원가입</button>
+				<button id="signInBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignIn.do';">로그인</button>
+				<button id="signUpBtn" class="user" onclick="location.href='${pageContext.request.contextPath}/user/userSignUp.do';">회원가입</button>
 			</c:otherwise>
 		</c:choose>
 	</div>
 
 </div><!-- <div id="header"> -->
-
-
-
 </body>
