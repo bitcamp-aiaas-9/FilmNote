@@ -57,6 +57,7 @@ td {
     z-index: 2; /* 텍스트는 검은색 오버레이 위에 위치 */
     text-align: center;
     display: none; /* 기본적으로 보이지 않음 */
+    width: 80%;
 }
 
 .hover-info:hover .over {
@@ -100,17 +101,17 @@ td {
 	        	<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
 	            	<c:if test="${i < movieDTOList.size()}">
 		                <td>
-		                    <a href="${pageContext.request.contextPath}/user/reviewView.do?mcode=${movieDTOList[i].getMcode()}">
+		                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}">
                            <div class="hover-info">
                               <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb" />
                               
                               <!-- 오버시 나오는 정보 -->
                               <div class="over">
                                  <span class="title">${movieDTOList[i].getTitle() }</span><br>
-                                       <span class="open_date">개봉 : ${movieDTOList[i].getRelease_date()}</span><br>
-                                       <span class="director">감독 : ${movieDTOList[i].getDirector()}</span><br>
-                                       <span class="score">평점 : ${movieDTOList[i].getScore()}</span><br>
-                                 <span class="btn_detail">자세히 보기</span>
+                                 <span class="open_date">개봉일 : ${movieDTOList[i].getRelease_date()}</span><br>
+                                 <span class="director">감독 : ${movieDTOList[i].getDirector()}</span><br>
+                                 <span class="score">평점 : ${movieDTOList[i].getScore()}</span><br>
+                                 <!-- <span class="btn_detail">자세히 보기</span> -->
                               <!-- //오버시 나오는 정보 -->
                               </div>
                            </div>
