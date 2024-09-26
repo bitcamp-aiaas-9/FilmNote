@@ -38,6 +38,16 @@ $(document).ready(function() {
         }
     });
 
+    // 비밀번호 입력 필드 focusout 이벤트
+    $('#upwd').on('focusout', function() {
+        validateField($(this));
+    });
+
+    // 비밀번호 확인 입력 필드 focusout 이벤트
+    $('#repwd').on('focusout', function() {
+        validateField($(this));
+    });
+
     function checkIdDuplicate(uid) {
         console.log("Checking ID: " + uid); // 디버깅을 위한 콘솔 로그 추가
         $.ajax({
@@ -81,7 +91,7 @@ $(document).ready(function() {
                     $('#' + id + 'Div').html('비밀번호는 영어 대소문자, 숫자, 특수문자 1가지씩은 포함되어야 합니다.').css('color', 'red').css('display', 'block');
                     return false;
                 } else {
-                    $('#' + id + 'Div').html('').css('display', 'none');
+                    $('#' + id + 'Div').html('올바른 비밀번호 형식입니다.').css('color', 'green').css('display', 'block');
                     return true;
                 }
             } else if (id === 'repwd') {
@@ -89,7 +99,7 @@ $(document).ready(function() {
                     $('#' + id + 'Div').html('비밀번호가 일치하지 않습니다.').css('color', 'red').css('display', 'block');
                     return false;
                 } else {
-                    $('#' + id + 'Div').html('').css('display', 'none');
+                    $('#' + id + 'Div').html('비밀번호가 일치합니다.').css('color', 'green').css('display', 'block');
                     return true;
                 }
             } else {

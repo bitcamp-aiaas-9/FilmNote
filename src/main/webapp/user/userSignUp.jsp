@@ -95,8 +95,8 @@
                             <option value="011">011</option>
                             <option value="016">016</option>
                         </select> - 
-                        <input type="text" id="tel2" name="tel2" placeholder="입력" class="input-tel"> - 
-                        <input type="text" id="tel3" name="tel3" placeholder="입력" class="input-tel">
+                        <input type="text" id="tel2" name="tel2" placeholder="입력" class="input-tel" maxlength="4"> - 
+                        <input type="text" id="tel3" name="tel3" placeholder="입력" class="input-tel" maxlength="4">
                         <div id="telDiv"></div> <!-- 휴대전화 유효성 검사 메시지 표시 -->
                     </td>
                 </tr>
