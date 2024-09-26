@@ -24,7 +24,7 @@
                 <tr>
                     <th class="label"><label for="uname"><i class="fa-solid fa-user"></i> 이름</label></th>
                     <td class="input">
-                        <input type="text" id="uname" name="uname" placeholder="이름 입력">
+                        <input type="text" id="uname" name="uname" placeholder="이름 입력" maxlength="8"> <!-- 화면크기 조절로 인한 8자제한 추가 -->
                         <div id="unameDiv"></div> <!-- 유효성 검사 메시지 표시 -->
                     </td>
                 </tr>
@@ -112,7 +112,7 @@
     </div>
 
     <!-- 모달 다이얼로그 -->
-    <div id="dialog" title="From.FilmNote" style="display:none;">
+    <div id="dialog" title="FilmNote" style="display:none;">
         <p id="dialogMessage"></p>
     </div>
 	

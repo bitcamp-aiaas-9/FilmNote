@@ -49,7 +49,7 @@ public class UserSignUpDBService implements CommandProcess {
         // JSON 응답 생성
         JSONObject jsonResponse = new JSONObject();
         jsonResponse.put("status", "success");
-        jsonResponse.put("message", "회원가입 축하드립니다");
+        jsonResponse.put("message", "회원가입을 축하드립니다.");
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
