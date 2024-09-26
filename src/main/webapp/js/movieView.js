@@ -13,14 +13,17 @@ $(function(){
 
 	
 	$('#movie-delete-btn').click(function() {
+		let mcode = $('input[name="mcodes"]').val();
+		
 		if (confirm("' " + movieTitle + " ' 을(를) 삭제하시겠습니까?")) {
 			$.ajax({
 			    type: 'POST',
 			    url: context + '/admin/movieDeleteDB.do',
-			    data: {mcode : mcode},
+			    data: { mcodes: [mcode]},  // 배열로 감싸서 전송 - 선택 삭제와 dao 함수 같이 쓰기 위함
+				traditional: true,
 			    success: function() {
 			        alert("' " + movieTitle + " ' 을(를) 삭제하였습니다.");
-			        window.location.href = context + '/admin/movieList.do';
+			        window.location.href = context + '/admin/movieList.do?pg=' + pg;
 			    },
 			    error: function(xhr, status, error) {
 			        alert("' " + movieTitle + " ' 을(를) 삭제하지 못했습니다.");

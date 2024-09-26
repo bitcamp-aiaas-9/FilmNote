@@ -4,6 +4,7 @@ package movie.dao;
 import movie.bean.MovieDTO;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,13 +78,21 @@ public class MovieDAO {
 		return movieDTO;
 	}
 	
-	// 영화 삭제
-	public void deleteMovie(int mcode) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.delete("movieSQL.deleteMovie", mcode);
-		sqlSession.commit(); 
-		sqlSession.close(); 
-	}
+	// 영화 삭제 - 1개 이상 삭제 (1개도 가능)
+    public void deleteMovies(String[] mcodes) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            Map<String, Object> mcodeMap = new HashMap<>();
+            mcodeMap.put("mcodes", mcodes);
+            sqlSession.delete("movieSQL.deleteMovies", mcodeMap);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback(); // 오류 발생 시 롤백
+        } finally {
+            sqlSession.close();
+        }
+    }
 
 
 	
