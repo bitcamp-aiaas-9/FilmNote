@@ -4,9 +4,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userSQL">
+	<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~ 회원가입 로그인 ~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!-- 사용자 로그인 -->
+    <select id="loginUser" parameterType="map" resultType="user">
+        SELECT uid, upwd, uname, gender, birth1, birth2, birth3, email1, email2, tel1, tel2, tel3
+        FROM user_tb
+        WHERE uid = #{uid} AND upwd = #{upwd}
+    </select>
+    
+    <!-- 사용자 등록 -->
+    <insert id="insertUser" parameterType="user">
+    INSERT INTO user_tb (uid, upwd, uname, gender, birth1, birth2, birth3, email1, email2, tel1, tel2, tel3)
+    VALUES (#{uid}, #{upwd}, #{uname}, #{gender}, #{birth1}, #{birth2}, #{birth3}, #{email1}, #{email2}, #{tel1}, #{tel2}, #{tel3})
+    </insert>
 
+    <!-- ID 중복 체크 -->
+    <select id="checkIdExists" parameterType="string" resultType="int">
+        SELECT COUNT(*) FROM user_tb WHERE uid = #{uid}
+    </select>
+	<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~ 회원가입 로그인 ~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	
-	<!--  회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴-->
+	<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~ 회원정보수정 탈퇴 ~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<!--  회원정보 수정 -->
 	<update id="userEdit" parameterType="user.bean.UserDTO">
 		UPDATE user_tb SET
@@ -39,25 +57,5 @@
 		resultType="user.bean.UserDTO">
 		SELECT * FROM user_tb where uid=#{uid}
 	</select>
-	
-	<!--  회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴-->
-
-    <!-- 사용자 로그인 -->
-    <select id="loginUser" parameterType="map" resultType="user">
-        SELECT uid, upwd, uname, gender, birth1, birth2, birth3, email1, email2, tel1, tel2, tel3
-        FROM user_tb
-        WHERE uid = #{uid} AND upwd = #{upwd}
-    </select>
-    
-    <!-- 사용자 등록 -->
-    <insert id="insertUser" parameterType="user">
-    INSERT INTO user_tb (uid, upwd, uname, gender, birth1, birth2, birth3, email1, email2, tel1, tel2, tel3)
-    VALUES (#{uid}, #{upwd}, #{uname}, #{gender}, #{birth1}, #{birth2}, #{birth3}, #{email1}, #{email2}, #{tel1}, #{tel2}, #{tel3})
-    </insert>
-
-    <!-- ID 중복 체크 -->
-    <select id="checkIdExists" parameterType="string" resultType="int">
-        SELECT COUNT(*) FROM user_tb WHERE uid = #{uid}
-    </select>
-
+	<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~ 회원정보수정 탈퇴 ~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 </mapper>
