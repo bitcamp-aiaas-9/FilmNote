@@ -11,7 +11,7 @@ public class UserSignUpDBService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
-		return "/user/userSignUp.jsp";
+		return "/user/userSignUp.jsp"; // 회원가입 페이지
 	}
 
 }
