@@ -57,6 +57,7 @@ td {
     z-index: 2; /* 텍스트는 검은색 오버레이 위에 위치 */
     text-align: center;
     display: none; /* 기본적으로 보이지 않음 */
+    width: 80%;
 }
 
 .hover-info:hover .over {
@@ -89,105 +90,38 @@ td {
 }
 </style>
 </head>
+
 <body>
 <jsp:include page="./common/header.jsp" />
-
 <div id="poster">
 	<table>
-		<tr>
-			<td>
-				<a href="/movie/info/?movie_id=61713">
-					<div class="hover-info">
-						<img src="https://image.cine21.com/resize/cine21/poster/2024/0823/16_06_59__66c835131d0b6[X224,320].jpg" alt="" class="thumb" />
-							
-						<!--<div class="type video"><span class="ico"></span></div>-->
-						<!-- 오버시 나오는 정보 -->
-						<div class="over">
-							<span class="tit">테인티드 러브</span>
-									<span class="open_date">개봉 : 2024-09-19</span>
-		
-	
-									<span class="director">감독 : 마영심</span>
-											<span class="actor">배우 : 주동우,장우</span>
-		
-		
-							<span class="btn_detail">자세히 보기</span>
-						<!-- //오버시 나오는 정보 -->
-						</div>
-					</div>
-				</a>
-			</td>
-			<td>
-				<a href="/movie/info/?movie_id=61713">
-					<div class="hover-info">
-						<img src="https://image.cine21.com/resize/cine21/poster/2024/0823/16_06_59__66c835131d0b6[X224,320].jpg" alt="" class="thumb" />
-								
-						<!--<div class="type video"><span class="ico"></span></div>-->
-						<!-- 오버시 나오는 정보 -->
-						<div class="over">
-							<span class="tit">테인티드 러브</span>
-									<span class="open_date">개봉 : 2024-09-19</span>
-		
-	
-									<span class="director">감독 : 마영심</span>
-											<span class="actor">배우 : 주동우,장우</span>
-		
-		
-							<span class="btn_detail">자세히 보기</span>
-						<!-- //오버시 나오는 정보 -->
-						</div>
-					</div>
-				</a>
-			</td>
-			<td>
-				<a href="/movie/info/?movie_id=61713">
-					<div class="hover-info">
-						<img src="https://image.cine21.com/resize/cine21/poster/2024/0823/16_06_59__66c835131d0b6[X224,320].jpg" alt="" class="thumb" />
-								
-						<!--<div class="type video"><span class="ico"></span></div>-->
-						<!-- 오버시 나오는 정보 -->
-						<div class="over">
-							<span class="tit">테인티드 러브</span>
-									<span class="open_date">개봉 : 2024-09-19</span>
-		
-	
-									<span class="director">감독 : 마영심</span>
-											<span class="actor">배우 : 주동우,장우</span>
-		
-		
-							<span class="btn_detail">자세히 보기</span>
-						<!-- //오버시 나오는 정보 -->
-						</div>
-					</div>
-				</a>
-			</td>
-			<td>
-				<a href="/movie/info/?movie_id=61713">
-					<div class="hover-info">
-						<img src="https://image.cine21.com/resize/cine21/poster/2024/0823/16_06_59__66c835131d0b6[X224,320].jpg" alt="" class="thumb" />
-								
-						<!--<div class="type video"><span class="ico"></span></div>-->
-						<!-- 오버시 나오는 정보 -->
-						<div class="over">
-							<span class="tit">테인티드 러브</span>
-									<span class="open_date">개봉 : 2024-09-19</span>
-		
-	
-									<span class="director">감독 : 마영심</span>
-											<span class="actor">배우 : 주동우,장우</span>
-		
-		
-							<span class="btn_detail">자세히 보기</span>
-						<!-- //오버시 나오는 정보 -->
-						</div>
-					</div>
-				</a>
-			</td>
-			
-		</tr>
-		
-		
-	
+ 		<c:if test="${movieDTOList.size() != 0}">
+			<c:forEach var="row" begin="0" end="${movieDTOList.size()}" step="${movieInRowCount}">
+	    		<tr>
+	        	<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
+	            	<c:if test="${i < movieDTOList.size()}">
+		                <td>
+		                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}">
+                           <div class="hover-info">
+                              <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb" />
+                              
+                              <!-- 오버시 나오는 정보 -->
+                              <div class="over">
+                                 <span class="title">${movieDTOList[i].getTitle() }</span><br>
+                                 <span class="open_date">개봉일 : ${movieDTOList[i].getRelease_date()}</span><br>
+                                 <span class="director">감독 : ${movieDTOList[i].getDirector()}</span><br>
+                                 <span class="score">평점 : ${movieDTOList[i].getScore()}</span><br>
+                                 <!-- <span class="btn_detail">자세히 보기</span> -->
+                              <!-- //오버시 나오는 정보 -->
+                              </div>
+                           </div>
+                        </a>
+		                </td>
+		            </c:if>
+	        	</c:forEach>
+    			</tr>
+			</c:forEach>
+		</c:if>
 	</table>
 </div>
 
