@@ -145,7 +145,7 @@ $(document).ready(function() {
         $('#dialog').dialog({
             modal: true,
             buttons: {
-                "확인": function() {
+                "Login": function() {
                     $(this).dialog("close");
                     if (typeof callback === 'function') {
                         callback();
