@@ -14,13 +14,14 @@
         SELECT COUNT(*) FROM movie_tb
     </select>
 
-
 	<!-- 영화 조회 (글 1개) -->
 	<select id="getBoard" parameterType="int" resultType="movie">
     	SELECT * FROM movie_tb WHERE mcode = #{mcode}
 	</select>
 	
-
+	<update id="updateScore" parameterType="int">
+		UPDATE movie_tb SET score=score+1 WHERE mcode = #{mcode}
+	</update>
 	
 	<!-- 영화 검색 -->
 	

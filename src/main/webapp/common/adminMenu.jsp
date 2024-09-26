@@ -41,7 +41,7 @@ div.menu-div {
 
 <body>
 <div id="admin-menu" >
-	<a class="menu-a" href="${pageContext.request.contextPath }/admin/movieBoard.do">
+	<a class="menu-a" href="${pageContext.request.contextPath }/admin/movieList.do">
 		<div class="menu-div" id="movie-board" >
 			영화 목록
 		</div>
@@ -52,9 +52,4 @@ div.menu-div {
 		</div>
 	</a>
 </div>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" target="_blank"></script>
-<script type="text/javascript">
-
-</script>
 </body>

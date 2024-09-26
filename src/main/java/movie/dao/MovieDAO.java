@@ -76,6 +76,14 @@ public class MovieDAO {
 		sqlSession.close();
 		return movieDTO;
 	}
+	
+	// 영화 평점 업데이트
+	public void updateScore(int mcode) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("movieSQL.updateScore", mcode);
+		sqlSession.commit(); 
+		sqlSession.close(); 
+	}
 
 
 	
