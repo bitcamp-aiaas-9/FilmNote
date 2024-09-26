@@ -28,7 +28,7 @@
 	    		<th width="20%">영화 코드</th>
 	    		<td width="50%" class="info-cell">
 	    			${movieDTO.mcode }
-	    			<input type="hidden" id="mcode" value="${movieDTO.mcode }" />
+	    			<input type="hidden" id="mcode" name="mcodes" value="${movieDTO.mcode }" />
 	    		</td>
 	    	</tr>
 	        <tr>
