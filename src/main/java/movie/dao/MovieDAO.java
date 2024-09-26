@@ -70,11 +70,19 @@ public class MovieDAO {
 	
 	/** movieView.jsp */
 	// 영화 조회
-	public MovieDTO getBoard(int seq) {
+	public MovieDTO getBoard(int mcode) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		MovieDTO boardDTO = sqlSession.selectOne("boardSQL.getBoard", seq);
+		MovieDTO movieDTO = sqlSession.selectOne("movieSQL.getBoard", mcode);
 		sqlSession.close();
-		return boardDTO;
+		return movieDTO;
+	}
+	
+	// 영화 평점 업데이트
+	public void updateScore(int mcode) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("movieSQL.updateScore", mcode);
+		sqlSession.commit(); 
+		sqlSession.close(); 
 	}
 
 
