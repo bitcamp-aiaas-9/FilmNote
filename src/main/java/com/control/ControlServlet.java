@@ -131,12 +131,16 @@ public class ControlServlet extends HttpServlet {
 		// Map 을 이용하여 Key 에 해당하는 값을 꺼내온다
 		// member.service.WriteFormService
 		CommandProcess com = (CommandProcess)map.get(category); // 자식 = (자식)부모
+		
+		System.out.println("com : " + com);
+		
 		String view = null;
 		try {
 			view = com.requestPro(request, response);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
+		System.out.println("view : " + view);
 
 //		if(view.equals("none")) return; // 굳이 forwarding 처리 필요 없는 페이지는 안가게 한다.
 //		

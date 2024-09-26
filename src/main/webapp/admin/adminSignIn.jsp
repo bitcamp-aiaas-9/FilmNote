@@ -12,7 +12,7 @@
 
 <div id="login-jsp" class="signin-container">
     <h2>관리자 로그인</h2>
-    <form id="adminLoginForm" action="${pageContext.request.contextPath}/admin/adminSignIn.do" method="post">
+    <form id="adminLoginForm" action="${pageContext.request.contextPath}/admin/adminSignInDB.do" method="post">
         <table>
             <tr>
                 <td class="label"><label for="adminId">ID</label></td>
@@ -42,5 +42,11 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/adminSignIn.js"></script>
+
+<script>
+    <% if (session.getAttribute("adminDTO") != null) { %>
+        window.location.href = '${pageContext.request.contextPath}/index.do';
+    <% } %>
+</script>
 </body>
 </html>

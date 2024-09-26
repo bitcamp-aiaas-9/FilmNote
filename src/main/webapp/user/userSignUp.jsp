@@ -18,7 +18,7 @@
 <jsp:include page="../common/header.jsp" />	
 	<div id="write-jsp" class="signup-container">
         <h2>회원가입</h2>
-        <form id="signUpForm" action="${pageContext.request.contextPath}/user/userSignUp.do" method="post">
+        <form id="signUpForm" action="${pageContext.request.contextPath}/user/userSignUpDB.do" method="post">
             <table>
                 <!-- 이름 입력 필드 -->
                 <tr>

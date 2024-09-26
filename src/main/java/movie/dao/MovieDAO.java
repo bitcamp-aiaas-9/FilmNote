@@ -36,7 +36,7 @@ public class MovieDAO {
 	
     /** movieWrite.jsp */
 	// 영화 추가
-	
+	// 이미지 Object Storage 에 올리기
 	
 	
 	
@@ -77,10 +77,10 @@ public class MovieDAO {
 		return movieDTO;
 	}
 	
-	// 영화 평점 업데이트
-	public void updateScore(int mcode) {
+	// 영화 삭제
+	public void deleteMovie(int mcode) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.update("movieSQL.updateScore", mcode);
+		sqlSession.delete("movieSQL.deleteMovie", mcode);
 		sqlSession.commit(); 
 		sqlSession.close(); 
 	}

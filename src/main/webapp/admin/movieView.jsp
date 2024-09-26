@@ -15,9 +15,8 @@
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/adminMenu.jsp" />
 
+<c:if test="${sessionScope.adminDTO.aid == 'admin'}">
 <div id="movie-detail">
-	<%-- <input type="hidden" id="memId" value="${sessionScope.memId }" /> --%>
-	<input type="hidden" name="mcode" id="mcode" value="${movieDTO.mcode }" />
 	<input type="hidden" name="pg" id="pg" value="${requestScope.pg }" />
 
 
@@ -27,14 +26,20 @@
 	    	<tr>
 	    		<th width="30%">영화 포스터</th>
 	    		<th width="20%">영화 코드</th>
-	    		<td width="50%" class="info-cell">${movieDTO.mcode }</td>
+	    		<td width="50%" class="info-cell">
+	    			${movieDTO.mcode }
+	    			<input type="hidden" id="mcode" value="${movieDTO.mcode }" />
+	    		</td>
 	    	</tr>
 	        <tr>
 	            <td align="center" rowspan="9" class="poster-cell">
 	                <img width="90%" src="${movieDTO.poster }" alt="영화 포스터">
 	            </td>
-	            <th>영화 제목</th>
-	            <td class="info-cell">${movieDTO.title }</td>
+			    <th>영화 제목</th>
+			    <td class="info-cell">
+			        ${movieDTO.title }
+			        <input type="hidden" id="movieTitle" value="${movieDTO.title }" />
+			    </td>
 	        </tr>
 	        <tr>
 	        	<th>영화 감독</th>
@@ -66,14 +71,25 @@
 	    </table>
 	</form>
 	<div class="button-container">
-		<button type="button" class="view-btn" id="movie-edit-btn">수정</button> <!-- seq, pg 가져가야함 -->
-		<button type="button" class="view-btn" id="movie-delete-btn">삭제</button> <!-- seq 가져가야함 -->
+		<button type="button" class="view-btn" id="movie-edit-btn">수정</button> <!-- mcode, pg 가져가야함 -->
+		<button type="button" class="view-btn" id="movie-delete-btn">삭제</button> <!-- mcode 가져가야함 -->
    		<button class="view-btn" id="list-btn" onclick="window.location.href='${pageContext.request.contextPath }/admin/movieList.do?pg=${pg }';">목록</button>
    	</div>
 </div>
+</c:if>
 
+<c:if test="${sessionScope.adminDTO.aid != 'admin'}">
+    <script>
+        alert("관리자로 로그인하세요");
+        location.href = "${pageContext.request.contextPath}/admin/adminSignIn.do";
+    </script>
+</c:if>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    var context = '${pageContext.request.contextPath}';
+</script>
+
 <script type="text/javascript" src="../js/movieView.js"></script>
 </body>
 </html>
