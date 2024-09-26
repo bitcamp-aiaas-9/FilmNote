@@ -1,4 +1,4 @@
-// FilmNote/src/main/webapp/js/movieBoard.js
+// FilmNote/src/main/webapp/js/movieList.js
 
 // 페이지 이동
 function moviePaging(pg) {
@@ -52,4 +52,35 @@ $(function() {
 		location.href="/FilmNote/admin/movieView.do?mcode=" + mcode + '&pg=' + pg;
 		// ${pageContext.request.contextPath }
 	});
+	
+	$('#deleteBtn').click(function() {
+	    let selectedMovies = [];
+	    $('input[name="mcodes"]:checked').each(function() {
+	        selectedMovies.push($(this).val());
+	    });
+
+	    if (selectedMovies.length === 0) {
+	        alert("1개 이상의 영화를 선택하세요.");
+	        return;
+	    }
+
+	    $.ajax({
+	        url: context + '/admin/movieDeleteDB.do',
+	        type: 'POST',
+	        data: {
+	            mcodes: selectedMovies
+	        },
+	        traditional: true,  // 배열 데이터를 서버에 전송할 때 필요한 설정
+	        success: function() {
+	            alert('영화가 삭제되었습니다.');
+	            location.reload(); // 페이지 새로고침
+	        },
+	        error: function() {
+	            alert('영화 삭제에 실패했습니다.');
+	        }
+	    });
+	});
+
+	
+	
 });

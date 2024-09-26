@@ -52,7 +52,9 @@
 		<c:forEach var="movieDTO" items="${list }">
 			<tr>
 				<td align="center">
-					<input type="checkbox" class="board-list-check" /> ${movieDTO.mcode }
+					<input type="checkbox" name="mcodes" class="board-list-check" value="${movieDTO.mcode}" /> 
+					${movieDTO.mcode }
+					<input type="hidden" id="mcode" value="${movieDTO.mcode }" />
 				</td>      
 				<td align="left">
 					<a href="#" class="subject-a">${movieDTO.title }</a>
@@ -79,6 +81,9 @@
 </c:if>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    var context = '${pageContext.request.contextPath}';
+</script>
 <script type="text/javascript" src="../js/movieList.js"></script>
 </body>
 </html>
