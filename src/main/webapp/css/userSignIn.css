@@ -131,11 +131,13 @@ button:hover {
 
 /* 로그인 경고 메시지 */
 #loginWarningMessage {
-    display: none;
     text-align: center;
-    color: #e74c3c; /* 경고 메시지 기본 빨간색 */
+    color: #e74c3c;
     margin-top: 10px;
-    font-family: 'Noto Sans KR', sans-serif; /* Noto Sans KR 글꼴 적용 */
-    font-size: 12pt; /* 가독성을 높이기 위한 적절한 크기 */
-    font-weight: bold; /* 글꼴을 굵게 설정 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    
+    transition: opacity 1.5s ease-in-out, text-shadow 1.5s ease-in-out;
 }
+

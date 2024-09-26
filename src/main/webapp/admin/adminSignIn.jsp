@@ -41,7 +41,7 @@
             </tr>
         </table>
         <!-- 경고 메시지 div를 여기에 추가 -->
-        <div id="adminLoginWarningMessage" style="display: none; text-align: center; color: #e74c3c; margin-top: 10px;">
+        <div id="adminLoginWarningMessage" style="display: none; text-align: center; color: #e74c3c; margin-top: 10px;"> <!-- style="display: none; text-align: center; color: #e74c3c; margin-top: 10px; -->
             <!-- 이곳에 경고 메시지가 표시됩니다 -->
         </div>
     </form>

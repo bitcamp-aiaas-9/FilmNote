@@ -123,12 +123,15 @@ button:hover {
 
 /* 관리자 로그인 에러 메시지 */
 #adminLoginErrorDiv {
-    display: none;
     padding: 5px 0;
-    color: #e74c3c; /* 경고 색상: 붉은색 */
-    font-size: 12pt; /* 조금 더 큰 크기 */
-    font-family: 'Noto Sans KR', sans-serif; /* Noto Sans KR 글꼴 적용 */
-    text-align: center; /* 중앙 정렬 */
-    margin-left: 0; /* 왼쪽 여백 제거로 중앙에 위치 */
-    font-weight: bold; /* 글꼴을 굵게 설정 */
+    color: #e74c3c;
+    font-size: 12pt;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+    margin-left: 0;
+    font-weight: bold;
+    
+    transition: opacity 1.5s ease-in-out, text-shadow 1.5s ease-in-out;
 }
+
+

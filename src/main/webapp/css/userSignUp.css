@@ -211,10 +211,12 @@ button:hover {
 /* 일반 경고 메시지 스타일 */
 #warningMessage {
     text-align: center;
-    margin-top: 20px; /* 폼 하단에서 살짝 띄움 */
+    margin-top: 20px;
     font-size: 12pt;
-    display: none; /* 기본적으로 숨김 처리 */
-    color: #e74c3c; /* 기본 경고 메시지 색상: 빨간색 */
-    font-family: 'Noto Sans KR', sans-serif; /* Noto Sans KR 글꼴 적용 */
-    font-weight: bold; /* 글꼴을 굵게 설정 */
+    color: #e74c3c; /* 기본 경고 메시지 색상 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+   
+    transition: opacity 1.5s ease-in-out, text-shadow 1.5s ease-in-out; /* 서서히 변화 */
 }
+
