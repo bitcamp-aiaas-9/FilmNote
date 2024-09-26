@@ -8,7 +8,11 @@
 <link rel="icon" href="../image/film_favicon.png" type="image/png">
 <link rel="stylesheet" href="../css/userSignUp.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <title>회원가입</title>
+<script type="text/javascript">
+    var contextPath = '<%= request.getContextPath() %>';
+</script>
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />	
@@ -91,8 +95,8 @@
                             <option value="011">011</option>
                             <option value="016">016</option>
                         </select> - 
-                        <input type="text" id="tel2" name="tel2" placeholder="입력" class="input-tel"> - 
-                        <input type="text" id="tel3" name="tel3" placeholder="입력" class="input-tel">
+                        <input type="text" id="tel2" name="tel2" placeholder="입력" class="input-tel" maxlength="4"> - 
+                        <input type="text" id="tel3" name="tel3" placeholder="입력" class="input-tel" maxlength="4">
                         <div id="telDiv"></div> <!-- 휴대전화 유효성 검사 메시지 표시 -->
                     </td>
                 </tr>
@@ -106,8 +110,14 @@
             </table>
         </form>
     </div>
+
+    <!-- 모달 다이얼로그 -->
+    <div id="dialog" title="From.FilmNote" style="display:none;">
+        <p id="dialogMessage"></p>
+    </div>
 	
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="../js/userSignUp.js"></script>
 </body>
 </html>
