@@ -1,3 +1,251 @@
 /* FilmNote/src/main/webapp/css/reviewView.css */
 @charset "UTF-8";
 @import url("init.css");
+/* ==================== 페이징 ==================== */
+#page-block {
+   margin: 20px auto;
+   font-size: 13pt;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+}
+
+#currentPaging {
+   background-color: #e5e7ea;
+   border-radius: 5px;
+   padding: 5px 8px;
+   font-weight: bold;
+}
+
+#paging {
+   border-radius: 5px;
+   padding: 5px 8px;
+}
+
+/* ==================== 페이징 ==================== */
+table tr {
+	width: 100%;
+}
+
+table th {
+	width: 10%;
+}
+
+div.menu-div:hover {
+	background: #DEC5D2;
+}
+
+form#movie-view-form {
+	margin: 40px 40px 20px 40px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.2);	
+	
+}
+
+table {
+	margin: 20px 0;
+	width: 1020px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	text-align: center;
+}
+
+th, td {
+	border-bottom: 1px solid #ddd;
+    padding: 10px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.info-cell {
+	text-align: left;
+}
+
+
+div.button-container {
+	margin: 20px 50px;
+	/* margin-left: auto; */
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 10px;
+}
+
+.view-btn {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 5px 20px;
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #5A5A5A;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    background: #DEC5D2;
+    color: #5A5A5A;
+    cursor: pointer;
+}
+
+/* ==================== 댓글 컨테이너 ==================== */
+.comment-content {
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+/* 댓글 항목 */
+.review {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+/* 프로필 사진 */
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* 댓글 세부사항 */
+.comment-details {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-user-id {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #888;
+}
+
+.list-content {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.comment-actions {
+    font-size: 12px;
+    color: #005898;
+}
+
+.reply, .like {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.comment-options {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.options-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.options-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.options-menu span {
+    display: block;
+    cursor: pointer;
+    padding: 5px 5px 5px 10px;
+    width: 100%;
+}
+
+.options-menu span:hover {
+    background: #f0f0f0; /* hover 시 배경색 변경 */
+}
+
+/* 댓글 작성 폼 */
+#post-comment {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#new-comment {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transform: scale(1.5);
+    margin: 0 5px;
+}
+
+#submit-comment {
+    background: #005898;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#submit-comment:hover {
+    background: #003d6a;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px; 
+    gap: 10px;
+}
+
+/* ==================== 댓글 컨테이너 ==================== */

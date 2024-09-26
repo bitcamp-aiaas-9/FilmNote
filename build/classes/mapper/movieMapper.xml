@@ -16,7 +16,9 @@
 
 
 	<!-- 영화 조회 (글 1개) -->
-	
+	<select id="getBoard" parameterType="int" resultType="movie">
+    	SELECT * FROM movie_tb WHERE mcode = #{mcode}
+	</select>
 	
 
 	

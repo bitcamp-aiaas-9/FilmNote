@@ -70,11 +70,11 @@ public class MovieDAO {
 	
 	/** movieView.jsp */
 	// 영화 조회
-	public MovieDTO getBoard(int seq) {
+	public MovieDTO getBoard(int mcode) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		MovieDTO boardDTO = sqlSession.selectOne("boardSQL.getBoard", seq);
+		MovieDTO movieDTO = sqlSession.selectOne("movieSQL.getBoard", mcode);
 		sqlSession.close();
-		return boardDTO;
+		return movieDTO;
 	}
 
 
