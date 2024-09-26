@@ -115,45 +115,72 @@ button:hover {
 
 /* jQuery UI 모달 커스터마이징 */
 .ui-dialog {
-    border: 1px solid #007BFF;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #1c1c1c, #2c2c2c);
+    overflow: hidden;
 }
 
 .ui-dialog-titlebar {
-    background: #007BFF;
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
     color: #fff;
     border: none;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    padding: 15px 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .ui-dialog-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.ui-dialog-titlebar-close {
+    background: transparent;
+    border: none;
+    color: #fff;
     font-size: 1.2em;
-    font-weight: bold;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.ui-dialog-titlebar-close:hover {
+    opacity: 1;
 }
 
 .ui-dialog-content {
-    padding: 20px;
-    font-size: 1em;
-    color: #333;
+    padding: 25px;
+    font-size: 1.1em;
+    color: #e0e0e0;
+    line-height: 1.6;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .ui-dialog-buttonpane {
-    background: #f1f1f1;
-    border-top: 1px solid #ddd;
+    background: #2c2c2c;
+    border-top: 1px solid #3a3a3a;
+    padding: 15px;
 }
 
 .ui-dialog-buttonset button {
-    background: #007BFF;
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
     color: #fff;
     border: none;
-    border-radius: 4px;
-    padding: 8px 16px;
+    border-radius: 25px;
+    padding: 10px 20px;
     font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
 }
 
 .ui-dialog-buttonset button:hover {
-    background: #0056b3;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 75, 43, 0.4);
 }

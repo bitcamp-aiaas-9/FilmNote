@@ -112,7 +112,7 @@
     </div>
 
     <!-- 모달 다이얼로그 -->
-    <div id="dialog" title="알림" style="display:none;">
+    <div id="dialog" title="From.FilmNote" style="display:none;">
         <p id="dialogMessage"></p>
     </div>
 	
