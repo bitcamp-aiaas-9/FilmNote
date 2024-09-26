@@ -36,7 +36,7 @@ public class MovieDAO {
 	
     /** movieWrite.jsp */
 	// 영화 추가
-	
+	// 이미지 Object Storage 에 올리기
 	
 	
 	
