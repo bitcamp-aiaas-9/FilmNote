@@ -32,22 +32,22 @@ public class IndexDAO {
 	// 영화 목록
 	public List<MovieDTO> getMovieBoardList() {
 		System.out.println("getMovieBoardList() 호출");
-		List<MovieDTO> movieboardList = null;
+		List<MovieDTO> movieDTOList = null;
 		
 		SqlSession session = sqlSessionFactory.openSession();
-		movieboardList = session.selectList(indexMapper+".getMovieBoardList");
+		movieDTOList = session.selectList(indexMapper+".getMovieBoardList");
 		session.close();
 		
-		return movieboardList;
+		return movieDTOList;
 	}
 	
-	// 영화 정보
-	public MovieDTO getMovieBoardView(int mcode) {
-		System.out.println("getMovieBoardView(" + mcode + ") 호출");
-		MovieDTO movieDTO = null;
+	// 영화 API Data 추가
+	public MovieDTO insertMovieAPIData(MovieDTO movieDTO) {
+		System.out.println("insertMovieAPIData() 호출");
 		
 		SqlSession session = sqlSessionFactory.openSession();
-		movieDTO = session.selectOne(indexMapper+".getMovieBoardView", mcode);
+		session.insert(indexMapper+".insertMovieAPIData", movieDTO);
+		session.commit();
 		session.close();
 		
 		return movieDTO;

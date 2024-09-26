@@ -94,24 +94,22 @@ td {
 <jsp:include page="./common/header.jsp" />
 <div id="poster">
 	<table>
- 		<c:if test="${movieboardDTOList.size() != 0}">
-			<c:forEach var="row" begin="8" end="${movieboardDTOList.size()}" step="${movieInRowCount}">
+ 		<c:if test="${movieDTOList.size() != 0}">
+			<c:forEach var="row" begin="0" end="${movieDTOList.size()}" step="${movieInRowCount}">
 	    		<tr>
 	        	<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
-	            	<c:if test="${i < movieboardDTOList.size()}">
+	            	<c:if test="${i < movieDTOList.size()}">
 		                <td>
-		                    <a href="${pageContext.request.contextPath}/user/reviewView.do?mcode=${movieboardDTOList[i].getMcode()}">
+		                    <a href="${pageContext.request.contextPath}/user/reviewView.do?mcode=${movieDTOList[i].getMcode()}">
                            <div class="hover-info">
-                              <img src="${movieboardDTOList[i].getPoster() }" alt="" class="thumb" />
-                                 
-                              <!--<div class="type video"><span class="ico"></span></div>-->
+                              <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb" />
+                              
                               <!-- 오버시 나오는 정보 -->
                               <div class="over">
-                                 <span class="title">${movieboardDTOList[i].getTitle() }</span>
-                                       <span class="open_date">개봉 : ${movieboardDTOList[i].getRelease_date()}</span>
-                                       
-                                       <span class="director">감독 : ${movieboardDTOList[i].getDirector()}</span>
-                                       <span class="score">평점 : ${movieboardDTOList[i].getScore()}</span>
+                                 <span class="title">${movieDTOList[i].getTitle() }</span><br>
+                                       <span class="open_date">개봉 : ${movieDTOList[i].getRelease_date()}</span><br>
+                                       <span class="director">감독 : ${movieDTOList[i].getDirector()}</span><br>
+                                       <span class="score">평점 : ${movieDTOList[i].getScore()}</span><br>
                                  <span class="btn_detail">자세히 보기</span>
                               <!-- //오버시 나오는 정보 -->
                               </div>
@@ -119,9 +117,9 @@ td {
                         </a>
 		                </td>
 		            </c:if>
-	        </c:forEach>
-    </tr>
-</c:forEach>
+	        	</c:forEach>
+    			</tr>
+			</c:forEach>
 		</c:if>
 	</table>
 </div>

@@ -13,4 +13,8 @@
 		select * from movie_tb where mcode=#{mcode}
 	</select>
 	
+	<insert id="insertMovieAPIData" parameterType="movie">
+		insert into movie_tb values (null, #{title}, #{director}, #{genre}, #{release_date}, #{rating}, 0, #{synopsis}, #{poster})
+	</insert>
+	
 </mapper>
