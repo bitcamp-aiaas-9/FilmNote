@@ -12,7 +12,7 @@
 <title>영화 목록</title>
 </head>
 <body>
-<c:if test="${sessionScope.adminDTO.name} == 'admin'}">
+<c:if test="${sessionScope.adminDTO.aid == 'admin'}">
 <input type="hidden" id="adminId" value="${sessionScope.adminDTO.name} 님" />  
 <input type="hidden" id="pg" value="${requestScope.pg }" /> 
 
@@ -70,6 +70,14 @@
 </table>		       
 <div id="page-block">${moviePaging.pagingHTML }</div>
 </c:if>
+
+<c:if test="${sessionScope.adminDTO.aid != 'admin'}">
+    <script>
+        alert("관리자로 로그인하세요");
+        location.href = "${pageContext.request.contextPath}/admin/adminLogIn.do";
+    </script>
+</c:if>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/movieList.js"></script>
 </body>
