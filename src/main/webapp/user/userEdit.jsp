@@ -14,6 +14,7 @@
 	<div id="userEdit-jsp" class="userEdit-container">
 	
 		<h2>회원정보수정</h2>
+		<input type="hidden" name="checkpwd" id="checkpwd" value="${userDTO.upwd }">
 		<form id="userEditForm" name="userEditForm" method="post" action="/FilmNote/userEditDB.do">
 			<table>
 				<tr>
@@ -30,7 +31,7 @@
 				<!-- 현재 비밀번호 확인하는거 만들기 -->
 				<tr>
 					<th class="label"><label for="nowupwd"><i class="fa-solid fa-lock"></i> 현재 비밀번호</label></th>
-					<td class="input"><input type="password" name="nowupwd" id="nowupwd">
+					<td class="input"><input type="password" name="nowupwd" id="nowupwd" >
 						<div id="nowupwdDiv"></div></td>
 				</tr>
 
