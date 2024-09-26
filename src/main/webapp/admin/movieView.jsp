@@ -15,6 +15,7 @@
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/adminMenu.jsp" />
 
+<c:if test="${sessionScope.adminDTO.aid == 'admin'}">
 <div id="movie-detail">
 	<%-- <input type="hidden" id="memId" value="${sessionScope.memId }" /> --%>
 	<input type="hidden" name="mcode" id="mcode" value="${movieDTO.mcode }" />
@@ -71,7 +72,14 @@
    		<button class="view-btn" id="list-btn" onclick="window.location.href='${pageContext.request.contextPath }/admin/movieList.do?pg=${pg }';">목록</button>
    	</div>
 </div>
+</c:if>
 
+<c:if test="${sessionScope.adminDTO.aid != 'admin'}">
+    <script>
+        alert("관리자로 로그인하세요");
+        location.href = "${pageContext.request.contextPath}/admin/adminLogIn.do";
+    </script>
+</c:if>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/movieView.js"></script>

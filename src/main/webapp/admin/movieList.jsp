@@ -12,12 +12,12 @@
 <title>영화 목록</title>
 </head>
 <body>
-<c:if test="${sessionScope.adminDTO.aid == 'admin'}">
-<input type="hidden" id="adminId" value="${sessionScope.adminDTO.name} 님" />  
-<input type="hidden" id="pg" value="${requestScope.pg }" /> 
-
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/adminMenu.jsp" />
+
+<c:if test="${sessionScope.adminDTO.aid == 'admin'}">
+<input type="hidden" id="adminId" value="${sessionScope.adminDTO.aid }" />  
+<input type="hidden" id="pg" value="${requestScope.pg }" /> 
 
 <div class="card">
 	<div id="card-title">글 삭제 & 검색</div>
