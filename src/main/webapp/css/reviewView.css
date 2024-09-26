@@ -1,6 +1,46 @@
 /* FilmNote/src/main/webapp/css/reviewView.css */
 @charset "UTF-8";
 @import url("init.css");
+/* ==================== 영화 정보 ==================== */
+#movietitle span {
+	width: 100%;
+	text-align: center;
+	font-size: 50px;
+}
+
+#movietitle {
+	height: 120px;
+	border-bottom: none;
+}
+
+table {
+	margin: 20px 0;
+	width: 1020px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	text-align: center;
+}
+
+table tr {
+	width: 100%;
+}
+
+table th {
+	width: 10%;
+}
+
+th, td {
+	border-bottom: 1px solid #ddd;
+    padding: 10px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.info-cell {
+	text-align: left;
+}
+/* ==================== 영화 정보 ==================== */
+
 /* ==================== 페이징 ==================== */
 #page-block {
    margin: 20px auto;
@@ -22,80 +62,20 @@
    border-radius: 5px;
    padding: 5px 8px;
 }
-
 /* ==================== 페이징 ==================== */
-table tr {
-	width: 100%;
-}
 
-table th {
-	width: 10%;
-}
-
-div.menu-div:hover {
-	background: #DEC5D2;
-}
-
-form#movie-view-form {
-	margin: 40px 40px 20px 40px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.2);	
+/* ==================== 리뷰 컨테이너 ==================== */
+#reviewDiv{
+	margin-top: 50px;
+	padding-bottom: 250px;
 	
-}
-
-table {
-	margin: 20px 0;
-	width: 1020px;
-	border-collapse: collapse;
-	border-spacing: 0px;
-	text-align: center;
-}
-
-th, td {
 	border-bottom: 1px solid #ddd;
-    padding: 10px;
-    height: 50px;
-    vertical-align: middle;
 }
 
-.info-cell {
-	text-align: left;
+#reviewList {
+	margin-bottom: 20px;
 }
 
-
-div.button-container {
-	margin: 20px 50px;
-	/* margin-left: auto; */
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: 10px;
-}
-
-.view-btn {
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    padding: 5px 20px;
-    background: transparent;
-    border: 1px solid #ccc;
-    color: #5A5A5A;
-    text-decoration: none;
-    border-radius: 3px;
-    font-size: 16px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-}
-
-.view-btn:hover {
-    background: #DEC5D2;
-    color: #5A5A5A;
-    cursor: pointer;
-}
-
-/* ==================== 댓글 컨테이너 ==================== */
 .comment-content {
     padding: 15px;
     background: #f9f9f9;
@@ -109,7 +89,7 @@ div.button-container {
     display: flex;
     align-items: flex-start;
     padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
     position: relative;
 }
 
@@ -192,7 +172,7 @@ div.button-container {
 
 /* 댓글 작성 폼 */
 #post-comment {
-    padding-top: 15px;
+    padding-top: 25px;
     display: flex;
     flex-direction: column;
 }
@@ -202,9 +182,9 @@ div.button-container {
     margin-bottom: 10px;
 }
 
-#new-comment {
+#new-review {
     width: 100%;
-    height: 50px;
+    height: 200px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -227,7 +207,7 @@ div.button-container {
     margin: 0 5px;
 }
 
-#submit-comment {
+#submit-review {
     background: #005898;
     color: white;
     border: none;
@@ -237,7 +217,7 @@ div.button-container {
     transition: background 0.3s ease;
 }
 
-#submit-comment:hover {
+#submit-review:hover {
     background: #003d6a;
 }
 
@@ -248,4 +228,61 @@ div.button-container {
     gap: 10px;
 }
 
+#noReview {
+	font-size: 25px;
+	margin: 10px 0;
+}
+
+#new-score {
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* 세로 배치 */
+    align-items: flex-end; /* 오른쪽 정렬 */
+}
+
+#score-num, #score-star {
+    width: 240px;
+}
+
+#score-star {
+    gap: 5px;
+}
+
+#scoreText {
+    font-size: 15px;
+}
+
+.score {
+    font-size: 20px;
+}
+
 /* ==================== 댓글 컨테이너 ==================== */
+
+/* ==================== footer ==================== */
+
+#footer {
+	margin: 20px 50px;
+}
+
+#github {
+	width: 180px;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 10px;
+}
+
+#footer-a {
+	display: block;
+	width: 180px;
+}
+#footer-p {
+	margin-bottom: 10px;
+}
+
+#gitlink {
+	line-height: 35px;
+	height: 35px;
+}
+/* ==================== footer ==================== */

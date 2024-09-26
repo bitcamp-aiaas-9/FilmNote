@@ -34,7 +34,18 @@ public class ReviewDAO {
 		}
 	}
 	
+	// 리뷰 추가
+	public void insertReviewDTO(ReviewDTO reviewDTO) {
+		System.out.println("insertReviewDTO() 호출");
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert(reviewMapper + ".insertReviewDTO", reviewDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	
+	// mcode에 대한 리뷰 리스트
 	public List<ReviewDTO> getReviewList(int mcode) {
+		System.out.println("getReviewList(" + mcode + ") 호출");
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		List<ReviewDTO> reviewDTOList = sqlSession.selectList(reviewMapper + ".getReviewList", mcode);
 		sqlSession.close();
@@ -42,4 +53,13 @@ public class ReviewDAO {
 		return reviewDTOList;
 	}
 	
+	// mcode에 대한 리뷰 개수
+	public int getTotalReview() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		int totalA = 0;      
+		totalA = sqlSession.selectOne("movieSQL.getTotalA");        
+		sqlSession.close();    
+		
+		return totalA;
+	}
 }

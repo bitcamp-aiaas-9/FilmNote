@@ -19,7 +19,7 @@ public class MovieViewService implements CommandProcess {
 		
 		// 2. DB
 		MovieDAO movieDAO = MovieDAO.getInstance();
-		movieDAO.updateScore(mcode);
+		//movieDAO.updateScore(mcode);
 		MovieDTO movieDTO = movieDAO.getBoard(mcode);		
 		
 		// 3. Response

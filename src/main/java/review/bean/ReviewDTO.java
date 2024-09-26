@@ -12,5 +12,6 @@ public class ReviewDTO {
     private String user_id;      // 작성자 아이디
     private String content;      // 리뷰 내용
     private String logtime;      // 작성 시간 YYYY-MM-DD hh:mm:ss
+    private int score;		 // 별점
 }
 
