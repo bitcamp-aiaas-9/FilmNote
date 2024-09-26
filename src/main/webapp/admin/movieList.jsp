@@ -12,6 +12,10 @@
 <title>영화 목록</title>
 </head>
 <body>
+<c:if test="${sessionScope.adminDTO.name} == 'admin'}">
+<input type="hidden" id="adminId" value="${sessionScope.adminDTO.name} 님" />  
+<input type="hidden" id="pg" value="${requestScope.pg }" /> 
+
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/adminMenu.jsp" />
 
@@ -34,9 +38,6 @@
 	</div>
 </div>
 
-
-<input type="hidden" id="memId" value="${sessionScope.memId }" />  
-<input type="hidden" id="pg" value="${requestScope.pg }" /> 
 <table>
 	<tr>
 		<th width="20%">
@@ -68,7 +69,7 @@
 	</c:if> 
 </table>		       
 <div id="page-block">${moviePaging.pagingHTML }</div>
-
+</c:if>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/movieList.js"></script>
 </body>
