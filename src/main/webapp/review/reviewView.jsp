@@ -38,10 +38,16 @@ span:hover {
 </style>
 </head>
 <body>
+<img src="${movieboardDTO.getPoster() }" alt="" class="thumb" />
+<div class="over">
+	<span class="title">${movieboardDTOList[i].getTitle() }</span><br>
+	<span class="open_date">개봉 : ${movieboardDTOList[i].getRelease_date()}</span><br>
+	<span class="director">감독 : ${movieboardDTOList[i].getDirector()}</span><br>
+	<span class="score">평점 : ${movieboardDTOList[i].getScore()}</span><br>
+	<span class="btn_detail">자세히 보기</span>
+</div>
 
-
-
-<div id="page-block">${boardPaging.pagingHTML }</div>
+<%-- <div id="page-block">${boardPaging.pagingHTML }</div> --%>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/reviewView.js"></script>
 </body>

@@ -13,14 +13,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import movie.dao.MovieDAO;
-
 public class ReviewDAO {
 	// 싱글톤 인스턴스 생성
-	private static MovieDAO instance = new MovieDAO();
+	private static ReviewDAO instance = new ReviewDAO();
 	private SqlSessionFactory sqlSessionFactory;
     
-	public static MovieDAO getInstance() {
+	public static ReviewDAO getInstance() {
 		return instance;
 	}
 	
@@ -32,18 +30,5 @@ public class ReviewDAO {
 			e.printStackTrace();
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
 }
