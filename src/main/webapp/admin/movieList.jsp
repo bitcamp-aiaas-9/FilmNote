@@ -1,4 +1,4 @@
-<%-- FilmNote/src/main/webapp/admin/movieBoard.jsp --%>
+<%-- FilmNote/src/main/webapp/admin/movieList.jsp --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="../image/film_favicon.png" type="image/png">
-<link rel="stylesheet" href="../css/movieBoard.css">
+<link rel="stylesheet" href="../css/movieList.css">
 <title>영화 목록</title>
 </head>
 <body>
@@ -39,18 +39,15 @@
 <input type="hidden" id="pg" value="${requestScope.pg }" /> 
 <table>
 	<tr>
-		<th width="15%">
+		<th width="20%">
 			<input type="checkbox" id="all_check" class="check-size" /> 영화 코드
 		</th>
-		<th width="40%">영화 제목</th>
+		<th width="30%">영화 제목</th>
 		<th width="30%">영화 감독</th>
-		<th width="15%">영화 등급</th>
+		<th width="20%">영화 관람가</th>
 	</tr>
-			
-
 	
-	
-	
+	<c:if test="${requestScope.list != null }">
 		<c:forEach var="movieDTO" items="${list }">
 			<tr>
 				<td align="center">
@@ -68,17 +65,11 @@
 				</td>
 			</tr> 	    
  	    </c:forEach>
-	    
-	<%--
-	<c:if test="${requestScope.list != null }">
-		<c:forEach var="imageboardDTO" items="${list }">
-
-	</c:if>   
- 	--%>
+	</c:if> 
 </table>		       
 <div id="page-block">${moviePaging.pagingHTML }</div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="../js/movieBoard.js"></script>
+<script type="text/javascript" src="../js/movieList.js"></script>
 </body>
 </html>

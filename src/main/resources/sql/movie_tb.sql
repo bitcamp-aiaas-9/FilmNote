@@ -6,7 +6,7 @@ CREATE TABLE movie_tb(
 	 release_date DATE NOT NULL, -- 개봉일
 	 rating INT NOT NULL, -- 영화 등급 : 0, 15, 19
 	 score FlOAT DEFAULT 0.00, -- 영화평점
-	 synopsis VARCHAR(100) NOT null, -- 줄거리
-	 poster VARCHAR(100), -- 영화 포스터
+	 synopsis VARCHAR(4000) NOT null, -- 줄거리
+	 poster VARCHAR(500), -- 영화 포스터
 	 primary Key(mcode)
 );

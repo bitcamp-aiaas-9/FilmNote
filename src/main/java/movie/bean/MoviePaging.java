@@ -8,7 +8,7 @@ public class MoviePaging {
 
 	private int currentPage; // 현재 페이지
 	private int pageBlock; // [이전] [1] [2] [3] [다음]
-	private int pageSize; // 1페이지당 5개씩
+	private int pageSize; // 1페이지당 글 개수
 	private int totalA; // 총 글 수
 	private StringBuffer pagingHTML;
 	
