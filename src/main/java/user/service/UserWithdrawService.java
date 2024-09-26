@@ -14,3 +14,4 @@ public class UserWithdrawService implements CommandProcess {
 	}
 
 }
+/* session.invalidate(); 세션 삭제*/

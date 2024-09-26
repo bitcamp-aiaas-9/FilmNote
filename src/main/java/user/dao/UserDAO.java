@@ -52,11 +52,19 @@ public class UserDAO {
 		}
 	}
 	
-	public void userEdit(UserDTO user) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.update("userSQL.userEdit", user);
-		sqlSession.commit();
-		sqlSession.close();
+	public void userEdit(UserDTO user, String nowupwd) {
+		
+		  SqlSession sqlSession = sqlSessionFactory.openSession();
+		  
+		  String pwdCheck = pwdCheck(user.getUid());
+		  
+		  if(pwdCheck != null && pwdCheck.equals(nowupwd)) {
+			  sqlSession.update("userSQL.userEdit", user);
+			  sqlSession.commit();
+		  } else {
+			  throw new IllegalArgumentException("현재 비밀번호가 일치하지 않습니다.");
+		  }
+		  sqlSession.close();
 	}
 	
 	public void withdraw(UserDTO user) {
@@ -71,4 +79,14 @@ public class UserDAO {
 		sqlSession.close();		 	
 		return userDTO;
 	}
+	
+	private String pwdCheck(String id) {
+	    String pwdCheck = null;
+	    SqlSession sqlSession = sqlSessionFactory.openSession();
+	    pwdCheck = sqlSession.selectOne("userSQL.pwdCheck", id);
+	    sqlSession.close();	    
+	    return pwdCheck;
+	}
+	
+	
 }

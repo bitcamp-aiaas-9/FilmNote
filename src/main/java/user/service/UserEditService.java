@@ -15,14 +15,14 @@ public class UserEditService implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("userId");
+		UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");
 
-		UserDAO userDAO = UserDAO.getInstance();
-		UserDTO userDTO = userDAO.getMember("id");
+		if (userDTO == null) {
+			return "/user/userSignIn.jsp";
+		}
 
-		request.setAttribute("userDTO", userDTO);
-
-		return "/user/userEdit.jsp";
+		// 클라이언트로부터 사용자 정보를 받을 필요 없음
+		return "/user/userEdit.jsp"; // 사용자 정보 수정 페이지
 	}
 
 }

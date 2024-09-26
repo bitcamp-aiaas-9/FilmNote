@@ -13,11 +13,11 @@ public class UserEditDBService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
+
 		UserDTO userDTO = new UserDTO();
-		
+
 		userDTO.setUname(request.getParameter("uname"));
-		userDTO.setUid(request.getParameter("uid")); 
+		userDTO.setUid(request.getParameter("uid"));
 		userDTO.setUpwd(request.getParameter("upwd"));
 		userDTO.setGender(request.getParameter("gender"));
 		userDTO.setBirth1(request.getParameter("birth1"));
@@ -28,18 +28,20 @@ public class UserEditDBService implements CommandProcess {
 		userDTO.setTel1(request.getParameter("tel1"));
 		userDTO.setTel2(request.getParameter("tel2"));
 		userDTO.setTel3(request.getParameter("tel3"));
+
+		String nowupwd = request.getParameter("nowupwd");
 		
-		if(userDTO.getUid() == null || userDTO.getUid().isEmpty()) {
-			return "FilmNote.error.jsp"; //리다이렉트
+		if (userDTO.getUid() == null || userDTO.getUid().isEmpty()) {
+			return "FilmNote.error.jsp"; // 리다이렉트
 		}
-		
+
 		UserDAO userDAO = UserDAO.getInstance();
-		userDAO.userEdit(userDTO);
-		
+		userDAO.userEdit(userDTO, nowupwd);
+
 		HttpSession session = request.getSession();
-		session.invalidate();
-		
-		return "/FilmNote/user/userEdit.jsp";
+		session.setAttribute("userDTO", userDTO);
+
+		return "/FilmNote/user/index.do";
 
 	}
 }

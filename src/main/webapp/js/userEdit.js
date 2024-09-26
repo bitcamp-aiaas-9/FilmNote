@@ -43,11 +43,16 @@ function userEdit() {
 //회원정보수정
 $('#userEditBtn').click(function() {
 	if (userEdit()) {
+		let serializedData =$('#userEditForm').serialize();
+		
+		console.log('Data : ', serializedData);
 		$.ajax({
 			type: 'post',
-			url: '/FilmNote/user/userEdit.do',
-			data: $('form[name="userEditForm"]').serialize(),
-			success: function() {
+			url: '/FilmNote/user/userEditDB.do',
+			data: serializedData,
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+			success: function(response) {
+				console.log('Response:', response);
 				alert('회원정보 수정완료');
 				location.href = '/FilmNote/index.do';
 			},
@@ -56,10 +61,4 @@ $('#userEditBtn').click(function() {
 			}
 		});
 	}
-});
-
-//회원탈퇴
-
-$('#WithdrawBtn').click(function() {
-	location.href = 'FilmNote/userWithdraw.do';
 });

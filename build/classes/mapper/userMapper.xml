@@ -5,11 +5,12 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userSQL">
 
-	<!-- 회원정보 수정 -->
+	
+	<!--  회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴-->
+	<!--  회원정보 수정 -->
 	<update id="userEdit" parameterType="user.bean.UserDTO">
 		UPDATE user_tb SET
 		uname = #{uname},
-		uid = #{uid},
 		upwd = #{upwd},
 		gender = #{gender},
 		birth1 = #{birth1},
@@ -22,17 +23,26 @@
 		tel3 = #{tel3}
 		WHERE uid = #{uid}
 	</update>
+	
+	<!-- 비밀번호 체크 -->
+<select id="pwdCheck" parameterType="String" resultType="String">
+    SELECT upwd FROM user_tb WHERE uid = #{uid}
+</select>
 
 	<!-- 회원탈퇴 -->
 	<delete id="withdraw" parameterType="String">
 		DELETE FROM user_tb
-		WHERE uid = #{uid};
+		WHERE uid
+		= #{uid};
 	</delete>
 
 	<!-- uid에 해당하는 정보 가져오기 -->
-	<select id="getMember" parameterType="String" resultType="user.bean.UserDTO">
+	<select id="getMember" parameterType="String"
+		resultType="user.bean.UserDTO">
 		SELECT * FROM user_tb where uid=#{uid}
 	</select>
+	
+	<!--  회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴 회원정보 수정 ~ 탈퇴-->
 
 	<!-- 사용자 로그인 -->
 	<select id="loginUser" parameterType="map" resultType="user">

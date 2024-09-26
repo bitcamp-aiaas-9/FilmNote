@@ -14,7 +14,7 @@
 	<div id="userEdit-jsp" class="userEdit-container">
 	
 		<h2>회원정보수정</h2>
-		<form name="userEditForm" method="post" action="#">
+		<form id="userEditForm" name="userEditForm" method="post" action="/FilmNote/userEditDB.do">
 			<table>
 				<tr>
 					<th class="label"><label for="uname"><i class="fa-solid fa-user"></i> 이름</label></th>
@@ -27,25 +27,30 @@
 					<td class="input"><input type="text" name="uid" id="uid" value="${userDTO.uid }" >
 						<div id="uidDiv"></div></td>
 				</tr>
+				<!-- 현재 비밀번호 확인하는거 만들기 -->
+				<tr>
+					<th class="label"><label for="nowupwd"><i class="fa-solid fa-lock"></i> 현재 비밀번호</label></th>
+					<td class="input"><input type="password" name="nowupwd" id="nowupwd">
+						<div id="nowupwdDiv"></div></td>
+				</tr>
 
 				<tr>
-					<th class="label"><label for="upwd"><i class="fa-solid fa-lock"></i> 비밀번호</label></th>
-					<td class="input"><input type="password" name="upwd" id="upwd" value="${userDTO.upwd }">
+					<th class="label"><label for="upwd"><i class="fa-solid fa-lock"></i>수정할 비밀번호</label></th>
+					<td class="input"><input type="password" name="upwd" id="upwd">
 						<div id="upwdDiv"></div></td>
 				</tr>
 
 				<tr>
 					<th class="label"><label for="reupwd"><i class="fa-solid fa-lock"></i> 비밀번호 확인</label></th>
-					<td class="input"><input type="password" name="reupwd" id="reupwd" value="${userDTO.upwd }">
+					<td class="input"><input type="password" name="reupwd" id="reupwd">
 						<div id="reupwdDiv"></div></td>
 				</tr>
 
 		         <tr>
-                    <th class="label"><label for="gender"><i class="fa-solid fa-venus-mars"></i> 성별</label></th>
+                            <th class="label"><label for="gender"><i class="fa-solid fa-venus-mars"></i> 성별</label></th>
                     <td class="input">
-                        <label><input type="radio" id="male" name="gender" value="male"> 남자 </label>
-                        <label><input type="radio" id="female" name="gender" value="female"> 여자</label>
-                    </td>
+                        <label><input type="radio" id="male" name="gender" value="M" ${userDTO.gender == 'M' ? 'checked' : ''}> 남자 </label>
+                        <label><input type="radio" id="female" name="gender" value="F" ${userDTO.gender == 'F' ? 'checked' : ''}> 여자</label> </td>
                 </tr>
                 
                             <tr>
