@@ -48,27 +48,29 @@
 		<th width="20%">영화 관람가</th>
 	</tr>
 	
-	<c:if test="${requestScope.list != null }">
-		<c:forEach var="movieDTO" items="${list }">
-			<tr>
-				<td align="center">
-					<input type="checkbox" name="mcodes" class="board-list-check" value="${movieDTO.mcode}" /> 
-					${movieDTO.mcode }
-					<input type="hidden" id="mcode" value="${movieDTO.mcode }" />
-				</td>      
-				<td align="left">
-					<a href="#" class="subject-a">${movieDTO.title }</a>
-				</td>
-				<td align="center">
-					${movieDTO.director }
-				</td>
-				<td align="center">
-					<c:if test="${movieDTO.rating == 0}">전체</c:if>
-					<c:if test="${movieDTO.rating != 0}">${movieDTO.rating }세</c:if>
-				</td>
-			</tr> 	    
- 	    </c:forEach>
-	</c:if> 
+	<tbody id="movieTableBody">
+		<c:if test="${requestScope.list != null }">
+			<c:forEach var="movieDTO" items="${list }">
+				<tr>
+					<td align="center">
+						<input type="checkbox" name="mcodes" class="board-list-check" value="${movieDTO.mcode}" /> 
+						${movieDTO.mcode }
+						<input type="hidden" id="mcode" value="${movieDTO.mcode }" />
+					</td>      
+					<td align="left">
+						<a href="#" class="subject-a">${movieDTO.title }</a>
+					</td>
+					<td align="center">
+						${movieDTO.director }
+					</td>
+					<td align="center">
+						<c:if test="${movieDTO.rating == 0}">전체</c:if>
+						<c:if test="${movieDTO.rating != 0}">${movieDTO.rating }세</c:if>
+					</td>
+				</tr> 	    
+	 	    </c:forEach>
+		</c:if> 
+	</tbody>
 </table>		       
 <div id="page-block">${moviePaging.pagingHTML }</div>
 </c:if>

@@ -5,12 +5,9 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
-    max-width: 800px;
     margin: 100px auto;
     padding: 20px;
     background-color: white;
@@ -42,6 +39,10 @@ button {
 }
 .strong{
 	color:red;
+}
+.strong1{
+	color:red;
+	font-size:22px;
 }
 
 #withdrawBtn {

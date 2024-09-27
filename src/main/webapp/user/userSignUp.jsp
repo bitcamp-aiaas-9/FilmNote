@@ -110,6 +110,9 @@
             </table>
         </form>
     </div>
+    
+    <!-- 경고 메시지를 표시하는 영역 -->
+		<div id="warningMessage" class="show" ></div>
 
     <!-- 모달 다이얼로그 -->
     <div id="dialog" title="FilmNote" style="display:none;">

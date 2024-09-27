@@ -36,12 +36,18 @@ public class MovieDAO {
 	
 	
     /** movieWrite.jsp */
-	// 영화 추가
+	// 영화 등록
 	// 이미지 Object Storage 에 올리기
 	
 	
 	
-	/** movieBoard.jsp */
+	
+	
+	
+	
+	
+	
+	/** movieList.jsp */
 	// 영화 목록
 	public List<MovieDTO> movieList(int startNum, int endNum) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -102,5 +108,26 @@ public class MovieDAO {
             sqlSession.close();
         }
     }
+
+
     
+    
+    
+    
+    
+    
+	/** movieList.jsp */
+	// 영화 검색
+    
+	
+    
+    
+    
+	
+	
+
+    
+    
+
+	
 }
