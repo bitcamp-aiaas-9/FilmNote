@@ -5,7 +5,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movieSQL">
 	<!-- 영화 등록 -->
-	<insert id="boardWrite" parameterType="">
+	<insert id="movieWrite" parameterType="movie">
 		INSERT INTO movie_tb(title, director, genre, release_date, rating, score, synopsis, poster)
 		VALUES (#{movieTitle}, #{movieDirector}, #{movieGenre}, #{movieRelaseDate}, #{movieRating}, #{movieScore}, #{movieSynopsis}, #{moviePoster})
 	
