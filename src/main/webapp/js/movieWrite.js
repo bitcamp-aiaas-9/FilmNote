@@ -1,6 +1,8 @@
 // FilmNote/src/main/webapp/js/movieWrite.js
 
 $(function() {
+	
+	/** adminMenu.jsp backgorund color */
 	document.getElementById('movie-write-menu').style.background = '#DEC5D2';
 
     $('#movie-list-menu').hover(
@@ -19,7 +21,23 @@ $(function() {
     );
 	
 	
-	$('#movie-write-btn').click(function(event){
+	/** 이미지 등록 */
+	$('#moviePoster').change(function(){
+		readURL(this);
+	});
+	
+	function readURL(input){
+	    var reader = new FileReader();
+	    reader.onload = function(e){
+	        $('#showImg').attr('src',e.target.result);
+	    }
+	    reader.readAsDataURL(input.files[0]);
+	}
+	
+	
+	
+	/** 유효성 검사 */
+	$('#movieWriteBtn').click(function(event){
 		event.preventDefault(); // 폼 제출 방지
 		
 		let movieCode = $('#movieCode').val().trim();
@@ -30,77 +48,110 @@ $(function() {
 		let movieRating = $('#movieRating').val().trim();
 		let movieScore = $('#movieScore').val().trim();
 		let movieSynopsis = $('#movieSynopsis').val().trim();
+		let moviePoster = $('#moviePoster').val().trim();
+		// let moviePoster = $('#showImg').attr('src');
 		
 		
 		// 오류 메시지 초기화 및 숨김
-		$('.validation').hide();
+		$('.validationDiv').hide();
 		
 		
-		// 영화 코드
+		// 영화 코드 입력 검사
 		if ( movieCode === ''){
-		    $('#movieCode').html('영화 코드를 입력하세요').show();
+		    $('#movieCodeDiv').html('영화 코드를 입력하세요').show();
 		    isValid = false;
 		}
 		
-		// 영화 제목
+		// 영화 제목 입력 검사
 		if ( movieTitle === ''){
-		    $('#movieTitle').html('영화 제목을 입력하세요').show();
+		    $('#movieTitleDiv').html('영화 제목을 입력하세요').show();
 		    isValid = false;
 		}
 		
-		// 영화 감독
+		// 영화 감독 입력 검사
 		if ( movieDirector === ''){
-		    $('#movieDirector').html('영화 감독을 입력하세요').show();
+		    $('#movieDirectorDiv').html('영화 감독을 입력하세요').show();
 		    isValid = false;
 		}
 		
-		// 영화 장르
+		// 영화 장르 입력 검사
 		if ( movieGenre === ''){
-		    $('#movieGenre').html('영화 장르를 입력하세요').show();
+		    $('#movieGenreDiv').html('영화 장르를 입력하세요').show();
 		    isValid = false;
 		}
 		
-		// 영화 개봉일
+		// 영화 개봉일 입력 검사
 		if ( movieReleaseDate === ''){
-		    $('#movieReleaseDate').html('영화 개봉일을 입력하세요').show();
+		    $('#movieReleaseDateDiv').html('영화 개봉일을 입력하세요').show();
 		    isValid = false;
 		}
 		
-		// 영화 관람가
+		// 영화 관람가 입력 검사
 		if ( movieRating === ''){
-		    $('#movieRating').html('영화 관람가를 입력하세요').show();
+		    $('#movieRatingDiv').html('영화 관람가를 입력하세요').show();
 		    isValid = false;
 		}
 		
-		// 영화 평점
+		// 영화 평점 입력 검사
 		if ( movieScore === ''){
-		    $('#movieScore').html('영화 평점을 입력하세요').show();
+		    $('#movieScoreDiv').html('영화 평점을 입력하세요').show();
 		    isValid = false;
 		}
 		
-		// 영화 줄거리
-		if ( movieSynopsis=== ''){
-		    $('#movieSynopsis').html('영화 줄거리를 입력하세요').show();
+		// 영화 줄거리 입력 검사
+		if ( movieSynopsis === ''){
+		    $('#movieSynopsisDiv').html('영화 줄거리를 입력하세요').show();
 		    isValid = false;
 		}
 		
-		// 영화 포스터
-		if ( moviePoster=== ''){
-		    $('#moviePoster').html('영화 포스터를 등록하세요').show();
+		// 영화 포스터 입력 검사
+		if ( moviePoster === ''){
+		    $('#moviePosterDiv').html('영화 포스터를 등록하세요').show();
 		    isValid = false;
 		}
-		
-		
-		
-		
-		
-		
 		
 	});
 	
+	// 입력 내용 초기화
+	$('#resetBtn').click(function(){
+	    $('.validationDiv').hide();
+		
+		// <form> input 초기화
+	    $('form[name="movie-write-form"]')[0].reset();
+		
+		// <form> 이미지 초기화
+		$('#showImg').attr('src', '');
+	});	
 	
+	// 입력 필드에 포커스가 갈 때 오류 메시지 숨기기
+	$('#movieCode').focus(function(){
+			$('#movieCodeDiv').hide();
+	});	
+	$('#movieTitle').focus(function(){
+			$('#movieTitleDiv').hide();
+	});	
+	$('#movieDirector').focus(function(){
+			$('#movieDirectorDiv').hide();
+	});	
+	$('#movieGenre').focus(function(){
+			$('#movieGenreDiv').hide();
+	});	
+	$('#movieReleaseDate').focus(function(){
+			$('#movieReleaseDateDiv').hide();
+	});	
+	$('#movieRating').focus(function(){
+			$('#movieRatingDiv').hide();
+	});	
+	$('#movieScore').focus(function(){
+			$('#movieScoreDiv').hide();
+	});	
+	$('#movieSynopsis').focus(function(){
+			$('#movieSynopsisDiv').hide();
+	});	
 	
-	
+	$('#showImg').click(function(){
+			$('#moviePosterDiv').hide();
+	});	
 	
 	
 });
