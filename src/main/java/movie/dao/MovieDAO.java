@@ -37,15 +37,17 @@ public class MovieDAO {
 	
     /** movieWrite.jsp */
 	// 영화 등록
-	// 이미지 Object Storage 에 올리기
-	
-	
-	
-	
-	
-	
-	
-	
+	public void movieWrite(MovieDTO movieDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert("movieSQL.movieWrite", movieDTO);
+        sqlSession.commit();
+        sqlSession.close();		
+	}
+		
+		
+		
+		
+		
 	
 	/** movieList.jsp */
 	// 영화 목록
