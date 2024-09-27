@@ -84,15 +84,11 @@ public class MovieDAO {
 		return movieDTO;
 	}
 
-	// 영화 평점 업데이트
-	public void updateMovieScore(int mcode, double score) {
-		System.out.println("updateMovieScore() 호출");
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("mcode", mcode);
-		map.put("score", score);
-		
+	// 영화 평점 업데이트: 리뷰 추가 및 수정 시 호출
+	public void updateMovieScore(int mcode) {
+		System.out.println("updateMovieScore(" + mcode + ") 호출");
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.update("movieSQL.updateMovieScore", map);
+		sqlSession.update("movieSQL.updateMovieScore", mcode);
 		sqlSession.commit();
 		sqlSession.close();
 	}
@@ -112,7 +108,6 @@ public class MovieDAO {
             sqlSession.close();
         }
     }
-
 
 
     
@@ -136,4 +131,3 @@ public class MovieDAO {
 
 	
 }
-

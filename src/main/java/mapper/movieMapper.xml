@@ -26,7 +26,14 @@
 	
 	<!-- 영화 평점 -->
 	<update id="updateMovieScore" parameterType="java.util.Map">
-		UPDATE movie_tb SET score=#{score} WHERE mcode = #{mcode}
+		update movie_tb mt, (
+						select mt.mcode mcode, sum(rt.score)/count(rt.score) avg_score 
+						from review_tb rt 
+						left join movie_tb mt on rt.movie_code = mt.mcode 
+						where rt.movie_code = #{mcode}
+					) t 
+		set mt.score = t.avg_score 
+		where mt.mcode = t.mcode;
 	</update>
 	
 	
