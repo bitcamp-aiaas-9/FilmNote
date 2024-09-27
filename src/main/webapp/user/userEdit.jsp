@@ -11,7 +11,7 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div id="userEdit-jsp" class="userEdit-container">
+	<div id="userEdit-jsp" class="userEdit-jsp">
 	
 		<h2>회원정보수정</h2>
 		<input type="hidden" name="checkpwd" id="checkpwd" value="${userDTO.upwd }">
@@ -32,7 +32,7 @@
 				<tr>
 					<th class="label"><label for="nowupwd"><i class="fa-solid fa-lock"></i> 현재 비밀번호</label></th>
 					<td class="input"><input type="password" name="nowupwd" id="nowupwd" >
-						<div id="nowupwdDiv"></div></td>
+						<div id="nowupwdDiv"></div></td>  <!-- style="margin: 5px 20px" -->
 				</tr>
 
 				<tr>
