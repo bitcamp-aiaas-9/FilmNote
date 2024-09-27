@@ -40,6 +40,10 @@ button {
 .strong{
 	color:red;
 }
+.strong1{
+	color:red;
+	font-size:22px;
+}
 
 #withdrawBtn {
     background-color: #d9534f;

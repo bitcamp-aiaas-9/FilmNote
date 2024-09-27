@@ -85,7 +85,7 @@ $('#upwd').blur(function() {
 
 $('#reupwd').blur(function() {
 	if ($(this).val().trim() === '') {
-		$('#reupwdDiv').html('수정할 비밀번호를 입력해주세요.').css('color', 'red');
+		$('#reupwdDiv').html('수정하비밀번호를 다시 입력해주세요.').css('color', 'red');
 	} else if ($('#upwd').val() !== $('#reupwd').val()) {
 		$('#reupwdDiv').html('비밀번호가 일치하지 않습니다.').css('color', 'red');
 	} else {
@@ -126,7 +126,7 @@ $('#userEditBtn').click(function() {
 						}
 					});
 				} else {
-					$('#nowupwdDiv').html('AJAX현재 비밀번호가 일치하지 않습니다.').css('color', 'red');
+					$('#nowupwdDiv').html('현재 비밀번호가 일치하지 않습니다.').css('color', 'red');
 					$('#nowupwd').focus();
 				}
 			}, error: function(e) {
