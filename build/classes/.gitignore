@@ -1,9 +1,7 @@
-/admin/
-/com/
-/db.properties
-/main/
 /mapper/
 /movie/
-/mybatis-config.xml
 /review/
+/main/
+/admin/
+/com/
 /user/

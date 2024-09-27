@@ -4,6 +4,7 @@ CREATE TABLE review_tb(
 	 user_id VARCHAR(30), -- 작성자 아이디
 	 content VARCHAR(100) NOT NULL, -- 리뷰 내용
 	 logtime DATETIME default now(), -- 작성시간
+	 score INT NOT NULL, -- 별점
 	 primary Key(rcode),
 	 FOREIGN KEY(movie_code)
 	 	REFERENCES movie_tb(mcode) ON DELETE cascade

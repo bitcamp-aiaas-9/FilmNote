@@ -77,7 +77,20 @@ public class MovieDAO {
 		sqlSession.close();
 		return movieDTO;
 	}
-	
+
+	// 영화 평점 업데이트
+	public void updateMovieScore(int mcode, double score) {
+		System.out.println("updateMovieScore() 호출");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("mcode", mcode);
+		map.put("score", score);
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("movieSQL.updateMovieScore", map);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+
 	// 영화 삭제 - 1개 이상 삭제 (1개도 가능)
     public void deleteMovies(String[] mcodes) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -93,10 +106,5 @@ public class MovieDAO {
             sqlSession.close();
         }
     }
-
-
-	
-	
-	
 	
 }
