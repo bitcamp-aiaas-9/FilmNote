@@ -13,7 +13,7 @@ public class MoviePaging {
 	private StringBuffer pagingHTML;
 	
 	
-	public void makePagingHTML() {
+	public void makePagingHTML(String onclickFun) {
 		pagingHTML = new StringBuffer();
 		
 		int totalP = (totalA + pageSize - 1) / pageSize;
@@ -22,16 +22,16 @@ public class MoviePaging {
 		if (endPage > totalP) endPage = totalP;
 		
 		if (startPage != 1)
-				pagingHTML.append("<span id='paging' onclick='moviePaging(" + (startPage - 1) + ")'>이전</span>");
+				pagingHTML.append("<span id='paging' onclick='" + onclickFun + "(" + (startPage - 1) + ")'>이전</span>");
 		
 		for (int i = startPage; i<=endPage; i++ ) {
 			if ( i == currentPage)
-				pagingHTML.append("<span id='currentPaging' onclick='moviePaging(" + i + ")'>" + i + "</span>");
+				pagingHTML.append("<span id='currentPaging' onclick='" + onclickFun + "(" + i + ")'>" + i + "</span>");
 			else
-				pagingHTML.append("<span id='paging' onclick='moviePaging(" + i + ")'>" + i + "</span>");
+				pagingHTML.append("<span id='paging' onclick='" + onclickFun + "(" + i + ")'>" + i + "</span>");
 		}
 		
 		if (endPage < totalP)
-			pagingHTML.append("<span id='paging' onclick='moviePaging(" + (endPage + 1) + ")'>다음</span>");
+			pagingHTML.append("<span id='paging' onclick='" + onclickFun + "(" + (endPage + 1) + ")'>다음</span>");
 	}
 }

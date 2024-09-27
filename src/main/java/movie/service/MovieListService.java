@@ -39,7 +39,7 @@ public class MovieListService implements CommandProcess {
     moviePaging.setPageBlock(5);
     moviePaging.setPageSize(10);
     moviePaging.setTotalA(totalA);
-    moviePaging.makePagingHTML();		
+    moviePaging.makePagingHTML("moviePaging");		
     
 	// 3. Response
     request.setAttribute("pg", pg);

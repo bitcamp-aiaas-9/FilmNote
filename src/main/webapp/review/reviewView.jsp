@@ -151,7 +151,7 @@
 	    	</div>
 	    </form>
 	</div>
-	<%-- <div id="page-block">${boardPaging.pagingHTML}</div> --%>
+	<div id="page-block">${boardPaging.pagingHTML}</div>
 </div>
 
 <div id="footer">
