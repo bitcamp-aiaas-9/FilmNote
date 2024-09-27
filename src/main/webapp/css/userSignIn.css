@@ -132,12 +132,25 @@ button:hover {
 /* 로그인 경고 메시지 */
 #loginWarningMessage {
     text-align: center;
-    color: #e74c3c;
+    color: #e74c3c; /* 기존 빨간색 경고 메시지 */
     margin-top: 10px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 12pt;
     font-weight: bold;
     
+    /* 네온사인 효과: 진한 청록색과 자주색으로 그라데이션 그림자 적용 */
+    text-shadow: 
+        0 0 5px rgba(0, 255, 128, 0.8),   /* 진한 청록색 그림자 */
+        0 0 10px rgba(255, 0, 128, 0.6),  /* 자주색 그림자 */
+        0 0 15px rgba(255, 255, 255, 0.8); /* 흰색 그림자 */
+
+    
     transition: opacity 1.5s ease-in-out, text-shadow 1.5s ease-in-out;
+}
+
+/* 'show' 클래스가 적용되면 메시지를 보이게 함 */
+.show {
+    display: block;
+    opacity: 1;
 }
 
