@@ -9,6 +9,7 @@ $('#emailSelect').change(function() {
 //유효성 검사 함수
 function userEdit() {
 	let isValid = true;
+
 	$('#unameDiv').empty();
 	$('#uidDiv').empty();
 	$('#upwdDiv').empty();
@@ -25,21 +26,18 @@ function userEdit() {
 	}
 
 	if ($('#nowupwd').val().trim() === '') {
-		$('#nowupwdDiv').html('현재 비밀번호!');
-		isValid = false;
-	}
 
-	if ($('#upwd').val().trim() === '') {
-		$('#upwdDiv').html('비밀번호!');
+		$('#nowupwdDiv').html('비밀번호를 입력해주세요').css('color', 'red');;
 		isValid = false;
-	}
-
-	if ($('#reupwd').val().trim() === '') {
-		$('#reupwdDiv').html('비밀번호 췤!');
-		isValid = false;
-	} else if ($('#upwd').val() !== $('#reupwd').val()) {
-		$('#upwdDiv').html('췤!');
-		isValid = false;
+	} else {
+		if ($('#upwd').val().trim() === '') {
+			$('#upwdDiv').html('수정할 비밀번호를 입력해주세요').css('color', 'red');
+			isValid = false;
+		}
+		if ($('#upwd').val() !== $('#reupwd').val()) {
+			$('#upwdDiv').html('췤!').css('color', 'red');
+			isValid = false;
+		}
 	}
 
 	return isValid;
@@ -76,7 +74,8 @@ $('#userEditBtn').click(function() {
 						}
 					});
 				} else {
-					$('#nowupwdDiv').html('현재 비밀번호가 일치하지 않습니다.').css('color','red');
+					$('#nowupwdDiv').html('현재 비밀번호가 일치하지 않습니다.').css('color', 'red');
+					$('#nowupwd').focus();
 				}
 			}, error: function(e) {
 				console.log('Password check error:', e);
@@ -87,5 +86,5 @@ $('#userEditBtn').click(function() {
 
 //회원탈퇴 
 $('#withdrawBtn').click(function() {
-    window.location.href = '/FilmNote/user/userWithdraw.do';
+	window.location.href = '/FilmNote/user/userWithdraw.do';
 });
