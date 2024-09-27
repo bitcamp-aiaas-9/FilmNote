@@ -6,20 +6,20 @@ function moviePaging(pg) {
 }
 
 $(function() {
-	document.getElementById('movie-board').style.background = '#DEC5D2';
+	document.getElementById('movie-list-menu').style.background = '#DEC5D2';
 
-    $('#movie-write').hover(
+    $('#movie-write-menu').hover(
         function() {
         	// 현재 항목 스타일 변경
             $(this).css('background', '#DEC5D2');
 
-            // movie-board의 배경색을 초기화 
-            $('#movie-board').css('background', 'transparent');
+            // movie-list-menu의 배경색을 초기화 
+            $('#movie-list-menu').css('background', 'transparent');
         },
         function() {
-            // movie-write에서 마우스가 나갈 때 movie-board 배경색 복구
-            $('#movie-board').css('background', '#DEC5D2');
-            $('#movie-write').css('background', 'transparent');
+            // movie-write-menu에서 마우스가 나갈 때 movie-list-menu 배경색 복구
+            $('#movie-list-menu').css('background', '#DEC5D2');
+            $('#movie-write-menu').css('background', 'transparent');
         }
     );
 	
@@ -53,6 +53,7 @@ $(function() {
 		// ${pageContext.request.contextPath }
 	});
 	
+	// 영화 삭제
 	$('#deleteBtn').click(function() {
 	    let selectedMovies = [];
 	    $('input[name="mcodes"]:checked').each(function() {
@@ -81,6 +82,42 @@ $(function() {
 	    });
 	});
 
+	
+	
+	
+	
+	
+	// 영화 검색
+	$('#searchBtn').click(function() {
+	    const searchOpt = $('.search-opt').val();
+	    const searchValue = $('#title-box').val();
+	    
+	    $.ajax({
+	        url: context + '/admin/movieSearchDB.do',
+	        type: 'GET',
+	        data: {
+	            searchOpt: searchOpt,
+	            searchValue: searchValue
+	        },
+	        success: function(data) {
+	            // 검색 결과를 테이블에 동적으로 업데이트
+	            $('#movieTableBody').empty(); // 기존 테이블 <tbody> 데이터 제거
+	            data.forEach(function(movie) {
+	                $('#movieTableBody').append(`
+	                    <tr>
+	                        <td align="center"><input type="checkbox" name="mcodes" class="board-list-check" value="${movieDTO.mcode}" /></td>
+	                        <td align="left"><a href="#" class="subject-a">${movieDTO.title}</a></td>
+	                        <td align="center">${movieDTO.genre}</td>
+	                        <td align="center">${movieDTO.release_date}</td>
+	                    </tr>
+	                `);
+	            });
+	        },
+	        error: function() {
+	            alert('영화 검색에 실패했습니다.');
+	        }
+	    });
+	});
 	
 	
 });
