@@ -5,11 +5,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movieSQL">
 	<!-- 영화 등록 -->
-	<insert id="movieWrite" parameterType="movie">
-		INSERT INTO movie_tb(title, director, genre, release_date, rating, score, synopsis, poster)
-		VALUES (#{movieTitle}, #{movieDirector}, #{movieGenre}, #{movieRelaseDate}, #{movieRating}, #{movieScore}, #{movieSynopsis}, #{moviePoster})
-	
-	</insert>
+    <insert id="movieWrite" parameterType="movie.bean.MovieDTO">
+        INSERT INTO movie_tb (title, director, genre, release_date, rating, score, synopsis, poster)
+        VALUES (#{title}, #{director}, #{genre}, #{release_date}, #{rating}, #{score}, #{synopsis}, #{poster})
+    </insert>
 	
     <!-- 영화 목록 -->
     <select id="movieList" parameterType="java.util.Map" resultType="movie">
@@ -40,13 +39,16 @@
 	
 	
 	<!-- 영화 수정 -->
-	
-	
-	
-	
+	<update id="updateMovie" parameterType="movie">
+	    UPDATE movie_tb 
+	    SET title = #{movieTitle}, director = #{movieDirector}, genre = #{movieGenre}, 
+	        release_date = #{movieReleaseDate}, rating = #{movieRating}, 
+	        score = #{movieScore}, synopsis = #{movieSynopsis}, poster = #{moviePoster} 
+	    WHERE mcode = #{mcode}
+	</update>
 	
 	<!-- 영화 삭제 -->
-	<delete id="deleteMovies">
+	<delete id="deleteMovies" parameterType="list">
 	    DELETE FROM movie_tb WHERE mcode IN
 	    <foreach item="mcode" collection="mcodes" open="(" separator="," close=")">
 	        #{mcode}

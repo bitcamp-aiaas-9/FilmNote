@@ -54,12 +54,10 @@ public class MovieWriteDBService implements CommandProcess {
 	    
 	    // Object Storage (NCP)에 새로운 이미지 업로드
         NCPObjectStorageService ncp = new NCPObjectStorageService();
-        String uploadedFileName = ncp.uploadFile(bucketName, "storage/", file);
+        String uploadedFileName = ncp.uploadFile(bucketName, "storage/", file); // UUID 쓰려면 moviePoster 에 랜덤 생성된 이름을 덮어씌워 줘야함
         String moviePosterURL = "https://kr.object.ncloudstorage.com/filmnote-bucket-116/storage/" + uploadedFileName;
    
 	    
-	    moviePoster = ncp.uploadFile(bucketName, "storage/", file); // UUID 쓰려면 moviePoster 에 랜덤 생성된 이름을 덮어씌워줘야함
-		
 	    System.out.println("moviePosterURL" + " : " + moviePosterURL);
 		
 		

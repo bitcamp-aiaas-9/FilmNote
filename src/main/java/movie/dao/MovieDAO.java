@@ -39,7 +39,7 @@ public class MovieDAO {
 	// 영화 등록
 	public void movieWrite(MovieDTO movieDTO) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.insert("movieSQL.moviedWrite", movieDTO);
+		sqlSession.insert("movieSQL.movieWrite", movieDTO);
         sqlSession.commit();
         sqlSession.close();		
 	}
