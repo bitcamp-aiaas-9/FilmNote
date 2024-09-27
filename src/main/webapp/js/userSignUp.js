@@ -9,9 +9,10 @@ $(document).ready(function() {
                 type: 'POST',
                 data: $('#signUpForm').serialize(),
                 success: function(response) {
+					console.log("서버 응답: ", response);  // 응답 데이터 콘솔에 출력
                     if (response.status === "success") {
                         showModal(response.message, function() {
-                            window.location.href = contextPath + '/user/userSignInDB.do';
+                            window.location.href = contextPath + '/user/userSignIn.do';
                         });
                     } else {
                         showWarningMessage('회원가입 중 오류가 발생했습니다');
