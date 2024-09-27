@@ -62,4 +62,28 @@ public class ReviewDAO {
 		
 		return totalA;
 	}
+
+	// 리뷰 수정
+	public void updateReviewDTO(ReviewDTO reviewDTO) {
+		System.out.println("updateReviewDTO() 호출");
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update(reviewMapper + ".updateReviewDTO", reviewDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+
+	// 영화 별점 수정
+	public void updateScoreDTO() {
+		
+	}
+	
+	// 리뷰 삭제
+	public void deleteReviedDTO(int rcode) {
+		System.out.println("deleteReviedDTO(" + rcode + ") 호출");
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete(reviewMapper + ".deleteReviedDTO", rcode);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	
 }

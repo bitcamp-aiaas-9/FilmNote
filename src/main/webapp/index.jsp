@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -103,14 +104,14 @@ td {
 		                <td>
 		                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}">
                            <div class="hover-info">
-                              <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb" />
+                              <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
                               
                               <!-- 오버시 나오는 정보 -->
                               <div class="over">
                                  <span class="title">${movieDTOList[i].getTitle() }</span><br>
                                  <span class="open_date">개봉일 : ${movieDTOList[i].getRelease_date()}</span><br>
                                  <span class="director">감독 : ${movieDTOList[i].getDirector()}</span><br>
-                                 <span class="score">평점 : ${movieDTOList[i].getScore()}</span><br>
+                                 <span class="score">평점 : <fmt:formatNumber pattern="0.00점" value="${movieDTOList[i].getScore()}"/></span><br>
                                  <!-- <span class="btn_detail">자세히 보기</span> -->
                               <!-- //오버시 나오는 정보 -->
                               </div>

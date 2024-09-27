@@ -114,7 +114,7 @@ th, td {
 
 .list-user-id {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .comment-date {
@@ -122,13 +122,18 @@ th, td {
     color: #888;
 }
 
-.list-content {
+.list-content, .update-review {
     margin: 5px 0;
     font-size: 14px;
 }
 
-.comment-actions {
+.list-content div {
     font-size: 12px;
+}
+
+
+.comment-actions {
+    font-size: 13px;
     color: #005898;
 }
 
@@ -182,7 +187,7 @@ th, td {
     margin-bottom: 10px;
 }
 
-#new-review {
+#new-review, .update-reviewText {
     width: 100%;
     height: 200px;
     padding: 10px;
@@ -207,7 +212,7 @@ th, td {
     margin: 0 5px;
 }
 
-#submit-review {
+.btn {
     background: #005898;
     color: white;
     border: none;
