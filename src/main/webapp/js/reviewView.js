@@ -56,9 +56,7 @@ function writeReview() {
 			'content': $('#new-review').val(),
 			'score': $('#scoreText').text(),
 			'user_id': $('#post-comment').data('uid'),
-			'movie_code': $('#movietitle').data('moviecode'),
-			'reviewTotalNum' : $('#reviewTotalNum').text(),
-			'movieAvgScore' : $('#movieAvgScore').text()
+			'movie_code': $('#movietitle').data('moviecode')
 		},
 		success: function() {
 			alert('리뷰가 작성되었습니다.');

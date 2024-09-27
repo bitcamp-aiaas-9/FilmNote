@@ -102,7 +102,7 @@ td {
 	        	<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
 	            	<c:if test="${i < movieDTOList.size()}">
 		                <td>
-		                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}">
+		                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}&pg=1">
                            <div class="hover-info">
                               <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
                               
