@@ -38,7 +38,6 @@ $(function() {
 	$('#movieWriteBtn').click(function(event){
 		event.preventDefault(); // 폼 제출 방지
 		
-		let movieCode = $('#movieCode').val().trim();
 		let movieTitle = $('#movieTitle').val().trim();
 		let movieDirector = $('#movieDirector').val().trim();
 		let movieGenre = $('#movieGenre').val().trim();
@@ -54,12 +53,6 @@ $(function() {
 		$('.validationDiv').hide();
 		
 		let isValid = true;
-		
-		// 영화 코드 입력 검사
-		if ( movieCode === ''){
-		    $('#movieCodeDiv').html('영화 코드를 입력하세요').show();
-		    isValid = false;
-		}
 		
 		// 영화 제목 입력 검사
 		if ( movieTitle === ''){
@@ -123,9 +116,6 @@ $(function() {
 	});	
 	
 	// 입력 필드에 포커스가 갈 때 오류 메시지 숨기기
-	$('#movieCode').focus(function(){
-			$('#movieCodeDiv').hide();
-	});	
 	$('#movieTitle').focus(function(){
 			$('#movieTitleDiv').hide();
 	});	
@@ -156,7 +146,8 @@ $(function() {
 	
 	/** 영화 등록 */
 	if (isValid) {
-		let mcode; // DB 에서 auto incresement 된 숫자를 가져와야함
+		// let mcode; // DB 에서 auto incresement 된 숫자를 가져와야함
+		
 	    // 유효성 검사를 통과하면 AJAX로 데이터 전송
 		$.ajax({
 		    type: 'POST',
@@ -171,7 +162,7 @@ $(function() {
 		        // window.location.href = "context + '/admin/movieView.do?mcode=' + mcode + '&pg=1'"; 
 				
 				// 일단 /admin/movieList.do 로 이동,,, 
-		        window.location.href = "context + '/admin/movieList.do"; 
+				window.location.href = context + '/admin/movieList.do';
 		    },
 		    error: function(xhr, status, error) {
 		        alert("영화 등록에 실패했습니다.");

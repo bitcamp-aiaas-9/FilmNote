@@ -27,11 +27,11 @@
 		    <table>
 		    	<tr>
 		    		<th width="30%">영화 포스터</th>
-		    		<th width="20%">영화 코드</th>
-		    		<td width="50%" class="info-cell">
-		    			<input type="text" name="movieCode" class="movieInput" id="movieCode" />
-		    			<div class="validationDiv" id="movieCodeDiv"></div>
-		    		</td>
+				    <th>영화 제목</th>
+				    <td class="info-cell">
+				    	<input type="text" name="movieTitle" class="movieInput" id="movieTitle" />
+				    	<div class="validationDiv" id="movieTitleDiv"></div>
+				    </td>		    		
 		    	</tr>
 		        <tr>
 		            <td align="center" rowspan="9" class="poster-cell">
@@ -46,13 +46,6 @@
 		                </label>
 		    			<div class="validationDiv" id="moviePosterDiv"></div>
 		            </td>
-				    <th>영화 제목</th>
-				    <td class="info-cell">
-				    	<input type="text" name="movieTitle" class="movieInput" id="movieTitle" />
-				    	<div class="validationDiv" id="movieTitleDiv"></div>
-				    </td>
-		        </tr>
-		        <tr>
 		        	<th>영화 감독</th>
 		            <td class="info-cell">
 		            	<input type="text" name="movieDirector" class="movieInput" id="movieDirector" />
