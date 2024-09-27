@@ -52,30 +52,11 @@ public class UserDAO {
 		}
 	}
 	
-	/*
-	 * public void userEdit(UserDTO user, String nowupwd) {
-	 * 
-	 * SqlSession sqlSession = sqlSessionFactory.openSession();
-	 * 
-	 * String pwdCheck = pwdCheck(user.getUid());
-	 * 
-	 * if(pwdCheck != null && pwdCheck.equals(nowupwd)) {
-	 * sqlSession.update("userSQL.userEdit", user); sqlSession.commit(); } else {
-	 * throw new IllegalArgumentException("현재 비밀번호가 일치하지 않습니다."); }
-	 * sqlSession.close(); }
-	 */
-	
 	public void userEdit(UserDTO user) {
 		  SqlSession sqlSession = sqlSessionFactory.openSession();		  
 		  sqlSession.update("userSQL.userEdit", user);
 		  sqlSession.commit();
 		  sqlSession.close();
-	}
-	
-	public void withdraw(UserDTO user) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.delete("userSQL.withdraw", user);
-		sqlSession.close();
 	}
 
 	public UserDTO getMember(String id) {
@@ -105,9 +86,9 @@ public class UserDAO {
 		}
 	}
 
-	public int userWithdraw(String uid) {
+	public int userWithdraw(String id) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		int result = sqlSession.delete("userSQL.userWithdraw", uid);
+		int result = sqlSession.delete("userSQL.userWithdraw", id);
 		sqlSession.commit();
 		sqlSession.close();		
 		return result;

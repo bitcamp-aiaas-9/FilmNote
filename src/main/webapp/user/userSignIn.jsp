@@ -8,6 +8,7 @@
 <link rel="icon" href="../image/film_favicon.png" type="image/png">
 <link rel="stylesheet" href="../css/userSignIn.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <title>로그인</title>
 </head>
 <body>
@@ -41,11 +42,23 @@
                     <td colspan="2"><div id="loginErrorDiv"></div></td> <!-- 로그인 에러 메시지 div 추가 -->
                 </tr>
             </table>
+            		<!-- 경고 메시지 div를 여기에 추가 -->
+			    <div id="loginWarningMessage" class="show" style="display: none;"> <!--  text-align: center; color: #e74c3c; margin-top: 10px;  -->
+			        <!-- 이곳에 경고 메시지가 표시됩니다 -->
+			    </div>
         </form>
         <button type="button" id="adminBtn" onclick="location.href='${pageContext.request.contextPath}/admin/adminSignIn.do'">Admin</button> <!-- 관리자 로그인 버튼 추가 -->
     </div>
+    
+			   <!-- 로그인 실패 모달 -->
+		<div id="loginErrorModal" title="로그인 실패" style="display:none;">
+		    <p id="loginErrorMessage"></p>
+		</div>
+
+    
 	
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="../js/userSignIn.js"></script>
 
 <script>
