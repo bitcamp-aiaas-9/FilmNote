@@ -4,6 +4,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movieSQL">
+	<!-- 영화 등록 -->
+	
+	
+	
+	
     <!-- 영화 목록 -->
     <select id="movieList" parameterType="java.util.Map" resultType="movie">
     	SELECT * FROM movie_tb ORDER BY mcode DESC LIMIT #{startNum}, #{endNum}
@@ -23,7 +28,10 @@
 		UPDATE movie_tb SET score=score+1 WHERE mcode = #{mcode}
 	</update>
 	
-	<!-- 영화 검색 -->
+	
+	<!-- 영화 수정 -->
+	
+	
 	
 	
 	
@@ -34,6 +42,13 @@
 	        #{mcode}
 	    </foreach>
 	</delete>
+
+
+
+
+
+	<!-- 영화 검색 -->
+
 
 
 

@@ -82,13 +82,18 @@ $(function() {
 	    });
 	});
 
+	
+	
+	
+	
+	
 	// 영화 검색
 	$('#searchBtn').click(function() {
 	    const searchOpt = $('.search-opt').val();
 	    const searchValue = $('#title-box').val();
 	    
 	    $.ajax({
-	        url: context + '/admin/searchMovie.do',
+	        url: context + '/admin/movieSearchDB.do',
 	        type: 'GET',
 	        data: {
 	            searchOpt: searchOpt,
@@ -96,7 +101,7 @@ $(function() {
 	        },
 	        success: function(data) {
 	            // 검색 결과를 테이블에 동적으로 업데이트
-	            $('#movieTableBody').empty(); // 기존 테이블 데이터 제거
+	            $('#movieTableBody').empty(); // 기존 테이블 <tbody> 데이터 제거
 	            data.forEach(function(movie) {
 	                $('#movieTableBody').append(`
 	                    <tr>
