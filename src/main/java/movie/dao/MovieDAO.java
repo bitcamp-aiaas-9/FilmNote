@@ -121,8 +121,22 @@ public class MovieDAO {
     
     
     
-	/** movieList.jsp */
+	/** movieList.jsp 
+	 * @return */
 	// 영화 검색
+    public List<MovieDTO> searchMovies(String searchOpt, String searchValue) {
+    	SqlSession sqlSession = sqlSessionFactory.openSession();
+    	
+    	//검색 조건과 값을 Map로 묶어서 넘김
+    	Map<String, String> searchParams = new HashMap<>();
+    	searchParams.put("searchOpt", searchOpt);
+    	searchParams.put("searchValue", searchValue);
+    	
+    	List<MovieDTO> movieList = sqlSession.selectList("movieSQL.searchMovies", searchParams);
+    	sqlSession.commit();
+    	sqlSession.close();
+		return movieList;
+    }
     
 	
     

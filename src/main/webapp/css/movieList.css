@@ -120,7 +120,7 @@ th {
 
 
 /** 페이지 블럭 */
-#page-block {
+#page-block, #pagination {
    margin: 20px auto;
    font-size: 13pt;
    display: flex;

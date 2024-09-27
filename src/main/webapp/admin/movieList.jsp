@@ -34,6 +34,7 @@
 			</select>
 			<input id="title-box" class="input-box"/>
 			<button id="searchBtn" class="cardBtn">검색</button>
+	
 		</div>
 	</div>
 </div>
@@ -73,6 +74,7 @@
 	</tbody>
 </table>		       
 <div id="page-block">${moviePaging.pagingHTML }</div>
+		<div id="pagination">페이지</div>
 </c:if>
 
 <c:if test="${sessionScope.adminDTO.aid != 'admin'}">
