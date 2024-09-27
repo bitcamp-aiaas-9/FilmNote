@@ -1,10 +1,10 @@
-// FilmNote/src/main/webapp/js/userSignIn.js
 $(document).ready(function() {
     // 로그인 버튼 클릭 이벤트
     $('#loginBtn').click(function(e) {
         e.preventDefault();
+        clearMessages(); // 기존 경고 메시지 숨기기
         if (validateForm()) {
-            $('#loginForm').submit();
+            $('#loginForm').submit(); // 폼 제출
         }
     });
 
@@ -21,40 +21,41 @@ $(document).ready(function() {
 
     function validateForm() {
         let isValid = true;
+        let warningMessage = ''; // 경고 메시지
 
-        if ($('#loginId').val() == '' && $('#loginPwd').val() == '') {
-            $('#loginErrorDiv').html('아이디와 비밀번호를 입력하세요').css('color', 'red');
+        // 로그인 폼 전체 검증
+        if ($('#loginId').val() === '' || $('#loginPwd').val() === '') {
+            warningMessage = '아이디와 비밀번호를 모두 입력하세요.';
             isValid = false;
-        } else {
-            $('#loginErrorDiv').html('');
-            if ($('#loginId').val() == '') {
-                $('#loginIdDiv').html('아이디를 입력하세요').css('color', 'red');
-                isValid = false;
-            } else {
-                $('#loginIdDiv').html('');
-            }
-            if ($('#loginPwd').val() == '') {
-                $('#loginPwdDiv').html('비밀번호를 입력하세요').css('color', 'red');
-                isValid = false;
-            } else {
-                $('#loginPwdDiv').html('');
-            }
+        }
+
+        if (!isValid) {
+            showWarningMessage(warningMessage); // 경고 메시지 표시
         }
 
         return isValid;
     }
 
     function validateField(field) {
-        if (field.attr('id') == 'loginId' && field.val() == '') {
-            $('#loginIdDiv').html('아이디를 입력하세요').css('color', 'red');
-        } else if (field.attr('id') == 'loginId') {
-            $('#loginIdDiv').html('');
+        let warningMessage = '';
+        if (field.attr('id') === 'loginId' && field.val() === '') {
+            warningMessage = '아이디를 입력하세요.';
+        } else if (field.attr('id') === 'loginPwd' && field.val() === '') {
+            warningMessage = '비밀번호를 입력하세요.';
         }
 
-        if (field.attr('id') == 'loginPwd' && field.val() == '') {
-            $('#loginPwdDiv').html('비밀번호를 입력하세요').css('color', 'red');
-        } else if (field.attr('id') == 'loginPwd') {
-            $('#loginPwdDiv').html('');
+        if (warningMessage !== '') {
+            showWarningMessage(warningMessage);
         }
+    }
+
+    // 경고 메시지 표시 함수
+    function showWarningMessage(message) {
+        $('#loginWarningMessage').html(message).css('color', '#e74c3c').show(); // 경고: 빨간색
+    }
+
+    // 경고 메시지 숨기기 함수
+    function clearMessages() {
+        $('#loginWarningMessage').hide();
     }
 });
