@@ -6,20 +6,20 @@ function moviePaging(pg) {
 }
 
 $(function() {
-	document.getElementById('movie-board').style.background = '#DEC5D2';
+	document.getElementById('movie-list-menu').style.background = '#DEC5D2';
 
-    $('#movie-write').hover(
+    $('#movie-write-menu').hover(
         function() {
         	// 현재 항목 스타일 변경
             $(this).css('background', '#DEC5D2');
 
-            // movie-board의 배경색을 초기화 
-            $('#movie-board').css('background', 'transparent');
+            // movie-list-menu의 배경색을 초기화 
+            $('#movie-list-menu').css('background', 'transparent');
         },
         function() {
-            // movie-write에서 마우스가 나갈 때 movie-board 배경색 복구
-            $('#movie-board').css('background', '#DEC5D2');
-            $('#movie-write').css('background', 'transparent');
+            // movie-write-menu에서 마우스가 나갈 때 movie-list-menu 배경색 복구
+            $('#movie-list-menu').css('background', '#DEC5D2');
+            $('#movie-write-menu').css('background', 'transparent');
         }
     );
 	

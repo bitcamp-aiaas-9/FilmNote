@@ -1,0 +1,89 @@
+/* FilmNote/src/main/webapp/css/movieWrite.css */
+@charset "UTF-8";
+@import url("init.css");
+
+form#movie-write-form {
+	margin: 40px 40px 20px 40px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.2);	
+}
+
+table {
+	margin: 20px 0;
+	width: 1020px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	text-align: center;
+}
+
+th, td {
+	border-bottom: 1px solid #ddd;
+    padding: 10px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.info-cell {
+	text-align: left;
+}
+
+div#fileIcon {
+	transform: scale(1.7);
+}
+
+input[type="text"], textarea {
+    height: 30px;
+    line-height: 30px; 
+    padding: 0 5px; 
+    background: transparent;
+    border: 1px solid #ccc;
+}
+
+input[type="text"] {
+	width: 230px;
+}
+
+textarea {
+	height: 100px;
+}
+
+.validation {
+	display: none;
+	padding-top: 5px;
+	color: red;
+	font-size: 10pt;
+}
+
+
+
+
+div.button-container {
+	margin: 20px 50px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 10px;
+}
+
+.crud-btn {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 5px 20px;
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #5A5A5A;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.crud-btn:hover {
+    background: #DEC5D2;
+    color: #5A5A5A;
+    cursor: pointer;
+}

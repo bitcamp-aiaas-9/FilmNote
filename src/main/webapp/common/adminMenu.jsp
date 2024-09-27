@@ -22,7 +22,7 @@ a.menu-a {
 	width: 50%;
 }
 
-/* div#movie-board {
+/* div#movie-list-menu {
 	background: #DEC5D2;
 } >> js로 처리*/
 
@@ -30,7 +30,7 @@ div.menu-div {
 	font: normal 400 22px "Nanum Brush Script", sans-serif; /* style weight size font-family */
 }
 
-#movie-board, #movie-write {
+#movie-list-menu, #movie-write-menu {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -42,12 +42,12 @@ div.menu-div {
 <body>
 <div id="admin-menu" >
 	<a class="menu-a" href="${pageContext.request.contextPath }/admin/movieList.do">
-		<div class="menu-div" id="movie-board" >
+		<div class="menu-div" id="movie-list-menu" >
 			영화 목록
 		</div>
 	</a>
 	<a class="menu-a" href="${pageContext.request.contextPath }/admin/movieWrite.do">
-		<div class="menu-div" id="movie-write" >
+		<div class="menu-div" id="movie-write-menu" >
 			영화 등록
 		</div>
 	</a>
