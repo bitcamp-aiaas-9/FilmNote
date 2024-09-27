@@ -17,11 +17,11 @@
 
 <c:if test="${sessionScope.adminDTO.aid == 'admin'}">
 <div id="movie-detail">
-	<input type="hidden" name="pg" id="pg" value="${requestScope.pg }" />
 
 
 	<!-- 영화 코드, 영화 제목, 영화 감독, 영화 장르, 영화 개봉일, 영화 등급, 영화 평점, 영화 줄거리, 영화 포스터 이미지 -->
 	<form name="movie-view-form" id="movie-view-form">
+	<input type="hidden" name="pg" id="pg" value="${requestScope.pg }" />
 	    <table>
 	    	<tr>
 	    		<th width="30%">영화 포스터</th>
@@ -71,9 +71,9 @@
 	    </table>
 	</form>
 	<div class="button-container">
-		<button type="button" class="crud-btn" id="movie-edit-btn">수정</button> <!-- mcode, pg 가져가야함 -->
-		<button type="button" class="crud-btn" id="movie-delete-btn">삭제</button> <!-- mcode 가져가야함 -->
-   		<button class="crud-btn" id="list-btn" onclick="window.location.href='${pageContext.request.contextPath }/admin/movieList.do?pg=${pg }';">목록</button>
+		<button type="button" class="crudBtn" id="movieEditBtn">수정</button> <!-- mcode, pg 가져가야함 -->
+		<button type="button" class="crudBtn" id="movieDeleteBtn">삭제</button> <!-- mcode 가져가야함 -->
+   		<button class="crudBtn" id="listBtn" >목록</button>
    	</div>
 </div>
 </c:if>

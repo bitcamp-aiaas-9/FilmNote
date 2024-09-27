@@ -2,7 +2,7 @@
 
 // 페이지 이동
 function moviePaging(pg) {
-	location.href="/FilmNote/admin/movieList.do?pg=" + pg;
+	location.href=context + '/admin/movieList.do?pg=' + pg;
 }
 
 $(function() {
@@ -49,7 +49,7 @@ $(function() {
 		
 		let pg = $('#pg').val();
 		
-		location.href="/FilmNote/admin/movieView.do?mcode=" + mcode + '&pg=' + pg;
+		location.href = context + '/admin/movieView.do?mcode=' + mcode + '&pg=' + pg;
 		// ${pageContext.request.contextPath }
 	});
 	

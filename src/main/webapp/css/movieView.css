@@ -41,7 +41,7 @@ div.button-container {
 	gap: 10px;
 }
 
-.crud-btn {
+.crudBtn {
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -57,7 +57,7 @@ div.button-container {
     cursor: pointer;
 }
 
-.crud-btn:hover {
+.crudBtn:hover {
     background: #DEC5D2;
     color: #5A5A5A;
     cursor: pointer;

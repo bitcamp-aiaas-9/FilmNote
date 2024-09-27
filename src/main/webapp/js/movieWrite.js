@@ -20,6 +20,10 @@ $(function() {
 		}
 	);
 	
+	$('#listBtn').click(function() {
+		location.href = context + '/admin/movieList.do';
+	});
+	
 	/** 이미지 등록 */
 	$('#moviePoster').change(function() {
 		readURL(this);
@@ -94,7 +98,7 @@ $(function() {
 		}
 		
 		// 영화 포스터 입력 검사
-		if (moviePoster === '') {
+		if ($('#moviePoster').get(0).files.length === 0) {
 			$('#moviePosterDiv').html('영화 포스터를 등록하세요').show();
 			isValid = false;
 		}
@@ -162,4 +166,7 @@ $(function() {
 	$('#showImg').click(function() {
 		$('#moviePosterDiv').hide();
 	});	
+	
+	
 });
+

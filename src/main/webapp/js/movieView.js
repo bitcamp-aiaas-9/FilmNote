@@ -12,7 +12,14 @@ $(function(){
 	console.log("context:", context);
 
 	
-	$('#movie-delete-btn').click(function() {
+	/** 수정 버튼; 해당 영화 수정 페이지 이동 */
+	$('#movieEditBtn').click(function() {
+		location.href = context + '/admin/movieEdit.do?mcode=' + mcode + '&pg=' + pg;
+	});
+	
+	
+	/** 삭제 버튼; 해당 영화 삭제 */
+	$('#movieDeleteBtn').click(function() {
 		let mcode = $('input[name="mcodes"]').val();
 		
 		if (confirm("' " + movieTitle + " ' 을(를) 삭제하시겠습니까?")) {
@@ -38,5 +45,10 @@ $(function(){
 		}
 	});
 	
+	
+	/** 목록 버튼; movieList.jsp 이동 */
+	$('#listBtn').click(function() {
+		location.href = context + '/admin/movieList.do?pg=' + pg;
+	});
 
 });
