@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.control.CommandProcess;
 
-import movie.bean.MovieDTO;
 import movie.dao.MovieDAO;
 
 public class MovieDeleteDBService implements CommandProcess {
@@ -26,6 +25,7 @@ public class MovieDeleteDBService implements CommandProcess {
 //      
 //      MovieDAO movieDAO = MovieDAO.getInstance();
 //      movieDAO.deleteMovie(mcode);
+      
       
       if (mcodes != null && mcodes.length > 0) {
           MovieDAO movieDAO = MovieDAO.getInstance();

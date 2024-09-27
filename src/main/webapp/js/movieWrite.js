@@ -34,8 +34,6 @@ $(function() {
 	    reader.readAsDataURL(input.files[0]);
 	}
 	
-	
-	
 	/** 유효성 검사 */
 	$('#movieWriteBtn').click(function(event){
 		event.preventDefault(); // 폼 제출 방지
@@ -55,6 +53,7 @@ $(function() {
 		// 오류 메시지 초기화 및 숨김
 		$('.validationDiv').hide();
 		
+		let isValid = true;
 		
 		// 영화 코드 입력 검사
 		if ( movieCode === ''){
@@ -152,6 +151,41 @@ $(function() {
 	$('#showImg').click(function(){
 			$('#moviePosterDiv').hide();
 	});	
+	
+	
+	
+	/** 영화 등록 */
+	if (isValid) {
+		let mcode; // DB 에서 auto incresement 된 숫자를 가져와야함
+	    // 유효성 검사를 통과하면 AJAX로 데이터 전송
+		$.ajax({
+		    type: 'POST',
+		    url: context + '/admin/movieWriteDB.do',
+		    enctype: 'multipart/form-data',
+		    processData: false,
+		    contentType: false,
+		    data: formData,
+		    success: function() {
+		        alert("영화를 등록했습니다.");
+				// 바로 영화 조회 페이지로 이동
+		        // window.location.href = "context + '/admin/movieView.do?mcode=' + mcode + '&pg=1'"; 
+				
+				// 일단 /admin/movieList.do 로 이동,,, 
+		        window.location.href = "context + '/admin/movieList.do"; 
+		    },
+		    error: function(xhr, status, error) {
+		        alert("영화 등록에 실패했습니다.");
+		        console.log("에러 상태:", status);
+		        console.log("에러 메시지:", error);
+		        console.log("응답 내용:", xhr.responseText);
+		    }
+		});		
+		
+		
+		
+		
+	}	
+	
 	
 	
 });
