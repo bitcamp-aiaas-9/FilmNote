@@ -10,7 +10,15 @@
 	</insert>
 	
 	<select id="getReviewList" parameterType="review" resultType="review">
-		select * from review_tb where movie_code = #{movie_code}
+		select * from review_tb where movie_code = #{movie_code} order by logtime desc
 	</select>
+	
+	<update id="updateReviewDTO" parameterType="review">
+		update review_tb set content=#{content}, score=#{score} WHERE rcode = #{rcode} and movie_code = #{movie_code} and user_id = #{user_id}
+	</update>
+	
+	<delete id="deleteReviedDTO" parameterType="int">
+		delete from review_tb where rcode = #{rcode}
+	</delete>
 	
 </mapper>
