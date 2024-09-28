@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- FilmNote/src/main/java/mapper/movieMapper.xml -->
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movieSQL">
 	<!-- 영화 등록 -->
-
-
 
 
 	<!-- 영화 목록 -->
@@ -37,35 +33,48 @@
 	<!-- 영화 수정 -->
 
 
-
-
-
 	<!-- 영화 삭제 -->
-	<delete id="deleteMovies">
-		DELETE FROM movie_tb WHERE mcode IN
-		<foreach item="mcode" collection="mcodes" open="("
+	<delete id="deleteMovies"> DELETE FROM movie_tb WHERE mcode IN <foreach
+			item="mcode" collection="mcodes" open="("
 			separator="," close=")">
 			#{mcode}
 		</foreach>
 	</delete>
 
 
-
-
-
 	<!-- 영화 검색 -->
 	<select id="searchMovies" parameterType="java.util.Map"
-		resultType="movie">
-		SELECT * FROM movie_tb
-		WHERE 1=1
-		<if test="searchOpt == 'movie-code'">
+		resultType="movie"> SELECT * FROM movie_tb WHERE 1=1 <if
+			test="searchOpt == 'movie-code'">
 			AND mcode LIKE CONCAT('%', #{searchValue}, '%')
 		</if>
-		<if test="searchOpt == 'movie-title'">
+		<if
+			test="searchOpt == 'movie-title'">
 			AND title LIKE CONCAT('%', #{searchValue}, '%')
 		</if>
-		<if test="searchOpt == 'movie-director'">
+		<if
+			test="searchOpt == 'movie-director'">
+			AND director LIKE CONCAT('%', #{searchValue}, '%')
+		</if> LIMIT
+		#{startNum}, #{limit} </select>
+
+	<!-- 검색 갯수 -->
+	<select id="totalSearch" parameterType="java.util.Map"
+		resultType="int">
+		SELECT COUNT(*) FROM movie_tb WHERE 1=1
+		<if
+			test="searchOpt == 'movie-code'">
+			AND mcode LIKE CONCAT('%', #{searchValue}, '%')
+		</if>
+		<if
+			test="searchOpt == 'movie-title'">
+			AND title LIKE CONCAT('%', #{searchValue}, '%')
+		</if>
+		<if
+			test="searchOpt == 'movie-director'">
 			AND director LIKE CONCAT('%', #{searchValue}, '%')
 		</if>
 	</select>
+
+
 </mapper>
