@@ -53,24 +53,24 @@ $(function() {
 		// ${pageContext.request.contextPath }
 	});
 	
+	// movieList.js
 	// 영화 삭제
 	$('#deleteBtn').click(function() {
-	    let selectedMovies = [];
-	    $('input[name="mcodes"]:checked').each(function() {
-	        selectedMovies.push($(this).val());
+		// 체크된 mcode들을 배열로 가져오기
+	    let mcodeArray = [];
+	    $('input[name="mcode"]:checked').each(function() {
+	        mcodeArray.push($(this).val().trim());
 	    });
 
-	    if (selectedMovies.length === 0) {
-	        alert("1개 이상의 영화를 선택하세요.");
-	        return;
-	    }
+		if (mcodeArray.length === 0) {
+		    alert("삭제할 영화를 선택하세요.");
+		    return;
+		}
 
 	    $.ajax({
 	        url: context + '/admin/movieDeleteDB.do',
 	        type: 'POST',
-	        data: {
-	            mcodes: selectedMovies
-	        },
+	        data: {mcode: mcodeArray},
 	        traditional: true,  // 배열 데이터를 서버에 전송할 때 필요한 설정
 	        success: function() {
 	            alert('영화가 삭제되었습니다.');
