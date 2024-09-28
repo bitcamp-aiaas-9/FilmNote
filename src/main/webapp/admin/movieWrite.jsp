@@ -1,7 +1,6 @@
 <%-- FilmNote/src/main/webapp/admin/movieWrite.jsp --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -22,16 +21,16 @@
 	<div id="movie-write">
 		<input type="hidden" name="pg" id="pg" value="${requestScope.pg }" />
 		
-		<!-- 영화 코드, 영화 제목, 영화 감독, 영화 장르, 영화 개봉일, 영화 등급, 영화 평점, 영화 줄거리, 영화 포스터 이미지 -->
+		<!-- 영화 제목, 영화 감독, 영화 장르, 영화 개봉일, 영화 등급, 영화 평점, 영화 줄거리, 영화 포스터 이미지 -->
 		<form name="movie-write-form" id="movie-write-form">
 		    <table>
 		    	<tr>
 		    		<th width="30%">영화 포스터</th>
-		    		<th width="20%">영화 코드</th>
-		    		<td width="50%" class="info-cell">
-		    			<input type="text" name="movieCode" class="movieInput" id="movieCode" />
-		    			<div class="validationDiv" id="movieCodeDiv"></div>
-		    		</td>
+				    <th width="20%">영화 제목</th>
+				    <td width="50%" class="info-cell">
+				    	<input type="text" name="movieTitle" class="movieInput" id="movieTitle" />
+				    	<div class="validationDiv" id="movieTitleDiv"></div>
+				    </td>		    		
 		    	</tr>
 		        <tr>
 		            <td align="center" rowspan="9" class="poster-cell">
@@ -46,13 +45,6 @@
 		                </label>
 		    			<div class="validationDiv" id="moviePosterDiv"></div>
 		            </td>
-				    <th>영화 제목</th>
-				    <td class="info-cell">
-				    	<input type="text" name="movieTitle" class="movieInput" id="movieTitle" />
-				    	<div class="validationDiv" id="movieTitleDiv"></div>
-				    </td>
-		        </tr>
-		        <tr>
 		        	<th>영화 감독</th>
 		            <td class="info-cell">
 		            	<input type="text" name="movieDirector" class="movieInput" id="movieDirector" />
@@ -100,7 +92,7 @@
 	<div class="button-container" style="width:1000px; display: flex; justify-content: flex-end;">
 		<button type="button" class="crudBtn" id="movieWriteBtn">등록</button> 
 		<button type="reset" class="crudBtn" id="resetBtn">초기화</button>
-		<button class="crudBtn" id="listBtn" onclick="window.location.href='${pageContext.request.contextPath }/admin/movieList.do';">목록</button>
+		<button type="button" class="crudBtn" id="listBtn">목록</button>
 	</div>
 </c:if>
 

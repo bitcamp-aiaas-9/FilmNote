@@ -9,8 +9,17 @@
 		insert into review_tb values(null, #{movie_code}, #{user_id}, #{content}, now(), #{score})
 	</insert>
 	
-	<select id="getReviewList" parameterType="review" resultType="review">
-		select * from review_tb where movie_code = #{movie_code} order by logtime desc
+	<select id="getTotalA" parameterType="int" resultType="int">
+		select count(rcode) from review_tb where movie_code = #{mcode} order by logtime desc
+	</select>
+	
+	<select id="getReviewList" parameterType="map" resultType="review">
+		select rcode, movie_code , ut.uname , content , logtime , score 
+		from review_tb rt 
+		left join user_tb ut on rt.user_id = ut.uid 
+		where rt.movie_code = #{mcode}
+		order by rt.logtime desc
+		limit #{pg}, #{pgSize}
 	</select>
 	
 	<update id="updateReviewDTO" parameterType="review">

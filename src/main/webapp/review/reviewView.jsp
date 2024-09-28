@@ -52,8 +52,8 @@
 	</table>
 </div>
 
-
-<div id="reviewTotalNum" hidden>${reviewDTOList.size()}</div>
+<%-- 
+<div id="reviewTotalNum" hidden>${reviewDTOList.size()}</div> --%>
 <div id="reviewDiv">
 	<!-- 리뷰 -->
 	<div id="reviewList">
@@ -65,13 +65,16 @@
 				    <div class="comment-details">
 				        <div class="comment-header">
 				        	<span class="review-code" hidden>${reviewDTO.getRcode()}</span>
-				            <span class="list-user-id">${reviewDTO.getUser_id()}</span>
+				        	<span class="list-user-id">
+				            	<c:if test="${reviewDTO.getUser_id() == null}">알수없음</c:if>
+				            	<c:if test="${reviewDTO.getUser_id() != null}">${reviewDTO.getUser_id()}</c:if>
+				            </span>
 				            <span class="comment-date">${reviewDTO.getLogtime()}</span>
 				        </div>
 				        
 				        <div class="list-content">
-					        <div>${reviewDTO.getScore()}.0점</div>
-					        ${reviewDTO.getContent()}
+					        <div class="review-score">${reviewDTO.getScore()}.0점</div>
+					        <div class="review-content">${reviewDTO.getContent()}</div>
 				        </div>
 				        
 				        <div class="update-review">
@@ -98,7 +101,7 @@
 				            <span class="like">❤️</span> -->
 				        </div>
 				    </div>
-				    <c:if test="${sessionScope.userDTO.uid == reviewDTO.getUser_id()}">
+				    <c:if test="${sessionScope.userDTO.uname == reviewDTO.getUser_id()}">
 					    <div class="comment-options">
 					        <button class="options-btn">⋮</button>
 					        <div class="options-menu">
@@ -144,14 +147,14 @@
 	    	
 	    	<div class="post-footer">
 		    	<div id="emoji">
-			         <button class="icon-button">📷</button>
-			         <button class="icon-button">😊</button>
+			         <input type="button" class="icon-button" value="📷">
+			         <input type="button" class="icon-button" value="😊">
 		        </div>
 		        <input type="button" class="btn" id="submit-review" value="등록">
 	    	</div>
 	    </form>
 	</div>
-	<%-- <div id="page-block">${boardPaging.pagingHTML}</div> --%>
+	<div id="page-block">${reviewPagingHTML}</div>
 </div>
 
 <div id="footer">

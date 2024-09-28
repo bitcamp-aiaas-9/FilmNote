@@ -13,8 +13,11 @@
 	border-bottom: none;
 }
 
+table , #reviewList, #post-comment {
+	margin: 20px auto;
+}
+
 table {
-	margin: 20px 0;
 	width: 1020px;
 	border-collapse: collapse;
 	border-spacing: 0px;
@@ -91,6 +94,7 @@ th, td {
     padding-bottom: 15px;
     border-bottom: 1px solid #ddd;
     position: relative;
+    margin: 10px 0;
 }
 
 /* 프로필 사진 */
@@ -127,10 +131,15 @@ th, td {
     font-size: 14px;
 }
 
-.list-content div {
+.list-content review-score {
     font-size: 12px;
 }
 
+.review-content {
+    white-space: pre-line;
+    font-size: 15px;
+    margin-top: 3px;
+}
 
 .comment-actions {
     font-size: 13px;

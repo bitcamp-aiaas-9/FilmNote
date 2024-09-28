@@ -94,7 +94,7 @@ td {
 
 <body>
 <jsp:include page="./common/header.jsp" />
-<div id="poster">
+ <div id="poster">
 	<table>
  		<c:if test="${movieDTOList.size() != 0}">
 			<c:forEach var="row" begin="0" end="${movieDTOList.size()}" step="${movieInRowCount}">
@@ -102,7 +102,7 @@ td {
 	        	<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
 	            	<c:if test="${i < movieDTOList.size()}">
 		                <td>
-		                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}">
+		                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}&pg=1">
                            <div class="hover-info">
                               <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
                               
@@ -138,7 +138,7 @@ td {
 			<span id="gitlink">Github : FilmNote</span>
 		</div>
 	</a>
-</div>
+</div> 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" target="_blank"></script>
 <script type="text/javascript" src="./js/index.js"></script>
