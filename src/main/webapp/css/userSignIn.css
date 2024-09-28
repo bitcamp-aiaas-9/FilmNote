@@ -21,13 +21,13 @@ body {
     background: #fff;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     width: 400px;
     margin: 50px auto;
 }
 
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 24px;
     color: #333;
 }
@@ -54,36 +54,42 @@ table {
 
 th, td {
     border: none;
-    padding: 10px;
+    padding: 5px; /* 기존 10px에서 5px로 줄여서 위아래 간격을 좁힘 */
     vertical-align: top;
 }
 
+/* 라벨 영역: ID와 Pwd 같은 텍스트가 위치하는 부분 */
 .label {
-    width: 30%;
-    padding-top: 15px;
-    text-align: right;
-    color: #555;
+    width: 30%; /* 라벨이 차지하는 가로 비율을 30%로 유지 */
+    padding-top: 5px; /* 라벨 위쪽 여백을 줄여서 ID와 Pwd를 입력 필드와 더 가깝게 배치 */
+    padding-right: 5px; /* 라벨과 입력 필드 사이의 간격을 줄임 */
+    text-align: right; /* 라벨을 오른쪽 정렬 */
+    color: #555; /* 라벨 텍스트 색상 */
 }
 
+/* 입력 필드 영역: 텍스트 상자와 비밀번호 상자가 위치하는 부분 */
 .input {
-    text-align: left;
-    width: 70%;
+    text-align: left; /* 입력 필드 텍스트는 왼쪽 정렬 */
+    width: 70%; /* 입력 필드가 차지하는 가로 비율을 70%로 유지 */
 }
 
+/* 텍스트 입력 필드 및 비밀번호 입력 필드 스타일링 */
 input[type="text"], input[type="password"] {
-    width: 100%;
-    border-radius: 5px;
-    height: 40px;
-    padding: 0 10px;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    font-size: 14px;
+    width: 100%; /* 입력 필드가 부모 요소의 100%를 차지 */
+    border-radius: 5px; /* 입력 필드의 모서리를 둥글게 만듦 */
+    height: 40px; /* 입력 필드의 높이를 40px로 설정 */
+    padding: 0 10px; /* 입력 필드 안쪽 좌우 여백을 10px 설정 */
+    border: 1px solid #ddd; /* 입력 필드의 테두리를 회색(#ddd)로 설정 */
+    margin-bottom: 5px; /* 입력 필드의 아래쪽 여백을 5px로 줄여 필드 간의 간격을 좁힘 */
+    font-size: 14px; /* 입력 필드 텍스트의 크기를 14px로 설정 */
 }
 
+/* 입력 필드가 포커스되었을 때 스타일링 */
 input[type="text"]:focus, input[type="password"]:focus {
-    border-color: #007BFF;
-    outline: none;
+    border-color: #007BFF; /* 포커스 시 테두리 색을 파란색(#007BFF)으로 변경 */
+    outline: none; /* 기본 아웃라인 제거 */
 }
+
 
 button {
     width: 100%;
@@ -109,6 +115,7 @@ button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
+
 
 #loginErrorDiv {
     display: none;
