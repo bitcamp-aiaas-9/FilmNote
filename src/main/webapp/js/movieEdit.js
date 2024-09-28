@@ -104,7 +104,7 @@ $(function() {
 					alert("영화를 수정했습니다.");
 					// /admin/movieList.do로 이동
 					// location.href = context + '/admin/movieList.do?pg=' + pg;
-					location.href = context + '/admin/movieView.do?mcode=' + mcode + 'pg=' + pg ;
+					location.href = context + '/admin/movieView.do?mcode=' + mcode + '&pg=' + pg ;
 				},
 				error: function(xhr, status, error) {
 					alert("영화 수정에 실패했습니다.");

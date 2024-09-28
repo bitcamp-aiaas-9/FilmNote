@@ -39,11 +39,11 @@
 	
 	
 	<!-- 영화 수정 -->
-	<update id="updateMovie" parameterType="movie">
-	    UPDATE movie_tb 
-	    SET title = #{movieTitle}, director = #{movieDirector}, genre = #{movieGenre}, 
-	        release_date = #{movieReleaseDate}, rating = #{movieRating}, 
-	        score = #{movieScore}, synopsis = #{movieSynopsis}, poster = #{moviePoster} 
+	<update id="updateMovie" parameterType="movie.bean.MovieDTO">
+	    UPDATE movie_tb
+	    SET title = #{title}, director = #{director}, genre = #{genre},
+	        release_date = #{release_date}, rating = #{rating},
+	        score = #{score}, synopsis = #{synopsis}, poster = #{poster}
 	    WHERE mcode = #{mcode}
 	</update>
 	

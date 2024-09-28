@@ -45,8 +45,8 @@ public class MovieDeleteDBService implements CommandProcess {
                   System.out.println("Deleting file with UUID: " + uuid);
                   
                   // 이미지 파일 삭제
-                  NCPObjectStorageService ncpService = new NCPObjectStorageService();
-                  ncpService.deleteFile(uuid); // UUID로 Object Storage에서 파일 삭제
+                  NCPObjectStorageService ncp = new NCPObjectStorageService();
+                  ncp.deleteFile(uuid); // UUID로 Object Storage에서 파일 삭제
               }
           }         
           

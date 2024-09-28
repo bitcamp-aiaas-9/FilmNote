@@ -107,11 +107,12 @@ public class MovieDAO {
         }
     }
 
+    // MovieDAO.java
     /** movieEdit.jsp */
 	// 영화 수정
 	public void updateMovie(MovieDTO movieDTO) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.update("movieSQL.movieUpdate", movieDTO);
+		sqlSession.update("movieSQL.updateMovie", movieDTO);
         sqlSession.commit();
         sqlSession.close();		
 	}
