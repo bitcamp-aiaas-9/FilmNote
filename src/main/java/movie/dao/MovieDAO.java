@@ -37,17 +37,13 @@ public class MovieDAO {
 	
     /** movieWrite.jsp */
 	// 영화 등록
-	public void movieWrite(MovieDTO movieDTO) {
+	public void writeMovie(MovieDTO movieDTO) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.insert("movieSQL.movieWrite", movieDTO);
+		sqlSession.insert("movieSQL.writeMovie", movieDTO);
         sqlSession.commit();
         sqlSession.close();		
 	}
-		
-		
-		
-		
-		
+
 	
 	/** movieList.jsp */
 	// 영화 목록
@@ -79,9 +75,9 @@ public class MovieDAO {
 	
 	/** movieView.jsp */
 	// 영화 조회
-	public MovieDTO getBoard(int mcode) {
+	public MovieDTO getMovie(int mcode) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		MovieDTO movieDTO = sqlSession.selectOne("movieSQL.getBoard", mcode);
+		MovieDTO movieDTO = sqlSession.selectOne("movieSQL.getMovie", mcode);
 		sqlSession.close();
 		return movieDTO;
 	}
@@ -111,12 +107,15 @@ public class MovieDAO {
         }
     }
 
-
-    
-    
-    
-    
-    
+    // MovieDAO.java
+    /** movieEdit.jsp */
+	// 영화 수정
+	public void updateMovie(MovieDTO movieDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("movieSQL.updateMovie", movieDTO);
+        sqlSession.commit();
+        sqlSession.close();		
+	}
     
 	/** movieList.jsp */
 	// 영화 검색

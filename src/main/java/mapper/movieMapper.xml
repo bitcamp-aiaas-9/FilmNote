@@ -5,7 +5,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movieSQL">
 	<!-- 영화 등록 -->
-    <insert id="movieWrite" parameterType="movie.bean.MovieDTO">
+    <insert id="writeMovie" parameterType="movie.bean.MovieDTO">
         INSERT INTO movie_tb (title, director, genre, release_date, rating, score, synopsis, poster)
         VALUES (#{title}, #{director}, #{genre}, #{release_date}, #{rating}, #{score}, #{synopsis}, #{poster})
     </insert>
@@ -21,7 +21,7 @@
     </select>
 
 	<!-- 영화 조회 (글 1개) -->
-	<select id="getBoard" parameterType="int" resultType="movie">
+	<select id="getMovie" parameterType="int" resultType="movie">
     	SELECT * FROM movie_tb WHERE mcode = #{mcode}
 	</select>
 	
@@ -39,11 +39,11 @@
 	
 	
 	<!-- 영화 수정 -->
-	<update id="updateMovie" parameterType="movie">
-	    UPDATE movie_tb 
-	    SET title = #{movieTitle}, director = #{movieDirector}, genre = #{movieGenre}, 
-	        release_date = #{movieReleaseDate}, rating = #{movieRating}, 
-	        score = #{movieScore}, synopsis = #{movieSynopsis}, poster = #{moviePoster} 
+	<update id="updateMovie" parameterType="movie.bean.MovieDTO">
+	    UPDATE movie_tb
+	    SET title = #{title}, director = #{director}, genre = #{genre},
+	        release_date = #{release_date}, rating = #{rating},
+	        score = #{score}, synopsis = #{synopsis}, poster = #{poster}
 	    WHERE mcode = #{mcode}
 	</update>
 	

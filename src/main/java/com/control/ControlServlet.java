@@ -18,8 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** 서블릿을 @WebServlet 으로 등록했을 때 ; web.xml 에서 등록한 서블릿 주석처리 해야함
- */
+/** 서블릿을 @WebServlet 으로 등록했을 때 ; web.xml 에서 등록한 서블릿 주석처리 해야함 */
 @WebServlet(
 		urlPatterns = {"*.do"}, 
 		initParams = {

@@ -18,7 +18,7 @@ public class ReviewViewService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		int mcode = Integer.parseInt(request.getParameter("mcode"));
-		MovieDTO movieDTO = MovieDAO.getInstance().getBoard(mcode); // 영화 정보
+		MovieDTO movieDTO = MovieDAO.getInstance().getMovie(mcode); // 영화 정보
 		List<ReviewDTO> reviewDTOList = ReviewDAO.getInstance().getReviewList(mcode); // 리뷰 리스트
 		
 		request.setAttribute("movieDTO", movieDTO); // 영화 정보
