@@ -45,12 +45,13 @@ public class ReviewDAO {
 	
 	// mcode에 대한 리뷰 리스트
 	public List<ReviewDTO> getReviewList(int mcode, int pg, int pgSize) {
-		System.out.println("getReviewList(" + mcode + ") 호출");
+		System.out.println("getReviewList(" + mcode + "," + pg +"," + pgSize + ") 호출");
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("mcode", mcode);
-		map.put("pg", pg);
+		map.put("pg", (pg-1)*pgSize);
 		map.put("pgSize", pgSize);
 		
+		System.out.println("map<pg>: " + map.get("pg"));
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		List<ReviewDTO> reviewDTOList = sqlSession.selectList(reviewMapper + ".getReviewList", map);
 		sqlSession.close();

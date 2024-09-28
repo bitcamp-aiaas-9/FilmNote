@@ -101,7 +101,7 @@
 				            <span class="like">❤️</span> -->
 				        </div>
 				    </div>
-				    <c:if test="${sessionScope.userDTO.uid == reviewDTO.getUser_id()}">
+				    <c:if test="${sessionScope.userDTO.uname == reviewDTO.getUser_id()}">
 					    <div class="comment-options">
 					        <button class="options-btn">⋮</button>
 					        <div class="options-menu">

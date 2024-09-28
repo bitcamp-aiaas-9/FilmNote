@@ -28,15 +28,15 @@ public class ReviewViewService implements CommandProcess {
 		
 		// 2. paging 변수 설정
 		reviewPaging.setCurrentPage(pg);
-		reviewPaging.setPageBlock(3); // 페이지 목록 개수 
-		reviewPaging.setPageSize(2); // 1페이지의 Item 
+		reviewPaging.setPageBlock(5); // 페이지 목록 개수 
+		reviewPaging.setPageSize(10); // 1페이지의 Item 
 		reviewPaging.setTotalA(totalA);
 		
 		System.out.println("current: " + reviewPaging.getCurrentPage());
 		System.out.println("TotalA: " + reviewPaging.getTotalA());
 		
 		// 3. 페이지 목록 만들기
-		reviewPaging.makePagingHTML();	
+		reviewPaging.makePagingHTML();
 	}
 
 	@Override

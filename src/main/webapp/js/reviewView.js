@@ -146,6 +146,11 @@ function deleteReview() {
 	}
 }
 
+// 페이징 처리
+function reviewPaging(pg) {
+	location.href = "/FilmNote/review/reviewView.do?mcode=" + $('#movietitle').data('moviecode') + "&pg=" + pg;
+}
+
 $(function() {
 	// [0. 초기화]
 	$('.update-review').prop('hidden', true);
