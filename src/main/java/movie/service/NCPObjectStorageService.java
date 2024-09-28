@@ -26,6 +26,7 @@ public class NCPObjectStorageService {
 	private String secretKey = "ncp_iam_BPKSKRE7SxoGD1gBMfi9EMviOe5H5Qru6g";
 	private String regionName = "kr-standard";
 	private String endPoint = "https://kr.object.ncloudstorage.com";
+	private String bucketName = "filmnote-bucket-116";
 	
 	final AmazonS3 s3;
 	
@@ -79,6 +80,14 @@ public class NCPObjectStorageService {
 		
 		return fileName;
 		
+	}
+	
+	public void deleteFile(String fileName) {
+	    try {
+	        s3.deleteObject(bucketName, "storage/" + fileName);
+	    } catch (Exception e) {
+	        e.printStackTrace(); 
+	    }
 	}
 	
 }

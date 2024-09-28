@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.control.CommandProcess;
 
 import movie.bean.MovieDTO;
-import movie.bean.MoviePaging;
 import movie.dao.MovieDAO;
 import review.bean.ReviewDTO;
 import review.bean.ReviewPaging;
@@ -41,11 +40,12 @@ public class ReviewViewService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		
 		// 1. get Data
 		int mcode = Integer.parseInt(request.getParameter("mcode")); // 영화 코드
 		
 		// 2. DAO
-		MovieDTO movieDTO = MovieDAO.getInstance().getBoard(mcode); // 영화 정보
+		MovieDTO movieDTO = MovieDAO.getInstance().getMovie(mcode); // 영화 정보
 		ReviewDAO reviewDAO = ReviewDAO.getInstance(); // 리뷰 DAO
 		
 		// 3. Paging

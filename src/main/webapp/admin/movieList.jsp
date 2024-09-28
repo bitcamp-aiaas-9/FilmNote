@@ -53,7 +53,7 @@
 			<c:forEach var="movieDTO" items="${list }">
 				<tr>
 					<td align="center">
-						<input type="checkbox" name="mcodes" class="board-list-check" value="${movieDTO.mcode}" /> 
+						<input type="checkbox" name="mcode" class="board-list-check" value="${movieDTO.mcode}" /> 
 						${movieDTO.mcode }
 						<input type="hidden" id="mcode" value="${movieDTO.mcode }" />
 					</td>      
