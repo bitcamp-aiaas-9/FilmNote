@@ -39,8 +39,6 @@ public class MovieWriteDBService implements CommandProcess {
 		    
 		    
 	    // 1. Data 받기
-	    int mcode = Integer.parseInt(multi.getParameter("mcode"));  
-	    int pg = Integer.parseInt(multi.getParameter("pg"));   
 	    String movieTitle = multi.getParameter("movieTitle");
 	    String movieDirector = multi.getParameter("movieDirector");
 	    String movieGenre = multi.getParameter("movieGenre");
