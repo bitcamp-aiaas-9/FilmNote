@@ -29,6 +29,7 @@
         <br>
             <h3>삭제되는 내용</h3>
             <ul>
+            	<li>FilmNote</li>
             	<li>개인정보 : 개인정보 및 보관 중인 DB 삭제</li>
             	<li>무비리뷰 : 등록한 무비 리뷰 및 정보 삭제</li>
                 <li>무비로그 : 등록한 무비 로그 및 정보 삭제</li>
@@ -49,18 +50,22 @@
             <h3>중요 안내</h3>
         <br>
             <strong class="strong">탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.</strong>
-            <strong class="strong">무비로그 아이디로 로그인하여 사용 중이던 외부 사이트를 방문하여 다른 로그인 수단을 준비하거나,
-            데이터를 백업한 후 무비로그 회원을 탈퇴해야 합니다.</strong>
+            <strong class="strong">FilmNote 아이디로 로그인하여 사용 중이던 외부 사이트를 방문하여 다른 로그인 수단을 준비하거나,
+            데이터를 백업한 후 FilmNote 회원을 탈퇴해야 합니다.</strong>
         </div>
 
         <div class="agreement">
             <label>
-                <input type="checkbox" id="checkbox" required> 안내 사항을 모두 확인하였으며, 이에 동의합니다.
+                <input type="checkbox" id="withdrawbox" required> 안내 사항을 모두 확인하였으며, 이에 동의합니다.
             </label>
+ <div class="password-input">
+            <label for="nowpwd">비밀번호:</label>
+            <input type="password" id="nowpwd" required placeholder="비밀번호를 입력하세요.">
+            <div id="nowupwdDiv"></div>
         </div>
-
         <button id="withdrawBtn" type="button">탈퇴하기</button>
         <button id="cancelWithdraw" type="reset">취소</button>
+        </div>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="../js/userWithdraw.js"></script>

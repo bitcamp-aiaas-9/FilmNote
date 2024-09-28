@@ -18,20 +18,18 @@ public class UserPwdCheckService implements CommandProcess {
 		String uid = request.getParameter("uid");
 		UserDAO userDAO = UserDAO.getInstance();
 
-		String pwdCheck = userDAO.pwdCheck(uid);
+		boolean pwdCheck = userDAO.pwdCheck(uid, nowupwd);
+
 		JSONObject jsonResoponse = new JSONObject();
 
-		
-		if (pwdCheck != null && pwdCheck.equals(nowupwd)) {
-			jsonResoponse.put("valid", true);
-		} else {
-			jsonResoponse.put("valid", false);
+		// 결과에 따라 JSON 응답 구성
+		jsonResoponse.put("pwdCheck", pwdCheck);
+		if (!pwdCheck) {
+			jsonResoponse.put("error", "비밀번호가 맞지 않습니다."); // 비밀번호 불일치 시 오류 메시지
 		}
-		
+
 		response.setContentType("application/json");
 		response.getWriter().write(jsonResoponse.toString());
-
-		
 
 		return "none";
 	}

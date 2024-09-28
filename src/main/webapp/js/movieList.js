@@ -2,7 +2,17 @@
 
 // 페이지 이동
 function moviePaging(pg) {
-	location.href = "/FilmNote/admin/movieList.do?pg=" + pg;
+	const searchOpt = $('.search-opt').val();
+	const searchValue = $('#title-box').val();
+	console.log("searchOpt:", searchOpt);
+	console.log("searchValue:", searchValue);
+	if (!searchValue) {
+		// 검색 조건이 없을 경우 기본 페이지로 이동
+		location.href = "/FilmNote/admin/movieList.do?pg=" + pg;
+	} else {
+		// 검색 조건이 있을 경우 해당 페이지의 영화 목록 로드
+		loadMovies(pg);
+	}
 }
 
 $(function() {
@@ -83,38 +93,39 @@ $(function() {
 	});
 });
 
-function setUpPagination(totalMovies) {
-    const moviesPerPage = 10; // 페이지당 영화 개수
-    const totalPages = Math.ceil(totalMovies / moviesPerPage); // 총 페이지 수
-    let paginationHTML = '';
 
-    for (let i = 1; i <= totalPages; i++) {
-        paginationHTML += `<button onclick="moviePaging(${i})">${i}</button>`;
-    }
 
-    $('#pagination').html(paginationHTML); // 페이징 버튼 추가
-}
 
-// 영화 검색
-$('#searchBtn').click(function() {
+
+// 전역 변수로 현재 페이지 상태 관리
+let currentPage = 1;
+
+// 페이지 로드 함수
+function loadMovies(page) {
+    currentPage = page; // 현재 페이지 업데이트
+    $('#pg').val(currentPage); 
     const searchOpt = $('.search-opt').val();
     const searchValue = $('#title-box').val();
-    const pg = $('#pg').val();
-    
+
+    let url = context + '/admin/movieSearchDB.do';
+    let data = { pg: currentPage };
+
+    // 검색 조건이 있을 경우 데이터에 추가
+    if (searchOpt && searchValue) {
+        data.searchOpt = searchOpt;
+        data.searchValue = searchValue;
+    }
+
     $.ajax({
-        url: context + '/admin/movieSearchDB.do',
+        url: url,
         type: 'GET',
-        data: {
-            searchOpt: searchOpt,
-            searchValue: searchValue,
-            pg: pg
-        },
+        data: data,
         success: function(data) {
             $('#movieTableBody').empty(); // 기존 데이터 제거
-			$('#page-block').empty(); //페이징 처리 제거
             data.movies.forEach(function(movieDTO) {
                 $('#movieTableBody').append(`
                     <tr>
+                        <td style="display:none;">${movieDTO.mcode}</td> <!-- mcode를 숨김 -->
                         <td align="center"><input type="checkbox" name="mcodes" class="board-list-check" value="${movieDTO.mcode}" /></td>
                         <td align="left"><a href="#" class="subject-a">${movieDTO.title}</a></td>
                         <td align="center">${movieDTO.director}</td>
@@ -122,15 +133,38 @@ $('#searchBtn').click(function() {
                     </tr>
                 `);
             });
-            setUpPagination(data.totalMovies); // 페이징 설정
+            $('#page-block').html(data.pagingHTML); // 페이징 HTML 업데이트
+            $('#pg').val(currentPage); 
         },
         error: function() {
-            alert('영화 검색에 실패했습니다.');
+            // 검색어가 비어있을 경우 전체 영화를 로드
+            if (!searchOpt && !searchValue) {
+                alert('검색어가 없습니다. 전체 영화를 보여줍니다.');
+                loadMovies(1); // 전체 영화 로드
+            } else {
+                alert('검색할 단어를 입력해주세요.');
+            }
         }
     });
+}
+
+// 검색 버튼 클릭 이벤트 핸들러
+$('#searchBtn').click(function() {
+    currentPage = 1; // 검색할 때마다 현재 페이지를 1로 초기화
+    loadMovies(currentPage); // 첫 페이지에서 검색
 });
 
+// 게시판 제목 클릭했을 때 (동적으로 바인딩)
+$(document).on('click', '.subject-a', function() {
+    let mcode = $(this).closest('tr').find('td:first').text().trim(); // 숨겨진 td에서 mcode 가져오기
+    console.log("mcode:", mcode); // 확인용 로그
+    let pg = $('#pg').val();
 
+    if (!mcode) {
+        alert("영화 코드(mcode)가 비어 있습니다. 다시 시도해주세요.");
+        return; // mcode가 비어있으면 실행 중지
+    }
 
-
+    location.href = "/FilmNote/admin/movieView.do?mcode=" + mcode + '&pg=' + pg;
+});
 
