@@ -66,4 +66,26 @@
 
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- movieMapper.xml 영화 검색 - 채연 -->
+	<select id="getSelectTotal" parameterType="java.util.Map" resultType="int">
+	    SELECT COUNT(*) FROM movie_tb WHERE ${type} LIKE CONCAT('%', #{value}, '%')
+	</select>
+
+	<select id="selectMovie"  parameterType="java.util.Map" resultType="movie">
+		SELECT * from movie_tb 
+		WHERE ${type} LIKE CONCAT('%', #{value}, '%') 
+		ORDER BY mcode DESC LIMIT #{startNum}, #{endNum}
+	</select>	
+	
+	
+	
 </mapper>

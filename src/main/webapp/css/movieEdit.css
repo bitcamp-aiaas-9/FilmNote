@@ -70,6 +70,8 @@ input[type="text"] {
 
 textarea {
 	height: 100px;
+	resize: vertical; 
+    overflow-y: auto;
 }
 
 .validationDiv {

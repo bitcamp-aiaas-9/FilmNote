@@ -49,7 +49,7 @@
 	</tr>
 	
 	<tbody id="movieTableBody">
-		<c:if test="${requestScope.list != null }">
+		<c:if test="${requestScope.list != null }"> 
 			<c:forEach var="movieDTO" items="${list }">
 				<tr>
 					<td align="center">
@@ -72,7 +72,8 @@
 		</c:if> 
 	</tbody>
 </table>		       
-<div id="page-block">${moviePaging.pagingHTML }</div>
+<div id="list-page-block" class="page-block">${moviePaging.pagingHTML }</div>
+<div id="select-page-block" class="page-block" style="display:none;"></div>
 </c:if>
 
 <c:if test="${sessionScope.adminDTO.aid != 'admin'}">
