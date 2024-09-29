@@ -66,6 +66,16 @@ public class UserDAO {
 		return userDTO;
 	}
 	
+	public boolean checkIdExists(String uid) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			int count = sqlSession.selectOne("userSQL.checkIdExists", uid);
+			return count > 0;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
 	public boolean pwdCheck(String id, String nowpwd) {
 	    SqlSession sqlSession = sqlSessionFactory.openSession();
 	    try {
@@ -83,18 +93,6 @@ public class UserDAO {
 	    }   
 	}
 	
-	
-
-	public boolean checkIdExists(String uid) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		try {
-			int count = sqlSession.selectOne("userSQL.checkIdExists", uid);
-			return count > 0;
-		} finally {
-			sqlSession.close();
-		}
-	}
-
 	public int userWithdraw(String id) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		int result = sqlSession.delete("userSQL.userWithdraw", id);

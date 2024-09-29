@@ -18,6 +18,10 @@
 <jsp:include page="../common/header.jsp" />	
 	<div id="write-jsp" class="signup-container">
         <h2>회원가입</h2>
+        
+        <!-- 경고 메시지를 표시하는 영역 -->
+		<div id="warningMessage" class="show" ></div>
+        
         <form id="signUpForm" action="${pageContext.request.contextPath}/user/userSignUpDB.do" method="post">
             <table>
                 <!-- 이름 입력 필드 -->
@@ -111,9 +115,6 @@
         </form>
     </div>
     
-    <!-- 경고 메시지를 표시하는 영역 -->
-		<div id="warningMessage" class="show" ></div>
-
     <!-- 모달 다이얼로그 -->
     <div id="dialog" title="FilmNote" style="display:none;">
         <p id="dialogMessage"></p>

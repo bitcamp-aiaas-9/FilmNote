@@ -12,14 +12,22 @@ $(function(){
 	console.log("context:", context);
 
 	
-	$('#movie-delete-btn').click(function() {
-		let mcode = $('input[name="mcodes"]').val();
+	/** 수정 버튼; 해당 영화 수정 페이지 이동 */
+	$('#movieEditBtn').click(function() {
+		location.href = context + '/admin/movieEdit.do?mcode=' + mcode + '&pg=' + pg;
+	});
+	
+	// movieView.js
+	/** 삭제 버튼; 해당 영화 삭제 */
+	$('#movieDeleteBtn').click(function() {
+		let mcodeArray = [];
+		mcodeArray.push(mcode);
 		
 		if (confirm("' " + movieTitle + " ' 을(를) 삭제하시겠습니까?")) {
 			$.ajax({
 			    type: 'POST',
 			    url: context + '/admin/movieDeleteDB.do',
-			    data: { mcodes: [mcode]},  // 배열로 감싸서 전송 - 선택 삭제와 dao 함수 같이 쓰기 위함
+			    data: { mcode: mcodeArray},  // 배열로 감싸서 전송 - 선택 삭제와 dao 함수 같이 쓰기 위함
 				traditional: true,
 			    success: function() {
 			        alert("' " + movieTitle + " ' 을(를) 삭제하였습니다.");
@@ -38,5 +46,10 @@ $(function(){
 		}
 	});
 	
+	
+	/** 목록 버튼; movieList.jsp 이동 */
+	$('#listBtn').click(function() {
+		location.href = context + '/admin/movieList.do?pg=' + pg;
+	});
 
 });

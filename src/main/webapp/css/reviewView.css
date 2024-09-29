@@ -13,8 +13,11 @@
 	border-bottom: none;
 }
 
+table, #reviewList, #post-comment {
+	margin: 20px auto;
+}
+
 table {
-	margin: 20px 0;
 	width: 1020px;
 	border-collapse: collapse;
 	border-spacing: 0px;
@@ -73,7 +76,7 @@ th, td {
 }
 
 #reviewList {
-	margin-bottom: 20px;
+	margin: 20px 40px;
 }
 
 .comment-content {
@@ -91,6 +94,7 @@ th, td {
     padding-bottom: 15px;
     border-bottom: 1px solid #ddd;
     position: relative;
+    margin: 10px 0;
 }
 
 /* 프로필 사진 */
@@ -114,7 +118,7 @@ th, td {
 
 .list-user-id {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .comment-date {
@@ -122,13 +126,23 @@ th, td {
     color: #888;
 }
 
-.list-content {
+.list-content, .update-review {
     margin: 5px 0;
     font-size: 14px;
 }
 
-.comment-actions {
+.list-content review-score {
     font-size: 12px;
+}
+
+.review-content {
+    white-space: pre-line;
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+.comment-actions {
+    font-size: 13px;
     color: #005898;
 }
 
@@ -172,7 +186,7 @@ th, td {
 
 /* 댓글 작성 폼 */
 #post-comment {
-    padding-top: 25px;
+    margin: 20px 40px;
     display: flex;
     flex-direction: column;
 }
@@ -182,7 +196,7 @@ th, td {
     margin-bottom: 10px;
 }
 
-#new-review {
+#new-review, .update-reviewText {
     width: 100%;
     height: 200px;
     padding: 10px;
@@ -207,7 +221,7 @@ th, td {
     margin: 0 5px;
 }
 
-#submit-review {
+.btn {
     background: #005898;
     color: white;
     border: none;

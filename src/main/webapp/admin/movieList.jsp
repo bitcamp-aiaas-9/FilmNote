@@ -20,7 +20,7 @@
 <input type="hidden" id="pg" value="${requestScope.pg }" /> 
 
 <div class="card">
-	<div id="card-title">글 삭제 & 검색</div>
+	<div id="card-title">영화 삭제 & 검색</div>
 	<div id="card-content">
 		<button type="submit" id="deleteBtn" class="cardBtn">선택 삭제</button>
 		
@@ -34,7 +34,6 @@
 			</select>
 			<input id="title-box" class="input-box"/>
 			<button id="searchBtn" class="cardBtn">검색</button>
-	
 		</div>
 	</div>
 </div>
@@ -50,11 +49,11 @@
 	</tr>
 	
 	<tbody id="movieTableBody">
-		<c:if test="${requestScope.list != null }">
+		<c:if test="${requestScope.list != null }"> 
 			<c:forEach var="movieDTO" items="${list }">
 				<tr>
 					<td align="center">
-						<input type="checkbox" name="mcodes" class="board-list-check" value="${movieDTO.mcode}" /> 
+						<input type="checkbox" name="mcode" class="board-list-check" value="${movieDTO.mcode}" /> 
 						${movieDTO.mcode }
 						<input type="hidden" id="mcode" value="${movieDTO.mcode }" />
 					</td>      
@@ -73,8 +72,8 @@
 		</c:if> 
 	</tbody>
 </table>		       
-<div id="page-block">${moviePaging.pagingHTML }</div>
-		<div id="pagination">페이지</div>
+<div id="list-page-block" class="page-block">${moviePaging.pagingHTML }</div>
+<div id="select-page-block" class="page-block" style="display:none;"></div>
 </c:if>
 
 <c:if test="${sessionScope.adminDTO.aid != 'admin'}">

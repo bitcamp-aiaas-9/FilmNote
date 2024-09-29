@@ -20,13 +20,13 @@ body {
     background: #fff;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
     width: 400px;
     margin: 50px auto;
 }
 
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 24px;
     color: #333;
 }
@@ -53,13 +53,14 @@ table {
 
 th, td {
     border: none;
-    padding: 10px;
+    padding: 5px;
     vertical-align: top;
 }
 
 .label {
     width: 30%;
-    padding-top: 15px;
+    padding-top: 5px;
+    padding-right: 5px;
     text-align: right;
     color: #555;
 }
@@ -75,7 +76,7 @@ input[type="text"], input[type="password"] {
     height: 40px;
     padding: 0 10px;
     border: 1px solid #ddd;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-size: 14px;
 }
 
@@ -84,7 +85,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     outline: none;
 }
 
-button {
+#adminLoginBtn {
     width: 100%;
     height: 40px;
     text-align: center;
@@ -99,11 +100,11 @@ button {
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-top: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
+#adminLoginBtn:hover {
     background: linear-gradient(135deg, #9013fe, #4a90e2);
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
@@ -123,6 +124,7 @@ button:hover {
 
 /* 관리자 로그인 에러 메시지 */
 #adminLoginErrorDiv {
+	margin-top: 20px;
     padding: 5px 0;
     color: #e74c3c; /* 기존 빨간색 경고 메시지 */
     font-size: 12pt;

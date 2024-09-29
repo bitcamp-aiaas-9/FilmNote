@@ -18,8 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** 서블릿을 @WebServlet 으로 등록했을 때 ; web.xml 에서 등록한 서블릿 주석처리 해야함
- */
+/** 서블릿을 @WebServlet 으로 등록했을 때 ; web.xml 에서 등록한 서블릿 주석처리 해야함 */
 @WebServlet(
 		urlPatterns = {"*.do"}, 
 		initParams = {
@@ -132,6 +131,11 @@ public class ControlServlet extends HttpServlet {
 		// member.service.WriteFormService
 		CommandProcess com = (CommandProcess)map.get(category); // 자식 = (자식)부모
 		
+		if (com == null) {
+		    System.out.println("No CommandProcess found for category: " + category);
+		    return; // 적절한 처리
+		}
+
 		System.out.println("com : " + com);
 		
 		String view = null;

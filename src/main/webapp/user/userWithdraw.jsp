@@ -9,7 +9,7 @@
     <title>회원 탈퇴</title>
 </head>
 <body>
-	<jsp:include page="../common/header.jsp" />
+   <jsp:include page="../common/header.jsp" />
     <div class="container">
         <h2>회원 탈퇴 안내</h2>
         <p>회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</p>
@@ -29,9 +29,9 @@
         <br>
             <h3>삭제되는 내용</h3>
             <ul>
-            	<li>FilmNote</li>
-            	<li>개인정보 : 개인정보 및 보관 중인 DB 삭제</li>
-            	<li>무비리뷰 : 등록한 무비 리뷰 및 정보 삭제</li>
+               <li>FilmNote</li>
+               <li>개인정보 : 개인정보 및 보관 중인 DB 삭제</li>
+               <li>무비리뷰 : 등록한 무비 리뷰 및 정보 삭제</li>
                 <li>무비로그 : 등록한 무비 로그 및 정보 삭제</li>
                 <li>무비코인 : 충전한 무비 코인 및 정보 삭제</li>
                 <li>친구추가 : 등록된 친구 계정 및 친구정보 삭제</li>
@@ -55,17 +55,17 @@
         </div>
 
         <div class="agreement">
+ 			<div class="password-input">
+	            <label for="nowpwd">비밀번호:</label>
+	            <input type="password" id="nowpwd" required placeholder="비밀번호를 입력하세요.">
+	            <div id="nowupwdDiv"></div>
+	    	</div>
             <label>
                 <input type="checkbox" id="withdrawbox" required> 안내 사항을 모두 확인하였으며, 이에 동의합니다.
             </label>
- <div class="password-input">
-            <label for="nowpwd">비밀번호:</label>
-            <input type="password" id="nowpwd" required placeholder="비밀번호를 입력하세요.">
-            <div id="nowupwdDiv"></div>
         </div>
         <button id="withdrawBtn" type="button">탈퇴하기</button>
         <button id="cancelWithdraw" type="reset">취소</button>
-        </div>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="../js/userWithdraw.js"></script>

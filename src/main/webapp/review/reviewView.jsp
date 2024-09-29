@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,12 +21,12 @@
 		<td colspan="3" id="movietitle" data-moviecode="${movieDTO.mcode}"><span>${movieDTO.title}</span></td>
 	</tr>
 		<tr>
-		    <td align="center" rowspan="9" class="poster-cell">
-		        <img src="${movieDTO.poster }" alt="영화 포스터">
+		    <td width="30%" align="center" rowspan="9" class="poster-cell">
+		        <img width="90%" src="${movieDTO.poster }" alt="영화 포스터">
 		    </td>
 		</tr>
 		<tr>
-			<th>영화 감독</th>
+			<th width="20%">영화 감독</th>
 		    <td class="info-cell">${movieDTO.director }</td>
 		</tr>
 		<tr>
@@ -42,7 +43,7 @@
 		</tr>
 		<tr>
 			<th>영화 평점</th>
-		    <td class="info-cell" id="movieAvgScore">${movieDTO.score }</td>
+		    <td class="info-cell" id="movieAvgScore"><fmt:formatNumber pattern="0.00점" value="${movieDTO.score}"/></td>
 		</tr>
 		<tr>
 			<th>영화 줄거리</th>
@@ -51,8 +52,8 @@
 	</table>
 </div>
 
-
-<div id="reviewTotalNum" hidden>${reviewDTOList.size()}</div>
+<%-- 
+<div id="reviewTotalNum" hidden>${reviewDTOList.size()}</div> --%>
 <div id="reviewDiv">
 	<!-- 리뷰 -->
 	<div id="reviewList">
@@ -63,22 +64,52 @@
 				    <!-- <img class="profile-pic" src="default-profile.jpg" alt="User Profile"> -->
 				    <div class="comment-details">
 				        <div class="comment-header">
-				            <span class="list-user-id">${reviewDTO.getUser_id()}</span>
+				        	<span class="review-code" hidden>${reviewDTO.getRcode()}</span>
+				        	<span class="list-user-id">
+				            	<c:if test="${reviewDTO.getUser_id() == null}">알수없음</c:if>
+				            	<c:if test="${reviewDTO.getUser_id() != null}">${reviewDTO.getUser_id()}</c:if>
+				            </span>
 				            <span class="comment-date">${reviewDTO.getLogtime()}</span>
 				        </div>
-				        <div class="list-content">${reviewDTO.getContent()}</div>
+				        
+				        <div class="list-content">
+					        <div class="review-score">${reviewDTO.getScore()}.0점</div>
+					        <div class="review-content">${reviewDTO.getContent()}</div>
+				        </div>
+				        
+				        <div class="update-review">
+					        <div class="update-score">
+					    		<div class="score-num"><span class="scoreText">${reviewDTO.getScore()}</span>점</div>
+					    		<div class="score-star">
+					    			<span class="score" data-score="1">☆</span>
+						    		<span class="score" data-score="2">☆</span>
+						    		<span class="score" data-score="3">☆</span>
+						    		<span class="score" data-score="4">☆</span>
+						    		<span class="score" data-score="5">☆</span>
+						    		<span class="score" data-score="6">☆</span>
+						    		<span class="score" data-score="7">☆</span>
+						    		<span class="score" data-score="8">☆</span>
+						    		<span class="score" data-score="9">☆</span>
+						    		<span class="score" data-score="10">☆</span>
+					    		</div>
+					    	</div>
+					        <textarea class="update-reviewText">${reviewDTO.getContent()}</textarea>
+					        <input type="button" class="btn update-reviewBtn" value="수정">
+				        </div>
 				        <div class="comment-actions">
-				            <span class="reply">답글쓰기</span>
-				            <span class="like">❤️</span>
+				            <!-- <span class="reply">답글쓰기</span>
+				            <span class="like">❤️</span> -->
 				        </div>
 				    </div>
-				    <div class="comment-options">
-				        <button class="options-btn">⋮</button>
-				        <div class="options-menu">
-				            <span class="edit">수정</span>
-				            <span class="delete">삭제</span>
-				        </div>
-				    </div>
+				    <c:if test="${sessionScope.userDTO.uname == reviewDTO.getUser_id()}">
+					    <div class="comment-options">
+					        <button class="options-btn">⋮</button>
+					        <div class="options-menu">
+					            <span class="edit">수정</span>
+					            <span class="delete">삭제</span>
+					        </div>
+					    </div>
+				    </c:if>
 				</div>
 			</c:forEach>
 		</c:if>
@@ -116,14 +147,14 @@
 	    	
 	    	<div class="post-footer">
 		    	<div id="emoji">
-			         <button class="icon-button">📷</button>
-			         <button class="icon-button">😊</button>
+			         <input type="button" class="icon-button" value="📷">
+			         <input type="button" class="icon-button" value="😊">
 		        </div>
-		        <input type="button" id="submit-review" value="등록">
+		        <input type="button" class="btn" id="submit-review" value="등록">
 	    	</div>
 	    </form>
 	</div>
-	<%-- <div id="page-block">${boardPaging.pagingHTML}</div> --%>
+	<div id="page-block">${reviewPagingHTML}</div>
 </div>
 
 <div id="footer">

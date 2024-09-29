@@ -43,9 +43,9 @@
 	</update>
 	
 	<!-- 비밀번호 체크 -->
-<select id="pwdCheck" parameterType="String" resultType="String">
-    SELECT upwd FROM user_tb WHERE uid = #{uid}
-</select>
+	<select id="pwdCheck" parameterType="String" resultType="String">
+	    SELECT upwd FROM user_tb WHERE uid = #{uid}
+	</select>
 
 	<!-- 회원탈퇴 -->
 	<delete id="userWithdraw" parameterType="String">

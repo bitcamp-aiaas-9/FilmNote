@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    margin: 100px auto;
+    margin: 50px auto;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
@@ -44,6 +44,21 @@ button {
 	color:red;
 	font-size:22px;
 }
+
+.password-input {
+	margin: 20px 10px 10px 10px;
+}
+
+.password-input input[type="password"] {
+	width: 180px;
+	height: 30px;
+	padding: 5px;
+}
+
+.agreement {
+	margin-bottom: 20px;
+}
+
 
 #withdrawBtn {
     background-color: #d9534f;

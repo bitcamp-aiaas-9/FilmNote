@@ -14,16 +14,17 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+
 public class MovieDAO {
 
 	// 싱글톤 인스턴스 생성
 	private static MovieDAO instance = new MovieDAO();
 	private SqlSessionFactory sqlSessionFactory;
-
+    
 	public static MovieDAO getInstance() {
 		return instance;
 	}
-
+	
 	public MovieDAO() { // Driver Loading
 		try {
 			Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
@@ -32,12 +33,29 @@ public class MovieDAO {
 			e.printStackTrace();
 		}
 	}
-
-	/** movieWrite.jsp */
+	
+	
+    /** movieWrite.jsp */
 	// 영화 등록
-	// 이미지 Object Storage 에 올리기
+	public void writeMovie(MovieDTO movieDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert("movieSQL.writeMovie", movieDTO);
+        sqlSession.commit();
+        sqlSession.close();		
+	}
 
+	
 	/** movieList.jsp */
+	// 영화 개수
+	public int getTotalA() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		int totalA = 0;      
+		totalA = sqlSession.selectOne("movieSQL.getTotalA");        
+		sqlSession.close();    
+		
+		return totalA;
+	}
+	
 	// 영화 목록
 	public List<MovieDTO> movieList(int startNum, int endNum) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -49,99 +67,93 @@ public class MovieDAO {
 		sqlSession.close();
 
 		return list;
-
-	}
-
-	// 영화 개수
-	public int getTotalA() {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		int totalA = 0;
-		totalA = sqlSession.selectOne("movieSQL.getTotalA");
-		sqlSession.close();
-
-		return totalA;
-	}
-
+		
+	}	
+	
+	
+    // 검색된 총 영화 개수 반환
+    public int getSelectTotal(String value, String type) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        HashMap<String, String> data = new HashMap<>();
+        data.put("type", type);
+        data.put("value", value);
+        
+        int selectTotal = sqlSession.selectOne("movieSQL.getSelectTotal", data);
+        sqlSession.close();
+        
+        return selectTotal;
+    }
+	
+	// 영화 검색 목록
+	public List<MovieDTO> selectMovie(String value, String type, int startNum, int endNum) {
+	    SqlSession sqlSession = sqlSessionFactory.openSession();
+	    Map<String, Object> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);	    
+	    map.put("type",type);
+	    map.put("value",value);
+	    
+	    List<MovieDTO> list = sqlSession.selectList("movieSQL.selectMovie", map);
+	    sqlSession.close();
+	    return list;		
+	}	
+	
 	/** movieView.jsp */
 	// 영화 조회
-	public MovieDTO getBoard(int mcode) {
+	public MovieDTO getMovie(int mcode) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		MovieDTO movieDTO = sqlSession.selectOne("movieSQL.getBoard", mcode);
+		MovieDTO movieDTO = sqlSession.selectOne("movieSQL.getMovie", mcode);
 		sqlSession.close();
 		return movieDTO;
 	}
 
-	// 영화 평점 업데이트
-	public void updateMovieScore(int mcode, double score) {
-		System.out.println("updateMovieScore() 호출");
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("mcode", mcode);
-		map.put("score", score);
-
+	// 영화 평점 업데이트: 리뷰 추가 및 수정 시 호출
+	public void updateMovieScore(int mcode) {
+		System.out.println("updateMovieScore(" + mcode + ") 호출");
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.update("movieSQL.updateMovieScore", map);
+		sqlSession.update("movieSQL.updateMovieScore", mcode);
 		sqlSession.commit();
 		sqlSession.close();
 	}
 
 	// 영화 삭제 - 1개 이상 삭제 (1개도 가능)
-	public void deleteMovies(String[] mcodes) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		try {
-			Map<String, Object> mcodeMap = new HashMap<>();
-			mcodeMap.put("mcodes", mcodes);
-			sqlSession.delete("movieSQL.deleteMovies", mcodeMap);
-			sqlSession.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			sqlSession.rollback(); // 오류 발생 시 롤백
-		} finally {
-			sqlSession.close();
-		}
-	}
+    public void deleteMovies(String[] mcodes) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            Map<String, Object> mcodeMap = new HashMap<>();
+            mcodeMap.put("mcodes", mcodes);
+            sqlSession.delete("movieSQL.deleteMovies", mcodeMap);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback(); // 오류 발생 시 롤백
+        } finally {
+            sqlSession.close();
+        }
+    }
 
-	/**
-	 * movieList.jsp
-	 * 
-	 * @return
-	 */
+    /** movieEdit.jsp */
+	// 영화 수정
+	public void updateMovie(MovieDTO movieDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("movieSQL.updateMovie", movieDTO);
+        sqlSession.commit();
+        sqlSession.close();		
+	}
+    
+	// MovieDAO.java
+	/** index.jsp */
 	// 영화 검색
-	// 영화 검색과 총 영화 수를 함께 반환하는 메서드
-	public Map<String, Object> searchMovies(String searchOpt, String searchValue, int startNum, int limit) {
+	public List<MovieDTO> indexSelectMovie(String value, String type) {
 	    SqlSession sqlSession = sqlSessionFactory.openSession();
-
-	    // 검색 조건과 값을 Map으로 묶어서 넘김
-	    Map<String, Object> searchParams = new HashMap<>();
-	    searchParams.put("searchOpt", searchOpt);
-	    searchParams.put("searchValue", searchValue);
-	    searchParams.put("startNum", startNum);
-	    searchParams.put("limit", limit);
-
-	    List<MovieDTO> movieList = sqlSession.selectList("movieSQL.searchMovies", searchParams);
-	    int totalMovies = totalSearch(searchOpt, searchValue); // 총 영화 수 조회
-
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("type",type);
+	    map.put("value",value);		
+		
+	    List<MovieDTO> list = sqlSession.selectList("movieSQL.indexSelectMovie", map);
 	    sqlSession.close();
-
-	    // 결과를 Map으로 반환
-	    Map<String, Object> result = new HashMap<>();
-	    result.put("movies", movieList);
-	    result.put("totalMovies", totalMovies);
-	    
-	    return result;
-	}
-
-	public int totalSearch(String searchOpt, String searchValue) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-
-		// 검색 조건과 값을 Map으로 묶어서 넘김
-		Map<String, String> searchParams = new HashMap<>();
-		searchParams.put("searchOpt", searchOpt);
-		searchParams.put("searchValue", searchValue);
-
-		int totalMovies = sqlSession.selectOne("movieSQL.totalSearch", searchParams);
-		sqlSession.close();
-
-		return totalMovies;
-	}
-
+	    return list;
+	}    
+	
+	
 }

@@ -44,22 +44,48 @@ public class ReviewDAO {
 	}
 	
 	// mcode에 대한 리뷰 리스트
-	public List<ReviewDTO> getReviewList(int mcode) {
-		System.out.println("getReviewList(" + mcode + ") 호출");
+	public List<ReviewDTO> getReviewList(int mcode, int pg, int pgSize) {
+		System.out.println("getReviewList(" + mcode + "," + pg +"," + pgSize + ") 호출");
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("mcode", mcode);
+		map.put("pg", (pg-1)*pgSize);
+		map.put("pgSize", pgSize);
+		
+		System.out.println("map<pg>: " + map.get("pg"));
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		List<ReviewDTO> reviewDTOList = sqlSession.selectList(reviewMapper + ".getReviewList", mcode);
+		List<ReviewDTO> reviewDTOList = sqlSession.selectList(reviewMapper + ".getReviewList", map);
 		sqlSession.close();
 		
 		return reviewDTOList;
 	}
 	
 	// mcode에 대한 리뷰 개수
-	public int getTotalReview() {
+	public int getTotalA(int mcode) {
+		System.out.println("getTotalA(" + mcode + ") 호출");
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		int totalA = 0;      
-		totalA = sqlSession.selectOne("movieSQL.getTotalA");        
-		sqlSession.close();    
+		totalA = sqlSession.selectOne(reviewMapper + ".getTotalA", mcode);        
+		sqlSession.close(); 
 		
 		return totalA;
 	}
+
+	// 리뷰 수정
+	public void updateReviewDTO(ReviewDTO reviewDTO) {
+		System.out.println("updateReviewDTO() 호출");
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update(reviewMapper + ".updateReviewDTO", reviewDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	
+	// 리뷰 삭제
+	public void deleteReviedDTO(int rcode) {
+		System.out.println("deleteReviedDTO(" + rcode + ") 호출");
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete(reviewMapper + ".deleteReviedDTO", rcode);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	
 }

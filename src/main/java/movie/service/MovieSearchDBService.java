@@ -1,102 +1,98 @@
 // FilmNote/src/main/java/movie.service.MovieSearchDBService.java
 package movie.service;
 
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
 import com.control.CommandProcess;
 
 import movie.bean.MovieDTO;
-import movie.bean.MoviePaging;
 import movie.dao.MovieDAO;
 
 public class MovieSearchDBService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		int pg = 1; // 기본값 설정
+	    if (request.getParameter("pg") != null) {
+	        pg = Integer.parseInt(request.getParameter("pg"));
+	    }
+	    
+        // 1. Data
+        String opt = request.getParameter("searchOpt");
+        String value = request.getParameter("searchValue");
+        
+        // 검색 결과를 저장할 리스트
+        List<MovieDTO> searchList = null;
+        
+        // 검색 기준에 따라 value와 type 설정
+        String type = "";
+        switch (opt) {
+            case "movie-director": // 영화 감독
+                type = "director";
+                break;
+            case "movie-title": // 영화 제목
+                type = "title";
+                break;
+            default:
+            	type = "title";
+                break;
+        }
+        
+        
+        // 2. DB
+        // DAO를 호출하여 검색 결과 가져오기
+        MovieDAO movieDAO = MovieDAO.getInstance();
+        
+        searchList = movieDAO.indexSelectMovie(value, type); 
+        
+        System.out.println("value : " + value);
+        System.out.println("type : " + type);
+        
+	    
+	    // 3. JSON 변환
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{\"movies\":["); 
+        for (int i = 0; i < searchList.size(); i++) {
+            MovieDTO movie = searchList.get(i);
+            jsonBuilder.append("{")
+                       .append("\"mcode\":").append(movie.getMcode()).append(",")
+                       .append("\"title\":\"").append(movie.getTitle().replace("\"", "\\\"")).append("\",")
+                       .append("\"director\":\"").append(movie.getDirector().replace("\"", "\\\"")).append("\",")
+                       .append("\"genre\":\"").append(movie.getGenre().replace("\"", "\\\"")).append("\",")
+                       .append("\"release_date\":\"").append(movie.getRelease_date().replace("\"", "\\\"")).append("\",")
+                       .append("\"rating\":").append(movie.getRating()).append(",")
+                       .append("\"score\":").append(movie.getScore()).append(",")
+                       .append("\"synopsis\":\"").append(movie.getSynopsis().replace("\"", "\\\"")).append("\",")
+                       .append("\"poster\":\"").append(movie.getPoster().replace("\"", "\\\"")).append("\"")
+                       .append("}");
+            if (i < searchList.size() - 1) {
+                jsonBuilder.append(",");
+            }
+        }
+        jsonBuilder.append("]}");
 
-		// 1. Data 받기
-		String searchOpt = request.getParameter("searchOpt");
-		String searchValue = request.getParameter("searchValue");
-		String pg = request.getParameter("pg");
+	    // JSON 문자열 생성
+	    String jsonResponse = jsonBuilder.toString();
+	     System.out.println("JSON 응답: " + jsonResponse);
 
-		System.out.println("searchOptDB : " + searchOpt);
-		System.out.println("searchValueDB : " + searchValue);
 
-		// 1.1. 현재 페이지 처리
-		int currentPage = 1;
-		if (pg != null) {
-			try {
-				currentPage = Integer.parseInt(pg);
-				if (currentPage < 1) {
-					currentPage = 1; // 최소 페이지는 1
-				}
-			} catch (NumberFormatException e) {
-				currentPage = 1; // 변환 실패 시 기본값 설정
-			}
-		}
+        // 5. Response
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
-		if (searchOpt == null || searchValue == null || searchValue.trim().isEmpty()) {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return errorResponse("검색한 값이 없습니다.").toString();
-		}
-
-		// 2. DB
-		MovieDAO movieDAO = MovieDAO.getInstance();
-		int totalSearch = movieDAO.totalSearch(searchOpt, searchValue); // 검색한 갯수
-		int limit = 10;
-		int startNum = (currentPage - 1) * limit; // 시작 위치
-
-		// Map<String, Object>로 영화 목록과 총 개수를 가져옴
-		Map<String, Object> resultMap = movieDAO.searchMovies(searchOpt, searchValue, startNum, limit);
-
-		List<MovieDTO> movieDTOList = (List<MovieDTO>) resultMap.get("movies"); // List<MovieDTO>로 캐스팅
-		// totalMovies와 movieDTOList는 메서드에서 제공해야 함
-		int totalMovies = (Integer) resultMap.get("totalMovies"); // 총 영화 개수 가져오기
-
-		// 페이징 처리
-		MoviePaging moviePaging = new MoviePaging();
-		moviePaging.setCurrentPage(currentPage);
-		moviePaging.setPageBlock(5);
-		moviePaging.setPageSize(limit);
-		moviePaging.setTotalA(totalSearch);
-		moviePaging.makePagingHTML();
-
-		// 3. Response 준비
-		JSONObject jsonResponse = new JSONObject();
-		JSONArray jsonArray = new JSONArray();
-
-		for (MovieDTO movieDTO : movieDTOList) {
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("mcode", movieDTO.getMcode());
-			jsonObject.put("title", movieDTO.getTitle());
-			jsonObject.put("director", movieDTO.getDirector());
-			jsonObject.put("rating", movieDTO.getRating());
-			jsonArray.add(jsonObject);
-		}
-
-		jsonResponse.put("movies", jsonArray);
-		jsonResponse.put("currentPage", currentPage);
-		jsonResponse.put("totalMovies", totalMovies); // 서버에서 제대로 설정되는지 확인
-		jsonResponse.put("pagingHTML", moviePaging.getPagingHTML().toString()); // 페이징 HTML도 같이 확인
-
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(jsonResponse.toString());
-
-		return null;
-	}
-
-	private JSONObject errorResponse(String message) {
-		JSONObject errorResponse = new JSONObject();
-		errorResponse.put("error", message);
-		return errorResponse;
+        PrintWriter out = response.getWriter();
+        out.print(jsonResponse); // JSON 응답 전송
+        out.flush(); // 버퍼를 플러시하여 응답을 보냄
+        
+	    request.setAttribute("pg", pg);
+         request.setAttribute("searchList", searchList);
+        
+		
+		return "none";
 	}
 
 }
