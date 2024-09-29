@@ -66,16 +66,6 @@ public class UserDAO {
 		return userDTO;
 	}
 	
-	public String pwdCheck(String id) {
-	    String pwdCheck = null;
-	    SqlSession sqlSession = sqlSessionFactory.openSession();
-	    pwdCheck = sqlSession.selectOne("userSQL.pwdCheck", id);
-	    sqlSession.close();	    
-	    return pwdCheck;
-	}
-	
-	
-
 	public boolean checkIdExists(String uid) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
@@ -86,6 +76,23 @@ public class UserDAO {
 		}
 	}
 
+	public boolean pwdCheck(String id, String nowpwd) {
+	    SqlSession sqlSession = sqlSessionFactory.openSession();
+	    try {
+	        // 데이터베이스에서 저장된 비밀번호 조회
+	        String pwdCheck = sqlSession.selectOne("userSQL.pwdCheck", id);
+
+	        // 비밀번호가 존재하고 입력된 비밀번호와 일치하는지 확인
+	        if (pwdCheck != null && pwdCheck.equals(nowpwd)) {
+	            return true; // 비밀번호 일치
+	        } else {
+	            return false; // 비밀번호 불일치 또는 존재하지 않음
+	        }
+	    } finally {
+	        sqlSession.close();
+	    }   
+	}
+	
 	public int userWithdraw(String id) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		int result = sqlSession.delete("userSQL.userWithdraw", id);
