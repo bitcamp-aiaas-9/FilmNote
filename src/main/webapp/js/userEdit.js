@@ -107,7 +107,7 @@ $('#userEditBtn').click(function() {
 			url: '/FilmNote/user/userPwdCheck.do', //비밀번호 확인 URL
 			data: { uid: uid, nowupwd: nowupwd },
 			success: function(response) {
-				if (response.valid) { //비밀번호가 일치한다면
+				if (response.pwdCheck) { //비밀번호가 일치한다면
 					let serializedData = $('#userEditForm').serialize();
 
 					//회원정보 수정 AJax
