@@ -1,5 +1,5 @@
 # FilmNote (영화 리뷰 사이트)
-![filmnote_logo](src/main/resources/filmnote_logo.png)
+![filmnote_logo](src/main/resources/screenshot/filmnote_logo.png)
 
 ## Abstract ##
 **FilmNote** 는 사용자가 영화를 조회하고 리뷰를 작성할 수 있는 영화 리뷰 플랫폼입니다. 이 시스템은 회원 서비스와 관리자 서비스를 통해 영화 등록 및 관리 기능을 제공합니다. 사용자는 회원 가입과 로그인을 통해 개인 정보를 관리하고, 다양한 영화를 조회하며 리뷰를 작성, 수정 및 삭제할 수 있습니다. 관리자는 영화 등록, 목록 조회, 상세 정보 확인 및 수정 기능을 통해 영화 데이터를 효과적으로 관리할 수 있습니다. 이 프로젝트는 사용자 친화적인 인터페이스와 효율적인 데이터 관리를 통해 영화에 대한 의견을 나누고 공유할 수 있는 환경을 제공합니다.
@@ -20,19 +20,19 @@
 ## 📰 Database
 
 - **admin_tb**: 관리자 정보 테이블
-	![admin_tb](src/main/resources/admin_tb.png)
+	![admin_tb](src/main/resources/screenshot/admin_tb.png)
 
 - **user_tb**: 회원 정보 테이블
-	![user_tb](src/main/resources/user_tb.png)
+	![user_tb](src/main/resources/screenshot/user_tb.png)
 	
 - **movie_tb**:  영화 정보 테이블
-	![movie_tb](src/main/resources/movie_tb.png)
+	![movie_tb](src/main/resources/screenshot/movie_tb.png)
 	
 - **revew_tb**:  리뷰 정보 테이블
-	![revew_tb](src/main/resources/revew_tb.png)
+	![review_tb](src/main/resources/screenshot/review_tb.png)
 	
 ### ERD ###
-![FilmNoteERD](src/main/resources/FilmNoteERD.png)
+![FilmNoteERD](src/main/resources/screenshot/FilmNoteERD.png)
 
 
 ## 🎰 주요 기능
