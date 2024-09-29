@@ -20,7 +20,7 @@
 <input type="hidden" id="pg" value="${requestScope.pg }" /> 
 
 <div class="card">
-	<div id="card-title">글 삭제 & 검색</div>
+	<div id="card-title">영화 삭제 & 검색</div>
 	<div id="card-content">
 		<button type="submit" id="deleteBtn" class="cardBtn">선택 삭제</button>
 		

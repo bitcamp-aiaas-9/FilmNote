@@ -21,12 +21,12 @@
 		<td colspan="3" id="movietitle" data-moviecode="${movieDTO.mcode}"><span>${movieDTO.title}</span></td>
 	</tr>
 		<tr>
-		    <td align="center" rowspan="9" class="poster-cell">
-		        <img src="${movieDTO.poster }" alt="영화 포스터">
+		    <td width="30%" align="center" rowspan="9" class="poster-cell">
+		        <img width="90%" src="${movieDTO.poster }" alt="영화 포스터">
 		    </td>
 		</tr>
 		<tr>
-			<th>영화 감독</th>
+			<th width="20%">영화 감독</th>
 		    <td class="info-cell">${movieDTO.director }</td>
 		</tr>
 		<tr>

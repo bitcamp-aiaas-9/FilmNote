@@ -13,7 +13,7 @@
 	border-bottom: none;
 }
 
-table , #reviewList, #post-comment {
+table, #reviewList, #post-comment {
 	margin: 20px auto;
 }
 
@@ -76,7 +76,7 @@ th, td {
 }
 
 #reviewList {
-	margin-bottom: 20px;
+	margin: 20px 40px;
 }
 
 .comment-content {
@@ -186,7 +186,7 @@ th, td {
 
 /* 댓글 작성 폼 */
 #post-comment {
-    padding-top: 25px;
+    margin: 20px 40px;
     display: flex;
     flex-direction: column;
 }
