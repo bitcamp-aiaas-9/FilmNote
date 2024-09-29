@@ -14,6 +14,8 @@ public class UserWithdrawDBService implements CommandProcess {
     
 	@Override
     public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		   response.setContentType("text/html; charset=UTF-8"); // 응답의 인코딩을 UTF-8로 설정
+		    response.setCharacterEncoding("UTF-8"); // 응답의 캐릭터 인코딩 설정
         HttpSession session = request.getSession();
        
         UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");
@@ -23,16 +25,24 @@ public class UserWithdrawDBService implements CommandProcess {
         }
         
         String uid =userDTO.getUid();
-        
+        String nowpwd = request.getParameter("nowpwd");
         UserDAO userDAO = UserDAO.getInstance();
+        boolean ispwd = userDAO.pwdCheck(uid, nowpwd);
+        
+        if(!ispwd) {
+        	response.getWriter().write("비밀번호가 맞지 않습니다");
+        	return null;
+        }
+        
         
         int result = userDAO.userWithdraw(uid);
         
+        
         if (result > 0) {
             session.invalidate(); // 세션 삭제
-            response.getWriter().write("success"); // 회원 탈퇴 성공
+            response.getWriter().write("success");
         } else {
-            response.getWriter().write("result=null"); // 회원 탈퇴 실패
+            response.getWriter().write("fail");
         }
         
         return null; // 뷰 페이지 반환이 필요하지 않음   
