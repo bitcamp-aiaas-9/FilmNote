@@ -110,13 +110,13 @@ public class UserDAO {
     }
 
     // 회원탈퇴 메서드
-    public int userWithdraw(String id) {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        // 'userSQL.userWithdraw' 쿼리를 실행하여 회원 정보 삭제
-        int result = sqlSession.delete("userSQL.userWithdraw", id);
-        sqlSession.commit(); // 변경 사항을 DB에 반영
-        sqlSession.close(); // SqlSession 종료
-        return result; // 삭제 결과 리턴
-    }
+    
+	public int userWithdraw(String id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		int result = sqlSession.delete("userSQL.userWithdraw", id);
+		sqlSession.commit();
+		sqlSession.close();		
+		return result;
+	}
 }
 

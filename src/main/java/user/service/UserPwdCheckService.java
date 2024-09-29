@@ -34,10 +34,10 @@ public class UserPwdCheckService implements CommandProcess {
 			// 비밀번호가 맞지 않으면 오류 메시지 추가
 			jsonResponse.put("error", "비밀번호가 맞지 않습니다.");
 		}
-
-		// 응답을 JSON 형식으로 설정
+		
 		response.setContentType("application/json");
 		response.getWriter().write(jsonResponse.toString()); // JSON 데이터를 클라이언트로 전송
+
 
 		return "none"; // AJAX 요청이므로 뷰 페이지 이동 없이 JSON 응답만 전송
 	}

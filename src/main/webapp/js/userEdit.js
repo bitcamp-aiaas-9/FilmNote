@@ -113,6 +113,7 @@ $('#userEditBtn').click(function() {
 			url: '/FilmNote/user/userPwdCheck.do', // 비밀번호 확인 URL
 			data: { uid: uid, nowupwd: nowupwd }, // 전송 데이터
 			success: function(response) {
+
 				if (response.pwdCheck) { // 비밀번호가 일치하는 경우
 					let serializedData = $('#userEditForm').serialize(); // 폼 데이터 직렬화
 

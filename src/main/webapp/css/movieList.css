@@ -180,5 +180,6 @@ th {
 span:hover {
    text-decoration: underline;
    cursor: pointer;
-    /* 페이지 번호에 마우스를 올리면 밑줄을 추가하고, 포인터를 변경합니다. */
 }
+    /* 페이지 번호에 마우스를 올리면 밑줄을 추가하고, 포인터를 변경합니다. */
+
