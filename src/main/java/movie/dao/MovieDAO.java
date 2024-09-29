@@ -131,4 +131,49 @@ public class MovieDAO {
     
 
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// MovieDAO.java 영화 검색 - 채연
+    // 검색된 총 영화 개수 반환
+    public int getSelectTotal(String value, String type) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        HashMap<String, String> data = new HashMap<>();
+        data.put("type", type);
+        data.put("value", value);
+        
+        int selectTotal = sqlSession.selectOne("movieSQL.getSelectTotal", data);
+        sqlSession.close();
+        
+        return selectTotal;
+    }
+	
+	// 영화 검색 목록
+	public List<MovieDTO> selectMovie(String value, String type, int startNum, int endNum) {
+	    SqlSession sqlSession = sqlSessionFactory.openSession();
+	    Map<String, Object> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);	    
+	    map.put("type",type);
+	    map.put("value",value);
+	    
+	    List<MovieDTO> list = sqlSession.selectList("movieSQL.selectMovie", map);
+	    sqlSession.close();
+	    return list;		
+	}
+	
+	
+	
+	
+	
 }
