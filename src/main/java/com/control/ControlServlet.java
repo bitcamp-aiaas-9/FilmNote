@@ -131,6 +131,11 @@ public class ControlServlet extends HttpServlet {
 		// member.service.WriteFormService
 		CommandProcess com = (CommandProcess)map.get(category); // 자식 = (자식)부모
 		
+		if (com == null) {
+		    System.out.println("No CommandProcess found for category: " + category);
+		    return; // 적절한 처리
+		}
+
 		System.out.println("com : " + com);
 		
 		String view = null;

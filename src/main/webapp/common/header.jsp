@@ -16,7 +16,7 @@
 	padding: 20px 0;
 }
 
-#title {
+#logoTitle {
 	width: 150px;
 }
 
@@ -56,7 +56,7 @@ button.user:hover {
 </style>
 <body>
 <div id="header">
-	<div id="title">
+	<div id="logoTitle">
 		<a href="${pageContext.request.contextPath}/index.do">
 			<img src="${pageContext.request.contextPath}/image/filmnote_logo.png" width="300" alt="logo" />
 		</a>

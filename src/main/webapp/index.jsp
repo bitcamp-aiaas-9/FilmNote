@@ -10,16 +10,83 @@
 <meta charset="UTF-8">
 <link rel="icon" href="./image/film_favicon.png" type="image/png">
 <link rel="stylesheet" href="./css/index.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css"> --%>
 <title>FilmNote</title>
 <style type="text/css">
+
+/** 글삭제 & 검색 */
+div.card {
+	margin: 40px 60px;
+}
+
+.card #card-title {
+	font-size: 15px;
+	margin-bottom: 8px;
+}
+
+.card #card-content {
+	height: 50px;
+	border-top: 1px solid #5A5A5A;
+	border-bottom : 1px solid #5A5A5A;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 20px;
+    gap: 10px;
+	
+}
+
+#card-content .search-opt, #card-content .input-box {
+    height: 30px;
+    border: 1px solid #5A5A5A;
+    border-radius: 3px;
+    font-size: 15px;    
+    padding: 0 5px;
+}
+
+#card-content .search-opt {
+    letter-spacing: 3px;
+    width: 180px;
+}
+
+#card-content .input-box {
+    width: 550px;
+}
+
+#searchBtn {
+	padding: 0;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	width: 150px;
+    height: 30px;
+    line-height: 27px;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    background: #457ABF;
+	color: white;
+	border: 1px solid #457ABF;	
+}
+
+#searchBtn:hover {
+    transition: background-color 0.3s ease; 
+	background-color: #3d3d3d;
+	color: #FFFFFF;
+	border: 1px solid #3d3d3d;	
+	cursor: pointer;
+}
+
 table {
-	border-colpase: colpase;
+	border-collapse: collapse;
 	margin: 20px auto;
 }
 
 td {
-	width: 250px;
-	padding: 10px;
+   width: 250px;
+   padding: 10px;
 }
 
 .hover-info {
@@ -66,63 +133,81 @@ td {
 }
 
 #footer {
-	margin: 20px 50px;
+   margin: 20px 50px;
 }
 
 #github {
-	width: 180px;
-	display: flex;
-	justify-content: start;
-	align-itmes: center;
-	gap: 10px;
+   width: 180px;
+   display: flex;
+   justify-content: start;
+   align-items: center;
+   gap: 10px;
 }
 
 #footer-a {
-	display: block;
-	width: 180px;
+   display: block;
+   width: 180px;
 }
 #footer-p {
-	margin-bottom: 10px;
+   margin-bottom: 10px;
 }
 
 #gitlink {
-	line-height: 35px;
-	height: 35px;
+   line-height: 35px;
+   height: 35px;
 }
 </style>
 </head>
 
 <body>
 <jsp:include page="./common/header.jsp" />
+<div class="card">
+	<div id="card-title">영화 검색</div>
+	<div id="card-content">
+		<select class="search-opt">
+		    <optgroup label="검색 항목">
+		        <option value="movie-title" selected="selected">영화 제목</option>
+		        <option value="movie-director">영화 감독</option>
+		    </optgroup>
+		</select>
+		<input id="title-box" class="input-box"/>
+		<button id="searchBtn" class="cardBtn">검색</button>
+	</div>
+</div>
+
+
+
  <div id="poster">
 	<table>
- 		<c:if test="${movieDTOList.size() != 0}">
-			<c:forEach var="row" begin="0" end="${movieDTOList.size()}" step="${movieInRowCount}">
-	    		<tr>
-	        	<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
-	            	<c:if test="${i < movieDTOList.size()}">
-		                <td>
-		                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}&pg=1">
-                           <div class="hover-info">
-                              <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
-                              
-                              <!-- 오버시 나오는 정보 -->
-                              <div class="over">
-                                 <span class="title">${movieDTOList[i].getTitle() }</span><br>
-                                 <span class="open_date">개봉일 : ${movieDTOList[i].getRelease_date()}</span><br>
-                                 <span class="director">감독 : ${movieDTOList[i].getDirector()}</span><br>
-                                 <span class="score">평점 : <fmt:formatNumber pattern="0.00점" value="${movieDTOList[i].getScore()}"/></span><br>
-                                 <!-- <span class="btn_detail">자세히 보기</span> -->
-                              <!-- //오버시 나오는 정보 -->
-                              </div>
-                           </div>
-                        </a>
-		                </td>
-		            </c:if>
-	        	</c:forEach>
-    			</tr>
-			</c:forEach>
-		</c:if>
+		<tbody id="movieTableBody">
+	 		<c:if test="${movieDTOList.size() != 0}">
+				<c:forEach var="row" begin="0" end="${movieDTOList.size()}" step="${movieInRowCount}">
+		    		<tr>
+		        	<c:forEach var="i" begin="${row}" end="${row + movieInRowCount - 1}" step="1">
+		            	<c:if test="${i < movieDTOList.size()}">
+			                <td>
+			                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}&pg=1">
+	                           <div class="hover-info">
+	                              <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
+	                              
+	                              <!-- 오버시 나오는 정보 -->
+	                              <div class="over">
+	                                 <span class="title">${movieDTOList[i].getTitle() }</span><br>
+	                                 <span class="open_date">개봉일 : ${movieDTOList[i].getRelease_date()}</span><br>
+	                                 <span class="director">감독 : ${movieDTOList[i].getDirector()}</span><br>
+	                                 <span class="score">평점 : <fmt:formatNumber pattern="0.00점" value="${movieDTOList[i].getScore()}"/></span><br>
+	                                 <!-- <span class="btn_detail">자세히 보기</span> -->
+	                              <!-- //오버시 나오는 정보 -->
+	                              </div>
+	                           </div>
+	                        </a>
+			                </td>
+			            </c:if>
+		        	</c:forEach>
+	    			</tr>
+				</c:forEach>
+			</c:if>
+		</tbody>
 	</table>
 </div>
 
@@ -141,6 +226,9 @@ td {
 </div> 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" target="_blank"></script>
+<script>
+    var context = '${pageContext.request.contextPath}';
+</script>
 <script type="text/javascript" src="./js/index.js"></script>
 
 </body>
