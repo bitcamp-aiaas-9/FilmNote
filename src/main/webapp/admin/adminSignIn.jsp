@@ -36,10 +36,8 @@
                     <button type="submit" id="adminLoginBtn">로그인</button>
                 </td>
             </tr>
-            <tr>
-                <td colspan="2"><div id="adminLoginErrorDiv"></div></td>
-            </tr>
         </table>
+			<div id="adminLoginErrorDiv"></div>
         <!-- 경고 메시지 div를 여기에 추가 -->
         <div id="adminLoginWarningMessage" class="show" style="display: none;"> <!--  text-align: center; color: #e74c3c; margin-top: 10px; -->
             <!-- 이곳에 경고 메시지가 표시됩니다 -->
