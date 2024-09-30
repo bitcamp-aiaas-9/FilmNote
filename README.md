@@ -28,7 +28,7 @@
 - **movie_tb**:  영화 정보 테이블
 	![movie_tb](src/main/resources/screenshot/movie_tb.png)
 	
-- **revew_tb**:  리뷰 정보 테이블
+- **review_tb**:  리뷰 정보 테이블
 	![review_tb](src/main/resources/screenshot/review_tb.png)
 	
 ### ERD ###
