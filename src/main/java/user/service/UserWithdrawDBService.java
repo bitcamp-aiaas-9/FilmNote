@@ -14,8 +14,8 @@ public class UserWithdrawDBService implements CommandProcess {
     
 	@Override
     public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		   response.setContentType("text/html; charset=UTF-8"); // 응답의 인코딩을 UTF-8로 설정
-		    response.setCharacterEncoding("UTF-8"); // 응답의 캐릭터 인코딩 설정
+		response.setContentType("text/html; charset=UTF-8"); // 응답의 인코딩을 UTF-8로 설정
+		response.setCharacterEncoding("UTF-8"); // 응답의 캐릭터 인코딩 설정
         HttpSession session = request.getSession();
        
         UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");

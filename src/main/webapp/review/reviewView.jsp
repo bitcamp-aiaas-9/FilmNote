@@ -52,8 +52,6 @@
 	</table>
 </div>
 
-<%-- 
-<div id="reviewTotalNum" hidden>${reviewDTOList.size()}</div> --%>
 <div id="reviewDiv">
 	<!-- 리뷰 -->
 	<div id="reviewList">
@@ -101,7 +99,7 @@
 				            <span class="like">❤️</span> -->
 				        </div>
 				    </div>
-				    <c:if test="${sessionScope.userDTO.uname == reviewDTO.getUser_id()}">
+				    <c:if test="${sessionScope.userDTO.uname == reviewDTO.getUser_id() && reviewDTO.getUser_id() != null}">
 					    <div class="comment-options">
 					        <button class="options-btn">⋮</button>
 					        <div class="options-menu">
