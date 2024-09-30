@@ -34,7 +34,7 @@ $(function() {
                                     <td>
                                         <a href="${context}/review/reviewView.do?mcode=${movieDTO.mcode}&pg=1">
                                             <div class="hover-info">
-                                                <img src="${movieDTO.poster}" alt="" class="thumb"/>
+                                                <img width="230px" height="330px" src="${movieDTO.poster}" alt="" class="thumb"/>
                                                 <div class="over">
                                                     <span class="title">${movieDTO.title}</span><br>
                                                     <span class="open_date">개봉일 : ${movieDTO.release_date}</span><br>
