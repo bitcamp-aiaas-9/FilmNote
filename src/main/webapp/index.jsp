@@ -188,7 +188,7 @@ td {
 			                <td>
 			                    <a href="${pageContext.request.contextPath}/review/reviewView.do?mcode=${movieDTOList[i].getMcode()}&pg=1">
 	                           <div class="hover-info">
-	                              <img src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
+	                              <img width="230px" height="330px" src="${movieDTOList[i].getPoster() }" alt="" class="thumb"/>
 	                              
 	                              <!-- 오버시 나오는 정보 -->
 	                              <div class="over">

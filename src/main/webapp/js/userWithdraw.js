@@ -1,4 +1,3 @@
-// FilmNote/src/main/webapp/js/userWithdraw.js
 $(document).ready(function() {
     $('#withdrawBtn').prop('disabled', true);
 
